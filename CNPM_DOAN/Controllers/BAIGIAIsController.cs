@@ -132,10 +132,16 @@ namespace CNPM_DOAN.Controllers
             }
             base.Dispose(disposing);
         }
+        public bool KTBaiGiai(string iduser, string idbaitap)
+        {
+            var data = db.BAIGIAIs.Where(s => s.IDBaiTap == idbaitap && s.IDNguoiDung == iduser).ToList();
+            if (data.Count == 0) return false;
+            else return true;
+        }
         public ActionResult ChiTietBaiGiai(string idbaitap, string iduser)
         {
             Session["IDBAITAP"] = idbaitap;
-            if (new BAITAP().KTBaiGiai(iduser, idbaitap) == true)
+            if (KTBaiGiai(iduser, idbaitap) == true)
             {
                 var data = db.BAIGIAIs.Where(s => s.IDBaiTap == idbaitap && s.IDNguoiDung == iduser).FirstOrDefault();
                 return View(data);

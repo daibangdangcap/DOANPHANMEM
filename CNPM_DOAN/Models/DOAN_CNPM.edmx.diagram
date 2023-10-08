@@ -24,6 +24,8 @@
         <AssociationConnector Association="CNPM_DOANModel.FK__TIETHOC__IDNGUOI__5DCAEF64" ManuallyRouted="false" />
         <AssociationConnector Association="CNPM_DOANModel.FK__TODO__IDNguoiDun__571DF1D5" ManuallyRouted="false" />
         <AssociationConnector Association="CNPM_DOANModel.FK__TIETHOC__IDTKB__5CD6CB2B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CNPM_DOANModel.TAILIEU" Width="1.5" PointX="5.25" PointY="4.625" />
+        <AssociationConnector Association="CNPM_DOANModel.FK__TAILIEU__IDNguoi__05D8E0BE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

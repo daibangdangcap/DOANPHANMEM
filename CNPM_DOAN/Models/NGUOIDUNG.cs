@@ -11,20 +11,10 @@ namespace CNPM_DOAN.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Data;
-    using System.Data.Entity;
-    using System.Linq;
-    using System.Net;
-    using System.Web;
-    using System.Web.Mvc;
-    using System.Web.UI.WebControls;
-
+    
     public partial class NGUOIDUNG
     {
-        private CNPM_DOANEntities db = new CNPM_DOANEntities();
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-
         public NGUOIDUNG()
         {
             this.BAIGIAIs = new HashSet<BAIGIAI>();
@@ -35,8 +25,9 @@ namespace CNPM_DOAN.Models
             this.THOIKHOABIEUx = new HashSet<THOIKHOABIEU>();
             this.TIETHOCs = new HashSet<TIETHOC>();
             this.TODOes = new HashSet<TODO>();
+            this.TAILIEUx = new HashSet<TAILIEU>();
         }
-
+    
         public string IDNguoiDung { get; set; }
         public string TenNguoiDung { get; set; }
         public string GioiTinh { get; set; }
@@ -47,7 +38,7 @@ namespace CNPM_DOAN.Models
         public string MatKhau { get; set; }
         public string IDVaiTro { get; set; }
         public string IDQuanLy { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BAIGIAI> BAIGIAIs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -66,46 +57,7 @@ namespace CNPM_DOAN.Models
         public virtual ICollection<TIETHOC> TIETHOCs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TODO> TODOes { get; set; }
-        public NGUOIDUNG checkAccount(string username, string password)
-        {
-            NGUOIDUNG nGUOIDUNG = new NGUOIDUNG();
-            var data = db.NGUOIDUNGs.Where(s => s.TenTaiKhoan.Equals(username) && s.MatKhau.Equals(password)).ToList();
-            if (data.Count > 0)
-            {
-                nGUOIDUNG.IDNguoiDung = data.FirstOrDefault().IDNguoiDung;
-                nGUOIDUNG.TenTaiKhoan = data.FirstOrDefault().TenTaiKhoan;
-                nGUOIDUNG.MatKhau = data.FirstOrDefault().MatKhau;
-                nGUOIDUNG.Avatar = data.FirstOrDefault().Avatar;
-                nGUOIDUNG.NgaySinh = data.FirstOrDefault().NgaySinh;
-                nGUOIDUNG.Email = data.FirstOrDefault().Email;
-                nGUOIDUNG.GioiTinh = data.FirstOrDefault().GioiTinh;
-                nGUOIDUNG.TenNguoiDung = data.FirstOrDefault()?.TenNguoiDung;
-                return nGUOIDUNG;
-            }
-            else return null ;
-        }
-        public bool checkRegister(string username)
-        {
-            var data = db.NGUOIDUNGs.Where(s => s.TenTaiKhoan.Equals(username)).ToList();
-            if (data.Count > 0) { return false; }
-            return true;
-        }
-        public void ChinhSuaThongTinCaNhan(string iduser, [Bind(Include = "TenNguoiDung,Email,NgaySinh,GioiTinh")] NGUOIDUNG nguoidung)
-        {
-            NGUOIDUNG data = db.NGUOIDUNGs.Find(iduser);
-            data.TenNguoiDung = nguoidung.TenNguoiDung;
-            data.Email = nguoidung.Email;
-            data.GioiTinh = nguoidung.GioiTinh;
-            data.NgaySinh = nguoidung.NgaySinh;
-            db.Entry(data).State = EntityState.Modified;
-            db.SaveChanges();
-        }
-        public void ChinhSuaMatKhau(string iduser, string mkmoi)
-        {
-            NGUOIDUNG data = db.NGUOIDUNGs.Find(iduser);
-            data.MatKhau = mkmoi;
-            db.Entry(data).State = EntityState.Modified;
-            db.SaveChanges();
-        }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TAILIEU> TAILIEUx { get; set; }
     }
 }

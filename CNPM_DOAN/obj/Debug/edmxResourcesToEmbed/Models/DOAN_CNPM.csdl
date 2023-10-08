@@ -5,7 +5,7 @@
       <PropertyRef Name="IDBaiGiai" />
     </Key>
     <Property Name="IDBaiGiai" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="TenBaiGiai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TenBaiGiai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="DuongDan" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="LoaiTep" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="SoDiem" Type="Double" />
@@ -20,7 +20,7 @@
       <PropertyRef Name="IDBaiTap" />
     </Key>
     <Property Name="IDBaiTap" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="TenBT" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="TenBT" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="NgayGiao" Type="DateTime" Precision="3" />
     <Property Name="HanNop" Type="DateTime" Precision="3" />
     <Property Name="IDNguoiTao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
@@ -64,6 +64,7 @@
     <NavigationProperty Name="THOIKHOABIEUx" Relationship="Self.FK__THOIKHOAB__IDNgu__4CA06362" FromRole="NGUOIDUNG" ToRole="THOIKHOABIEU" />
     <NavigationProperty Name="TIETHOCs" Relationship="Self.FK__TIETHOC__IDNGUOI__5DCAEF64" FromRole="NGUOIDUNG" ToRole="TIETHOC" />
     <NavigationProperty Name="TODOes" Relationship="Self.FK__TODO__IDNguoiDun__571DF1D5" FromRole="NGUOIDUNG" ToRole="TODO" />
+    <NavigationProperty Name="TAILIEUx" Relationship="CNPM_DOANModel.FK__TAILIEU__IDNguoi__05D8E0BE" FromRole="NGUOIDUNG" ToRole="TAILIEU" />
   </EntityType>
   <EntityType Name="THOIKHOABIEU">
     <Key>
@@ -295,5 +296,33 @@
       <End Role="THOIKHOABIEU" EntitySet="THOIKHOABIEUx" />
       <End Role="TIETHOC" EntitySet="TIETHOCs" />
     </AssociationSet>
+    <EntitySet Name="TAILIEUx" EntityType="CNPM_DOANModel.TAILIEU" />
+    <AssociationSet Name="FK__TAILIEU__IDNguoi__05D8E0BE" Association="CNPM_DOANModel.FK__TAILIEU__IDNguoi__05D8E0BE">
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+      <End Role="TAILIEU" EntitySet="TAILIEUx" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="TAILIEU">
+    <Key>
+      <PropertyRef Name="IDTaiLieu" />
+    </Key>
+    <Property Name="IDTaiLieu" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="TenTaiLieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TenDuongDan" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="LoaiTep" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IDNguoiTao" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="NGUOIDUNG" Relationship="CNPM_DOANModel.FK__TAILIEU__IDNguoi__05D8E0BE" FromRole="TAILIEU" ToRole="NGUOIDUNG" />
+  </EntityType>
+  <Association Name="FK__TAILIEU__IDNguoi__05D8E0BE">
+    <End Type="CNPM_DOANModel.NGUOIDUNG" Role="NGUOIDUNG" Multiplicity="1" />
+    <End Type="CNPM_DOANModel.TAILIEU" Role="TAILIEU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGUOIDUNG">
+        <PropertyRef Name="IDNguoiDung" />
+      </Principal>
+      <Dependent Role="TAILIEU">
+        <PropertyRef Name="IDNguoiTao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

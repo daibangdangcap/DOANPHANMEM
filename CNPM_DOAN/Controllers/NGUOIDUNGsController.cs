@@ -144,7 +144,7 @@ namespace CNPM_DOAN.Controllers
             if (ModelState.IsValid)
             {
                 NGUOIDUNG nguoidung = new NGUOIDUNG();
-                nguoidung = nguoidung.checkAccount(username, password);
+                nguoidung = checkAccount(username, password);
                 if (nguoidung != null)
                 {
                     Session["IDUSER"] = nguoidung.IDNguoiDung;
@@ -200,7 +200,7 @@ namespace CNPM_DOAN.Controllers
                 nGUOIDUNG.MatKhau = password;
                 nGUOIDUNG.IDNguoiDung = nGUOIDUNG.IDVaiTro + new RANDOMID().GenerateRandomString(2);
                 nGUOIDUNG.IDQuanLy = nGUOIDUNG.IDNguoiDung;
-                if (nGUOIDUNG.checkRegister(nGUOIDUNG.TenTaiKhoan) == true)
+                if (checkRegister(nGUOIDUNG.TenTaiKhoan) == true)
                 {
                     db.NGUOIDUNGs.Add(nGUOIDUNG);
                     db.SaveChanges();
@@ -273,7 +273,7 @@ namespace CNPM_DOAN.Controllers
         [HttpPost]
         public ActionResult updateUserInfo(string id, [Bind(Include = "TenNguoiDung,Email,NgaySinh,GioiTinh")] NGUOIDUNG nGUOIDUNG)
         {
-            if (ModelState.IsValid) { new NGUOIDUNG().ChinhSuaThongTinCaNhan(id, nGUOIDUNG); return RedirectToAction("Informs", "NGUOIDUNGs", new { iduser = id }); }
+            if (ModelState.IsValid) { ChinhSuaThongTinCaNhan(id, nGUOIDUNG); return RedirectToAction("Informs", "NGUOIDUNGs", new { iduser = id }); }
             return View(nGUOIDUNG);
         }
         public ActionResult updateMatKhau(string iduser)
@@ -288,7 +288,7 @@ namespace CNPM_DOAN.Controllers
 
             if (matkhaumoi == xacnhanmatkhaumoi && matkhaucu == data.MatKhau)
             {
-                new NGUOIDUNG().ChinhSuaMatKhau(id, matkhaumoi); return RedirectToAction("Informs", "NGUOIDUNGs", new { iduser = id });
+                ChinhSuaMatKhau(id, matkhaumoi); return RedirectToAction("Informs", "NGUOIDUNGs", new { iduser = id });
             }
             return View(data);
         }
@@ -321,7 +321,7 @@ namespace CNPM_DOAN.Controllers
                 nGUOIDUNG.IDVaiTro = "HS";
                 nGUOIDUNG.IDNguoiDung = nGUOIDUNG.IDVaiTro + new RANDOMID().GenerateRandomString(2);
                 nGUOIDUNG.IDQuanLy = nguoidung.IDQuanLy;
-                if (nGUOIDUNG.checkRegister(nGUOIDUNG.TenTaiKhoan) == true)
+                if (checkRegister(nGUOIDUNG.TenTaiKhoan) == true)
                 {
                     db.NGUOIDUNGs.Add(nGUOIDUNG);
                     db.SaveChanges();
@@ -428,5 +428,49 @@ namespace CNPM_DOAN.Controllers
             if (data != null) return View(phuhuynh);
             else return RedirectToAction("Index", "VAITROes");
         }
+
+        public NGUOIDUNG checkAccount(string username, string password)
+        {
+            NGUOIDUNG nGUOIDUNG = new NGUOIDUNG();
+            var data = db.NGUOIDUNGs.Where(s => s.TenTaiKhoan.Equals(username) && s.MatKhau.Equals(password)).ToList();
+            if (data.Count > 0)
+            {
+                nGUOIDUNG.IDNguoiDung = data.FirstOrDefault().IDNguoiDung;
+                nGUOIDUNG.TenTaiKhoan = data.FirstOrDefault().TenTaiKhoan;
+                nGUOIDUNG.MatKhau = data.FirstOrDefault().MatKhau;
+                nGUOIDUNG.Avatar = data.FirstOrDefault().Avatar;
+                nGUOIDUNG.NgaySinh = data.FirstOrDefault().NgaySinh;
+                nGUOIDUNG.Email = data.FirstOrDefault().Email;
+                nGUOIDUNG.GioiTinh = data.FirstOrDefault().GioiTinh;
+                nGUOIDUNG.TenNguoiDung = data.FirstOrDefault()?.TenNguoiDung;
+                return nGUOIDUNG;
+            }
+            else return null;
+        }
+        public bool checkRegister(string username)
+        {
+            var data = db.NGUOIDUNGs.Where(s => s.TenTaiKhoan.Equals(username)).ToList();
+            if (data.Count > 0) { return false; }
+            return true;
+        }
+        public void ChinhSuaThongTinCaNhan(string iduser, [Bind(Include = "TenNguoiDung,Email,NgaySinh,GioiTinh")] NGUOIDUNG nguoidung)
+        {
+            NGUOIDUNG data = db.NGUOIDUNGs.Find(iduser);
+            data.TenNguoiDung = nguoidung.TenNguoiDung;
+            data.Email = nguoidung.Email;
+            data.GioiTinh = nguoidung.GioiTinh;
+            data.NgaySinh = nguoidung.NgaySinh;
+            db.Entry(data).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+        public void ChinhSuaMatKhau(string iduser, string mkmoi)
+        {
+            NGUOIDUNG data = db.NGUOIDUNGs.Find(iduser);
+            data.MatKhau = mkmoi;
+            db.Entry(data).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+
+
     }
 }

@@ -33,5 +33,6 @@ namespace CNPM_DOAN.Models
         public virtual DbSet<TIETHOC> TIETHOCs { get; set; }
         public virtual DbSet<TODO> TODOes { get; set; }
         public virtual DbSet<VAITRO> VAITROes { get; set; }
+        public virtual DbSet<TAILIEU> TAILIEUx { get; set; }
     }
 }

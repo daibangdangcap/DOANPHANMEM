@@ -136,7 +136,7 @@ namespace CNPM_DOAN.Controllers
                 var data = db.TODOes.Where(s => s.IDNguoiDung.Equals(iduser) && (s.TrangThai.Equals("Còn hạn") || s.TrangThai.Equals("Qúa hạn"))).ToList();
                 foreach (var item in data)
                 {
-                    if (new TODO().checkUpdate(item) == false) new TODO().updateTrangThai(item.IDToDo, item.IDNguoiDung);
+                    if (checkUpdate(item) == false) updateTrangThai(item.IDToDo, item.IDNguoiDung);
                 }
                 return View(data);
             }
@@ -154,8 +154,8 @@ namespace CNPM_DOAN.Controllers
             }
             if (ModelState.IsValid)
             {
-                TODO todo = new TODO();
-                todo.themMoiTODO(ndtodo, id);
+                TODO todo = themMoiTODO(ndtodo, id);
+                
                 todo.IDToDo = id + "TD" + new RANDOMID().GenerateRandomString(2);
                 db.TODOes.Add(todo);
                 db.SaveChanges();
@@ -165,7 +165,7 @@ namespace CNPM_DOAN.Controllers
         }
         public ActionResult CompleteToDo(string IDToDo, string id)
         {
-            new TODO().submitTodo(IDToDo, id);
+            submitTodo(IDToDo, id);
             return RedirectToAction("showToDo", "TODOes", new { iduser = id });
         }
         public ActionResult DeleteToDo(string IDToDo, string id)
@@ -178,12 +178,12 @@ namespace CNPM_DOAN.Controllers
         [HttpPost]
         public ActionResult UpdateTrangThai(string IDToDo, string id)
         {
-            new TODO().updateTrangThai(IDToDo, id);
+            updateTrangThai(IDToDo, id);
             return RedirectToAction("showToDo", "TODOes", new { iduser = id });
         }
         public ActionResult UpdateToDo(string IDToDo, string id, string newNDToDo)
         {
-            new TODO().updateTodo(IDToDo, newNDToDo);
+            updateTodo(IDToDo, newNDToDo);
             return RedirectToAction("showToDo", "TODOes", new { iduser = id });
         }
         public ActionResult showUserToDo_PH( string iduser) 
@@ -196,5 +196,49 @@ namespace CNPM_DOAN.Controllers
             var data=db.TODOes.Where(s=>s.IDNguoiDung==iduser).ToList();
             return View(data.ToList());
         }
+
+        public TODO themMoiTODO(string NDTODO, string id)
+        {
+            TODO todo=new TODO();
+            todo.NDToDo = NDTODO;
+            todo.IDNguoiDung = id;
+            var timenow = DateTime.Now;
+            todo.NgayBatDau = timenow;
+            todo.NgayHoanThanh = null;
+            //DateTime.ParseExact($"{timenow.Month}/{timenow.Day}/{timenow.Year} {11 - timenow.Hour}:{59 - timenow.Minute}:{59 - timenow.Second} PM", "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            //this.HanChot = timenow.AddDays(1).AddSeconds(-1);
+            todo.HanChot = timenow.AddDays(0).AddMonths(0).AddYears(0).AddHours(23 - timenow.Hour).AddMinutes(59 - timenow.Minute).AddSeconds(59 - timenow.Second);
+            todo.TrangThai = "Còn hạn";
+            return todo;
+        }
+        public void submitTodo(string IDToDo, string id)
+        {
+            var data = db.TODOes.Find(IDToDo);
+            data.TrangThai = "Đã hoàn thành";
+            data.NgayHoanThanh = DateTime.Now;
+            db.Entry(data).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+        public void updateTrangThai(string IDToDo, string id)
+        {
+            var data = db.TODOes.Find(IDToDo);
+            data.TrangThai = "Qúa hạn";
+            db.Entry(data).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+        public void updateTodo(string IDToDo, string newNDtodo)
+        {
+            var data = db.TODOes.Find(IDToDo);
+            data.NDToDo = newNDtodo;
+            TODO tODO = data;
+            db.Entry(tODO).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+        public bool checkUpdate(TODO todo)
+        {
+            if (todo.HanChot < DateTime.Now) return false;
+            else return true;
+        }
+
     }
 }

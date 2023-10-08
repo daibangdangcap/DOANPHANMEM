@@ -97,5 +97,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TAILIEUx">
+      <EntityTypeMapping TypeName="CNPM_DOANModel.TAILIEU">
+        <MappingFragment StoreEntitySet="TAILIEU">
+          <ScalarProperty Name="IDNguoiTao" ColumnName="IDNguoiTao" />
+          <ScalarProperty Name="LoaiTep" ColumnName="LoaiTep" />
+          <ScalarProperty Name="TenDuongDan" ColumnName="TenDuongDan" />
+          <ScalarProperty Name="TenTaiLieu" ColumnName="TenTaiLieu" />
+          <ScalarProperty Name="IDTaiLieu" ColumnName="IDTaiLieu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

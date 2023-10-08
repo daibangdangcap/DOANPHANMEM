@@ -25,14 +25,14 @@
                     {
                         <span style="font-size: 10px; border-color: red">Còn hạn</span>
                     }
-                    @if (item.KTBaiGiai(Session["IDUSER"].ToString(), item.IDBaiTap) == true)
-                    {
-                        <p id="trangthai" style="font-size: 10px;">Đã nộp</p>
-                    }
-                    else
-                    {
-                        <p id="trangthai" style="font-size: 10px;">Chưa nộp</p>
-                    }
+                    <!--if (item.KTBaiGiai(Session["IDUSER"].ToString(), item.IDBaiTap) == true)
+    {
+        <p id="trangthai" style="font-size: 10px;">Đã nộp</p>
+    }
+    else
+    {
+        <p id="trangthai" style="font-size: 10px;">Chưa nộp</p>
+    }-->
                 </div>
                 <button id="nopbai" onclick="location.href='@Url.Action("TaiBT", "BAITAPs", new { idbaitap = item.IDBaiTap })'">Tải xuống</button>
                 <button id="nopbai" onclick="location.href='@Url.Action("ChiTietBaiGiai", "BAIGIAIs", new { idbaitap = item.IDBaiTap, iduser = Session["IDUSER"] })'">Nộp bài</button>

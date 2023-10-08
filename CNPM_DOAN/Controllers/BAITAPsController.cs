@@ -13,7 +13,6 @@ namespace CNPM_DOAN.Controllers
     public class BAITAPsController : Controller
     {
         private CNPM_DOANEntities db = new CNPM_DOANEntities();
-
         // GET: BAITAPs
         public ActionResult Index()
         {

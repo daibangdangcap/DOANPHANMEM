@@ -171,6 +171,9 @@
     </Compile>
     <Compile Include="Models\RANDOMID.cs" />
     <Compile Include="Models\Register.cs" />
+    <Compile Include="Models\TAILIEU.cs">
+      <DependentUpon>DOAN_CNPM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\THOIKHOABIEU.cs">
       <DependentUpon>DOAN_CNPM.tt</DependentUpon>
     </Compile>

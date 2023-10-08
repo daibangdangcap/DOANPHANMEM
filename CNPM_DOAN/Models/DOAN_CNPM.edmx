@@ -10,7 +10,7 @@
             <PropertyRef Name="IDBaiGiai" />
           </Key>
           <Property Name="IDBaiGiai" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="TenBaiGiai" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenBaiGiai" Type="nvarchar(max)" />
           <Property Name="DuongDan" Type="varbinary(max)" />
           <Property Name="LoaiTep" Type="varchar" MaxLength="100" />
           <Property Name="SoDiem" Type="float" />
@@ -23,7 +23,7 @@
             <PropertyRef Name="IDBaiTap" />
           </Key>
           <Property Name="IDBaiTap" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="TenBT" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenBT" Type="nvarchar(max)" />
           <Property Name="NgayGiao" Type="datetime" />
           <Property Name="HanNop" Type="datetime" />
           <Property Name="IDNguoiTao" Type="varchar" MaxLength="10" Nullable="false" />
@@ -53,6 +53,16 @@
           <Property Name="MatKhau" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IDVaiTro" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="IDQuanLy" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TAILIEU">
+          <Key>
+            <PropertyRef Name="IDTaiLieu" />
+          </Key>
+          <Property Name="IDTaiLieu" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="TenTaiLieu" Type="nvarchar(max)" />
+          <Property Name="TenDuongDan" Type="varbinary(max)" />
+          <Property Name="LoaiTep" Type="varchar(max)" />
+          <Property Name="IDNguoiTao" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="THOIKHOABIEU">
           <Key>
@@ -177,6 +187,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__TAILIEU__IDNguoi__05D8E0BE">
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="1" />
+          <End Role="TAILIEU" Type="Self.TAILIEU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUOIDUNG">
+              <PropertyRef Name="IDNguoiDung" />
+            </Principal>
+            <Dependent Role="TAILIEU">
+              <PropertyRef Name="IDNguoiTao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__THOIKHOAB__IDNgu__4CA06362">
           <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="1" />
           <End Role="THOIKHOABIEU" Type="Self.THOIKHOABIEU" Multiplicity="*" />
@@ -230,6 +252,7 @@
           <EntitySet Name="BAITAP" EntityType="Self.BAITAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MUCTIEU" EntityType="Self.MUCTIEU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NGUOIDUNG" EntityType="Self.NGUOIDUNG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TAILIEU" EntityType="Self.TAILIEU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THOIKHOABIEU" EntityType="Self.THOIKHOABIEU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIETHOC" EntityType="Self.TIETHOC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TODO" EntityType="Self.TODO" Schema="dbo" store:Type="Tables" />
@@ -262,6 +285,10 @@
             <End Role="VAITRO" EntitySet="VAITRO" />
             <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
           </AssociationSet>
+          <AssociationSet Name="FK__TAILIEU__IDNguoi__05D8E0BE" Association="Self.FK__TAILIEU__IDNguoi__05D8E0BE">
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+            <End Role="TAILIEU" EntitySet="TAILIEU" />
+          </AssociationSet>
           <AssociationSet Name="FK__THOIKHOAB__IDNgu__4CA06362" Association="Self.FK__THOIKHOAB__IDNgu__4CA06362">
             <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
             <End Role="THOIKHOABIEU" EntitySet="THOIKHOABIEU" />
@@ -288,7 +315,7 @@
             <PropertyRef Name="IDBaiGiai" />
           </Key>
           <Property Name="IDBaiGiai" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TenBaiGiai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenBaiGiai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DuongDan" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="LoaiTep" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="SoDiem" Type="Double" />
@@ -303,7 +330,7 @@
             <PropertyRef Name="IDBaiTap" />
           </Key>
           <Property Name="IDBaiTap" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TenBT" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="TenBT" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="NgayGiao" Type="DateTime" Precision="3" />
           <Property Name="HanNop" Type="DateTime" Precision="3" />
           <Property Name="IDNguoiTao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
@@ -347,6 +374,7 @@
           <NavigationProperty Name="THOIKHOABIEUx" Relationship="Self.FK__THOIKHOAB__IDNgu__4CA06362" FromRole="NGUOIDUNG" ToRole="THOIKHOABIEU" />
           <NavigationProperty Name="TIETHOCs" Relationship="Self.FK__TIETHOC__IDNGUOI__5DCAEF64" FromRole="NGUOIDUNG" ToRole="TIETHOC" />
           <NavigationProperty Name="TODOes" Relationship="Self.FK__TODO__IDNguoiDun__571DF1D5" FromRole="NGUOIDUNG" ToRole="TODO" />
+          <NavigationProperty Name="TAILIEUx" Relationship="CNPM_DOANModel.FK__TAILIEU__IDNguoi__05D8E0BE" FromRole="NGUOIDUNG" ToRole="TAILIEU" />
         </EntityType>
         <EntityType Name="THOIKHOABIEU">
           <Key>
@@ -578,7 +606,35 @@
             <End Role="THOIKHOABIEU" EntitySet="THOIKHOABIEUx" />
             <End Role="TIETHOC" EntitySet="TIETHOCs" />
           </AssociationSet>
+          <EntitySet Name="TAILIEUx" EntityType="CNPM_DOANModel.TAILIEU" />
+          <AssociationSet Name="FK__TAILIEU__IDNguoi__05D8E0BE" Association="CNPM_DOANModel.FK__TAILIEU__IDNguoi__05D8E0BE">
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+            <End Role="TAILIEU" EntitySet="TAILIEUx" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="TAILIEU">
+          <Key>
+            <PropertyRef Name="IDTaiLieu" />
+          </Key>
+          <Property Name="IDTaiLieu" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="TenTaiLieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TenDuongDan" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LoaiTep" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IDNguoiTao" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NGUOIDUNG" Relationship="CNPM_DOANModel.FK__TAILIEU__IDNguoi__05D8E0BE" FromRole="TAILIEU" ToRole="NGUOIDUNG" />
+        </EntityType>
+        <Association Name="FK__TAILIEU__IDNguoi__05D8E0BE">
+          <End Type="CNPM_DOANModel.NGUOIDUNG" Role="NGUOIDUNG" Multiplicity="1" />
+          <End Type="CNPM_DOANModel.TAILIEU" Role="TAILIEU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUOIDUNG">
+              <PropertyRef Name="IDNguoiDung" />
+            </Principal>
+            <Dependent Role="TAILIEU">
+              <PropertyRef Name="IDNguoiTao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -678,6 +734,17 @@
               <MappingFragment StoreEntitySet="VAITRO">
                 <ScalarProperty Name="IDVaiTro" ColumnName="IDVaiTro" />
                 <ScalarProperty Name="TenVaiTro" ColumnName="TenVaiTro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAILIEUx">
+            <EntityTypeMapping TypeName="CNPM_DOANModel.TAILIEU">
+              <MappingFragment StoreEntitySet="TAILIEU">
+                <ScalarProperty Name="IDNguoiTao" ColumnName="IDNguoiTao" />
+                <ScalarProperty Name="LoaiTep" ColumnName="LoaiTep" />
+                <ScalarProperty Name="TenDuongDan" ColumnName="TenDuongDan" />
+                <ScalarProperty Name="TenTaiLieu" ColumnName="TenTaiLieu" />
+                <ScalarProperty Name="IDTaiLieu" ColumnName="IDTaiLieu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

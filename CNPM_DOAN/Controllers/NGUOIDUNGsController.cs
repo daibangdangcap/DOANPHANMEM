@@ -194,8 +194,7 @@ namespace CNPM_DOAN.Controllers
                 nGUOIDUNG.NgaySinh = birthday;
                 nGUOIDUNG.GioiTinh = gender;
                 nGUOIDUNG.Avatar = null;
-                if (role == "Học sinh") nGUOIDUNG.IDVaiTro = "HS";
-                else nGUOIDUNG.IDVaiTro = "PH";
+                nGUOIDUNG.IDVaiTro = "PH";
                 nGUOIDUNG.TenTaiKhoan = username;
                 nGUOIDUNG.MatKhau = password;
                 nGUOIDUNG.IDNguoiDung = nGUOIDUNG.IDVaiTro + new RANDOMID().GenerateRandomString(2);

@@ -21,7 +21,7 @@
     <div class="top-nav">
         <a href=""><img src="~/MyImage/logo-removebg-preview.png" class="logo"></a>
         <ul id="mainmenu">
-            <a href="" class="left-nav" id="gioithieu">Giới thiệu</a>
+            <a href="@Url.Action("gioithieu","Home")" class="left-nav" id="gioithieu">Giới thiệu</a>
             <a href="@Url.Action("lienhe","Home")" class="left-nav" id="lienhe">Liên hệ</a>
             @if (Session["TENTAIKHOAN"] == null)
             {
@@ -70,14 +70,14 @@
                 {
                     <a href="@Url.Action("showNguoiDung", "NGUOIDUNGs", new { iduser = Session["IDUSER"] })">
                         <i class="fa-solid fa-user-group"></i>
-                        <span>Nhóm học tập</span>
+                        <span>Tài liệu học tập</span>
                     </a>
                 }
                 else
                 {
                     <a href="@Url.Action("showTTUser", "NGUOIDUNGs", new { iduser = Session["IDUSER"] })">
                         <i class="fa-solid fa-user-group"></i>
-                        <span>Nhóm học tập</span>
+                        <span>Tài liệu học tập</span>
                     </a>
                 }
             </div>

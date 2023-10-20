@@ -152,19 +152,19 @@ namespace CNPM_DOAN.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult taoTKBMoi([Bind(Include = "TenTKB,IDNguoiDung")] THOIKHOABIEU thoikb,string idnguoitao)
+        public ActionResult taoTKBMoi([Bind(Include = "TenTKB,IDNguoiDung")] THOIKHOABIEU thoikb,string idnguoitao,string idhocsinh)
         {
             if (ModelState.IsValid)
             {
                 THOIKHOABIEU tHOIKHOABIEU = new THOIKHOABIEU();
                 tHOIKHOABIEU.IDTKB = "TKB" + new RANDOMID().GenerateRandomString(2);
                 tHOIKHOABIEU.TenTKB = thoikb.TenTKB;
-                tHOIKHOABIEU.IDNguoiDung = idnguoitao;
+                tHOIKHOABIEU.IDNguoiDung = idhocsinh;
                 db.THOIKHOABIEUx.Add(tHOIKHOABIEU);
                 db.SaveChanges();
-                return RedirectToAction("showTKB", "THOIKHOABIEUx", new { iduser = idnguoitao });
+                return RedirectToAction("showTKB_PH", "THOIKHOABIEUx", new { iduser = idhocsinh });
             }
-            else return View(thoikb);
+            else return RedirectToAction("showTKB_PH","THOIKHOABIEUx",new {iduser=idhocsinh});
         }
         public ActionResult deleteTKB(string idnguoitao,string idtkb)
         {
@@ -181,6 +181,7 @@ namespace CNPM_DOAN.Controllers
         public ActionResult showTKB_PH(string iduser)
         {
             var data = db.THOIKHOABIEUx.Where(s => s.IDNguoiDung == iduser);
+            Session["IDHOCSINH"] = iduser;
             return View(data.ToList());
         }
     }

@@ -9,7 +9,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <div class="content">
-    @using (Html.BeginForm("taoTKBMoi", "THOIKHOABIEUx", new { idnguoitao = Session["IDUSER"] },FormMethod.Post))
+    @using (Html.BeginForm("taoTKBMoi", "THOIKHOABIEUx", new { idnguoitao = Session["IDUSER"], idhocsinh = Session["IDHOCSINH"] },FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 

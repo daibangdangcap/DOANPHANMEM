@@ -30,5 +30,9 @@ namespace CNPM_DOAN.Controllers
         {
             return View();
         }
+        public ActionResult gioithieu()
+        {
+            return RedirectToAction("Index","Home");
+        }
     }
 }

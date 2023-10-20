@@ -155,11 +155,12 @@ namespace CNPM_DOAN.Controllers
             tIETHOC.IDNGUOITAO = form["iduser"];
             db.TIETHOCs.Add(tIETHOC);
             db.SaveChanges();
-            return RedirectToAction("showTietHoc", "TIETHOCs", new {idtkb=form["idtkbb"] });
+            return RedirectToAction("showTietHoc_PH", "TIETHOCs", new {idtkb=form["idtkbb"] });
         }
         public ActionResult showTietHoc_PH(string idtkb)
         {
             var data = db.TIETHOCs.Where(s => s.IDTKB == idtkb);
+            Session["IDTKB"] = idtkb;
             return View(data.ToList());
         }
     }

@@ -181,7 +181,8 @@ namespace CNPM_DOAN.Controllers
                     NgayGiao = DateTime.Now,
                     HanNop = hanchot,
                     IDNguoiTao = idnguoitao,
-                    IDNguoiNhan = idnguoinhan
+                    IDNguoiNhan = idnguoinhan,
+                    TrangThai = "Chưa nộp"
                 };
                 db.BAITAPs.Add(baitap);
                 db.SaveChanges();
@@ -211,7 +212,8 @@ namespace CNPM_DOAN.Controllers
             }
             db.BAITAPs.Remove(data);
             db.SaveChanges();
-            return RedirectToAction("showBaiTap_PH", "BAITAPs", new {iduser});
+            string id = iduser;
+            return RedirectToAction("showBaiTap_PH", "BAITAPs", new {iduser=id});
         }
         public ActionResult updateBaiTap(string idbaitap)
         {

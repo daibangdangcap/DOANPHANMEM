@@ -13,9 +13,10 @@
             <div class="content-group-item">
                 <div class="content-group-item-name" onclick="location.href='@Url.Action("showBaiGiai_PH", "BAIGIAIs", new { idbaitap = item.IDBaiTap, idnguoinhan = item.IDNguoiNhan })'">
                     <p>@item.TenBT</p>
-                    <span style="margin-left:30px">Hạn nộp: @String.Format("{0:d}",item.HanNop)</span>
+                    <span style="margin-left:30px">Hạn nộp: @String.Format("{0:d}", item.HanNop)</span>
+                    <span style="margin-left:30px">@item.TrangThai</span>
                 </div>
-                <button class="deleteGroup" onclick="location.href='@Url.Action("DeleteBaiTap", "BAITAPs", new { idbaitap = item.IDBaiTap, iduser = Session["IDUSER"] })'"><i class="fa-solid fa-trash"></i></button>
+                <button class="deleteGroup" onclick="location.href='@Url.Action("DeleteBaiTap", "BAITAPs", new { idbaitap = item.IDBaiTap, iduser = item.IDNguoiNhan })'"><i class="fa-solid fa-trash"></i></button>
                 <button class="editGroup" onclick="location.href='@Url.Action("updateBaiTap", "BAITAPs", new {idbaitap=item.IDBaiTap})'"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
         }

@@ -174,6 +174,9 @@ namespace CNPM_DOAN.Controllers
                     SoDiem=null
                 };
                 db.BAIGIAIs.Add(baigiai);
+                var baitap=db.BAITAPs.Find(idbt);
+                baitap.TrangThai = "Đã nộp";
+                db.Entry(baitap).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("ChiTietBaiGiai", "BAIGIAIs", new { idbaitap=idbt,iduser=idnguoinop });
             }

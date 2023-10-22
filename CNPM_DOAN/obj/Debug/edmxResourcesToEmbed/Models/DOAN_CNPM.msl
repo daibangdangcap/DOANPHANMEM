@@ -18,6 +18,7 @@
     <EntitySetMapping Name="BAITAPs">
       <EntityTypeMapping TypeName="CNPM_DOANModel.BAITAP">
         <MappingFragment StoreEntitySet="BAITAP">
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
           <ScalarProperty Name="LoaiTep" ColumnName="LoaiTep" />
           <ScalarProperty Name="DuongDan" ColumnName="DuongDan" />
           <ScalarProperty Name="IDBaiTap" ColumnName="IDBaiTap" />

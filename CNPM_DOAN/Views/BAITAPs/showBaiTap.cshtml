@@ -17,22 +17,21 @@
                 <div class="content-group-item-name">
                     <p id="tenbt" style="border-color:red">@item.TenBT</p>
                     <span style="margin-left:30px; font-size:10px">Hạn nộp: @item.HanNop.ToString()</span>
-                    @if (item.HanNop < DateTime.Now)
+                    @if (item.TrangThai == "Chưa nộp")
                     {
-                        <span style="font-size: 10px; color: red; border-color: red">Quá hạn</span>
+                        if (item.HanNop < DateTime.Now)
+                        {
+                            <span style="font-size: 10px; color: red; border-color: red">Quá hạn</span>
+                        }
+                        else
+                        {
+                            <span style="font-size: 10px; border-color: red; color:gold">Còn hạn</span>
+                        }
                     }
                     else
                     {
-                        <span style="font-size: 10px; border-color: red">Còn hạn</span>
+                        <span style="font-size: 10px; border-color: red; color:green">@item.TrangThai</span>
                     }
-                    <!--if (item.KTBaiGiai(Session["IDUSER"].ToString(), item.IDBaiTap) == true)
-    {
-        <p id="trangthai" style="font-size: 10px;">Đã nộp</p>
-    }
-    else
-    {
-        <p id="trangthai" style="font-size: 10px;">Chưa nộp</p>
-    }-->
                 </div>
                 <button id="nopbai" onclick="location.href='@Url.Action("TaiBT", "BAITAPs", new { idbaitap = item.IDBaiTap })'">Tải xuống</button>
                 <button id="nopbai" onclick="location.href='@Url.Action("ChiTietBaiGiai", "BAIGIAIs", new { idbaitap = item.IDBaiTap, iduser = Session["IDUSER"] })'">Nộp bài</button>

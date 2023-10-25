@@ -30,6 +30,7 @@
           <Property Name="IDNguoiNhan" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="DuongDan" Type="varbinary(max)" />
           <Property Name="LoaiTep" Type="varchar" MaxLength="100" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="MUCTIEU">
           <Key>
@@ -340,6 +341,7 @@
           <NavigationProperty Name="NGUOIDUNG1" Relationship="Self.FK__BAITAP__IDNguoiT__4F7CD00D" FromRole="BAITAP" ToRole="NGUOIDUNG" />
           <Property Name="DuongDan" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="LoaiTep" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MUCTIEU">
           <Key>
@@ -658,6 +660,7 @@
           <EntitySetMapping Name="BAITAPs">
             <EntityTypeMapping TypeName="CNPM_DOANModel.BAITAP">
               <MappingFragment StoreEntitySet="BAITAP">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="LoaiTep" ColumnName="LoaiTep" />
                 <ScalarProperty Name="DuongDan" ColumnName="DuongDan" />
                 <ScalarProperty Name="IDBaiTap" ColumnName="IDBaiTap" />

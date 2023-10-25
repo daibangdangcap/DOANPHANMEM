@@ -28,11 +28,11 @@ namespace CNPM_DOAN.Models
         public string IDNguoiNhan { get; set; }
         public byte[] DuongDan { get; set; }
         public string LoaiTep { get; set; }
+        public string TrangThai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BAIGIAI> BAIGIAIs { get; set; }
         public virtual NGUOIDUNG NGUOIDUNG { get; set; }
         public virtual NGUOIDUNG NGUOIDUNG1 { get; set; }
-
     }
 }

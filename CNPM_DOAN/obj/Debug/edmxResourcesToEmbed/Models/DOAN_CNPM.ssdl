@@ -25,6 +25,7 @@
     <Property Name="IDNguoiNhan" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="DuongDan" Type="varbinary(max)" />
     <Property Name="LoaiTep" Type="varchar" MaxLength="100" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="MUCTIEU">
     <Key>

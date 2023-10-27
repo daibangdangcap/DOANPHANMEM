@@ -5,36 +5,53 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>showBaiTap</h2>
 
-<link rel="stylesheet" href="~/MyCss/baitap.css" />
+<link rel="stylesheet" href="@Url.Content("~/MyCss/baitap.css")" type="text/css"/>
 <div class="content">
     <h1>Các bài tập đã giao</h1>
     <div class="content-group">
         @foreach (var item in Model)
         {
             <div class="content-group-item">
+                @if (item.LoaiTep.Contains("word"))
+                {
+                    <img src="~/ImageIconFiles/WORD.png" class="imageFile" />
+                }
+                else if (item.LoaiTep.Contains("sheet"))
+                {
+                    <img src="~/ImageIconFiles/EXCEL.png" class="imageFile" />
+                }
+                else if (item.LoaiTep.Contains("presentation"))
+                {
+                    <img src="~/ImageIconFiles/POWERPOINT.png" class="imageFile" />
+                }
+                else
+                {
+                    <img src="~/ImageIconFiles/NOTEPAD.png" class="imageFile" />
+                }
                 <div class="content-group-item-name">
-                    <p id="tenbt" style="border-color:red">@item.TenBT</p>
-                    <span style="margin-left:30px; font-size:10px">Hạn nộp: @item.HanNop.ToString()</span>
-                    @if (item.TrangThai == "Chưa nộp")
-                    {
-                        if (item.HanNop < DateTime.Now)
+                    <h2>@item.TenBT</h2>
+                    <div style="margin:10px">
+                        <p style="margin-bottom:10px;">Hạn nộp: @item.HanNop.ToString()</p>
+                        @if (item.TrangThai == "Chưa nộp")
                         {
-                            <span style="font-size: 10px; color: red; border-color: red">Quá hạn</span>
+                            if (item.HanNop < DateTime.Now)
+                            {
+                                <p style="font-size: 10px; color: red; border-color: red">Quá hạn</p>
+                            }
+                            else
+                            {
+                                <p style="font-size: 10px; border-color: red; color:gold">Còn hạn</p>
+                            }
                         }
                         else
                         {
-                            <span style="font-size: 10px; border-color: red; color:gold">Còn hạn</span>
+                            <p style="font-size: 10px; border-color: red; color:green">@item.TrangThai</p>
                         }
-                    }
-                    else
-                    {
-                        <span style="font-size: 10px; border-color: red; color:green">@item.TrangThai</span>
-                    }
+                    </div>
                 </div>
-                <button id="nopbai" onclick="location.href='@Url.Action("TaiBT", "BAITAPs", new { idbaitap = item.IDBaiTap })'">Tải xuống</button>
-                <button id="nopbai" onclick="location.href='@Url.Action("ChiTietBaiGiai", "BAIGIAIs", new { idbaitap = item.IDBaiTap, iduser = Session["IDUSER"] })'">Nộp bài</button>
+                <button class="taixuong" id="nopbai" onclick="location.href='@Url.Action("TaiBT", "BAITAPs", new { idbaitap = item.IDBaiTap })'">Tải xuống</button>
+                <button class="nopbai" id="nopbai" onclick="location.href='@Url.Action("ChiTietBaiGiai", "BAIGIAIs", new { idbaitap = item.IDBaiTap, iduser = Session["IDUSER"] })'">Nộp bài</button>
             </div>
         }
     </div>

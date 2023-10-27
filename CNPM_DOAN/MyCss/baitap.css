@@ -1,103 +1,49 @@
-﻿.content {
-    position: absolute;
-    width: 95.5%;
-    height: 89%;
-    bottom: 0px;
-    right: 0px;
-    font-family: sans-serif;
-    z-index: -1;
-}
+﻿
 
     .content h1 {
-        font-size: 35px;
         font-weight: normal;
-        margin-left: 30px;
+        margin-left: 10px;
         margin-top: 25px;
     }
 
 .content-group {
     margin-top: 20px;
-    width: auto;
-    height: 500px;
+    width: 100%;
+    height: 80%;
     overflow: hidden;
     overflow-y: scroll;
+    position:relative;
 }
 
     .content-group::-webkit-scrollbar {
         display: none;
     }
 
-.content #addGroup {
-    background-color: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: .25rem;
-    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-    box-sizing: border-box;
-    color: rgba(0, 0, 0, 0.85);
-    cursor: pointer;
-    display: inline-flex;
-    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.25;
-    margin: 0;
-    min-height: 3rem;
-    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-    position: fixed;
-    bottom: 0px;
-    right: 0px;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    text-decoration: none;
-    transition: all 250ms;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    width: auto;
-}
-
-    .content #addGroup:hover,
-    .content #addGroup:focus {
-        border-color: rgba(0, 0, 0, 0.15);
-        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-        color: rgba(0, 0, 0, 0.65);
-    }
-
-    .content #addGroup:hover {
-        transform: translateY(-1px);
-    }
-
-    .content #addGroup:active {
-        background-color: #F0F0F1;
-        border-color: rgba(0, 0, 0, 0.15);
-        box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-        color: rgba(0, 0, 0, 0.65);
-        transform: translateY(0);
-    }
 
 .content-group-item {
-    width: 90%;
-    height: 130px;
+
+    margin-left:10%;
+    width:80%;
+    height:fit-content;
     margin-top: 10px;
     background-color: white;
     box-shadow: 3px 3px 5px gainsboro;
-    z-index: -1;
+    padding: 5px;
+    float:left;
 }
 
 .content-group-item-name {
-    float: left;
-    width: 1050px;
-    height: 100%;
-    position: relative;
+    padding-left:10px;
+    margin-left:10px;
+    position:relative;
+    float:left;
+    width:fit-content;
+    left:0px;
 }
 
-.content .deleteGroup {
-    float: right;
-    margin-top: 30px;
-    background-color: transparent;
-    border: none;
-    z-index: 2;
+.box{
+    height:fit-content;
+    width:20%;
 }
 
 #tenbt {
@@ -113,8 +59,31 @@
     width: fit-content;
 }
 
-#nopbai{
-    margin-top:30px;
-    padding:10px 10px 10px 10px;
-    font-size:15px;
+#nopbai {
+    margin-top: 30px;
+    margin-right: 10px;
+    padding: 10px 10px 10px 10px;
+    font-size: 15px;
+    float: right;
+    border-radius: 5px;
+    border: 0px;
+    box-shadow: 0 0 0pt 0.5pt #e5e5e5;
+}
+
+.taixuong:hover{
+    background-color:aliceblue;
+    transition-duration:0.5s;
+}
+
+.nopbai:hover {
+    background-color: wheat;
+    transition-duration: 0.5s;
+}
+
+.imageFile {
+    width: 130px;
+    height: 130px;
+    left:0px;
+    float:left;
+    margin-left:10px;
 }

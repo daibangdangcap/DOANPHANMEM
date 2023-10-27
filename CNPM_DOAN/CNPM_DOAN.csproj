@@ -212,6 +212,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ImageIconFiles\EXCEL.png" />
+    <Content Include="ImageIconFiles\NOTEPAD.png" />
+    <Content Include="ImageIconFiles\POWERPOINT.png" />
+    <Content Include="ImageIconFiles\WORD.png" />
     <Content Include="Models\DOAN_CNPM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DOAN_CNPM.Context.cs</LastGenOutput>

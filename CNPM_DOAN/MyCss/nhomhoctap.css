@@ -1,15 +1,4 @@
-﻿.content {
-    position: absolute;
-    width: 300px;
-    height: 89%;
-    bottom: 0px;
-    right: 0px;
-    font-family: sans-serif;
-    z-index: -1;
-    border: 1px solid red;
-}
-
-    .content h1 {
+﻿    .content h1 {
         font-size: 35px;
         font-weight: normal;
         margin-left: 30px;

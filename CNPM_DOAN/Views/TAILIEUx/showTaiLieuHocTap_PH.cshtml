@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CNPM_DOAN.Models.TAILIEU>
+
+
+@{
+    ViewBag.Title = "showUserTaiLieuHocTap_PH";
+}
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="~/MyCss/tailieuhoctap.css" />
+<body>
+    <div class="modal fade" id="myModal" role="dialog" data-url="@Url.Action("createNewTaiLieu","TAILIEUx")">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <div style="margin-left: 100px; margin-top: 30px;">
+        <h1>Danh sách tài liệu học tập</h1>
+        <button class="btnAddTaiLieu btn btn-outline-secondary">Thêm tài liệu học tập</button>
+    </div>
+    <div class="contentTaiLieu">
+        @foreach(var item in Model)
+            {
+                <div class="itemTaiLieu">
+                    @if (item.LoaiTep.Contains("word"))
+                    {
+                        <img src="~/ImageIconFiles/WORD.png" class="itemTaiLieuImage" />
+                    }
+                    else if (item.LoaiTep.Contains("sheet"))
+                    {
+                        <img src="~/ImageIconFiles/EXCEL.png" class="itemTaiLieuImage" />
+                    }
+                    else if (item.LoaiTep.Contains("image"))
+                    {
+                        <img src="~/ImageIconFiles/IMAGE.png" class="itemTaiLieuImage" />
+                    }
+                    else if (item.LoaiTep.Contains("text"))
+                    {
+                        <img src="~/ImageIconFiles/NOTEPAD.png" class="itemTaiLieuImage" />
+                    }
+                    else if (item.LoaiTep.Contains("presentation"))
+                    {
+                        <img src="~/ImageIconFiles/POWERPOINT.png" class="itemTaiLieuImage" />
+                    }
+                    else
+                    {
+                        <img src="~/ImageIconFiles/PDF.png" class="itemTaiLieuImage" />
+                    }
+                    <p class="nameTaiLieu">@item.TenTaiLieu</p>
+                    <div>
+                        <button type="button" class="btnTaiLieu btn btn-outline-primary">Chỉnh sửa tài liệu</button>
+                        <button class="btnTaiLieu btn btn-outline-danger">Xóa tài liệu</button>
+                    </div>
+                </div>
+            }
+    </div>
+</body>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.btnAddTaiLieu').click(function () {
+            var url = $('#myModal').data('url');
+            $.get(url, function (data) {
+                $("#myModal").html(data);
+                $("#myModal").modal('show');
+            })
+        })
+    })
+</script>

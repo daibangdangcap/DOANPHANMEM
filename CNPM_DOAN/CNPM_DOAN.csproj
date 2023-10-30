@@ -212,6 +212,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ImageIconFiles\bg_2.jpg" />
     <Content Include="ImageIconFiles\EXCEL.png" />
     <Content Include="ImageIconFiles\NOTEPAD.png" />
     <Content Include="ImageIconFiles\POWERPOINT.png" />

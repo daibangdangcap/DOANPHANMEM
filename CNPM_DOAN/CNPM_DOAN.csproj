@@ -389,6 +389,7 @@
     <Content Include="Views\TAILIEUx\showUserTaiLieuHocTap_PH.cshtml" />
     <Content Include="Views\TAILIEUx\showTaiLieuHocTap_PH.cshtml" />
     <Content Include="Views\TAILIEUx\createNewTaiLieu.cshtml" />
+    <Content Include="Views\TAILIEUx\editTaiLieu.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -159,9 +159,46 @@ namespace CNPM_DOAN.Controllers
             tailieu.LoaiTep = fileTaiLieu.ContentType;
             tailieu.IDNguoiTao = idnguoinhan;
             db.TAILIEUx.Add(tailieu);
+            TempData["message"] = "Tạo tài liệu mới thành công";
             db.SaveChanges();
             return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan });
             //return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult editTaiLieu(string id)
+        {
+            if(Request.IsAjaxRequest())
+            {
+                Session["IDTAILIEU"] = id;
+                return PartialView();
+            }
+            return PartialView("Error");
+        }
+
+        [HttpPost]
+        public ActionResult editTaiLieu(HttpPostedFileBase fileTaiLieu, string idnguoinhan, string idtailieu)
+        {
+            var data = db.TAILIEUx.Find(idtailieu);
+            if (data != null)
+            {
+                data.TenTaiLieu = fileTaiLieu.FileName;
+                data.TenDuongDan = new byte[fileTaiLieu.ContentLength];
+                data.LoaiTep = fileTaiLieu.ContentType;
+                db.Entry(data).State = EntityState.Modified;
+                db.SaveChanges();
+                TempData["message"] = "Cập nhật tài liệu thành công";
+                return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan });
+            }
+            return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan });
+        }
+
+        public ActionResult deleteTaiLieu(string idtailieu, string idnguoinhan)
+        {
+            var data = db.TAILIEUx.Find(idtailieu);
+            db.TAILIEUx.Remove(data);
+            db.SaveChanges();
+            TempData["message"] = "Xóa tài liệu thành công";
+            return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan });
         }
     }
 }

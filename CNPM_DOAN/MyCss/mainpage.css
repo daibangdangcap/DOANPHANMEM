@@ -18,7 +18,7 @@
 }
 .top-nav {
     height: 75px;
-    background-color: lightskyblue;
+    background-color: #FFFBF5;
     overflow: hidden;
     text-align: center;
     font-family: 'Segoe UI';
@@ -26,8 +26,8 @@
     text-transform: uppercase;
     letter-spacing: 1pt;
     font-weight: lighter;
-    position: relative;
     width: 100%;
+
 }
 
     .top-nav ul a {

@@ -46,47 +46,79 @@
     @if (Session["TENTAIKHOAN"] != null)
     {
         <div class="menu" style="z-index:2">
-            <div class="menuitem uno"  style="overflow:hidden;">
-                <a href="@Url.Action("showTKB","THOIKHOABIEUx", new { iduser = Session["IDUSER"]})">
-                    <i class="fa-solid fa-calendar" style="margin-left: 5px;"></i>
-                    <span>Thời khóa biểu</span>
-                </a>
-            </div>
-            <div class="menuitem dos" style="overflow:hidden;">
-                <a href="@Url.Action("ShowToDo","TODOes", new { iduser = Session["IDUSER"]})">
-                    <i class="fa-sharp fa-solid fa-clipboard-check" style="margin-left:5px"></i>
-                    <span>To-do list</span>
-                </a>
-            </div>
-            <div class="menuitem tres" style="overflow:hidden;">
-                <a href="@Url.Action("ShowMucTieu","MUCTIEUx", new { idus = Session["IDUSER"]})">
-                    <i class="fa-solid fa-flag" style="margin-left: 5px;"></i>
-                    <span>Mục tiêu</span>
-                </a>
-            </div>
-
-            <div class="menuitem cuatro"  style="overflow:hidden;">
-                @if (Session["IDUSER"].ToString().Contains("PH"))
-                {
+            @if (Session["IDUSER"].ToString().Contains("PH"))
+            {
+                <div class="menuitemPH uno" style="overflow:hidden;">
+                    <a href="@Url.Action("showTKB","THOIKHOABIEUx", new { iduser = Session["IDUSER"]})">
+                        <i class="fa-solid fa-calendar" style="margin-left: 5px; color: #FFFAFA;"></i>
+                        <span>Thời khóa biểu</span>
+                    </a>
+                </div>
+                <div class="menuitemPH dos" style="overflow:hidden;">
+                    <a href="@Url.Action("ShowToDo","TODOes", new { iduser = Session["IDUSER"]})">
+                        <i class="fa-sharp fa-solid fa-clipboard-check" style="margin-left: 5px; color: #FFFAFA;"></i>
+                        <span>To-do list</span>
+                    </a>
+                </div>
+                <div class="menuitemPH tres" style="overflow:hidden;">
+                    <a href="@Url.Action("ShowMucTieu","MUCTIEUx", new { idus = Session["IDUSER"]})">
+                        <i class="fa-solid fa-flag" style="margin-left: 5px; color: #FFFAFA;"></i>
+                        <span>Mục tiêu</span>
+                    </a>
+                </div>
+                <div class="menuitemPH cuatro" style="overflow:hidden;">
+                    <a href="@Url.Action("showUserTaiLieuHocTap_PH", "TAILIEUx", new { iduser = Session["IDUSER"] })">
+                        <i class="fa-solid fa-book" style="margin-left: 5px; color: #FFFAFA;"></i>
+                        <span>Tài liệu học tập</span>
+                    </a>
+                </div>
+                <div class="menuitemPH cuatro" style="overflow:hidden;">
                     <a href="@Url.Action("showNguoiDung", "NGUOIDUNGs", new { iduser = Session["IDUSER"] })">
-                        <i class="fa-solid fa-user-group"></i>
-                        <span>Tài liệu học tập</span>
+                        <i class="fa-solid fa-user-group" style="color: #FFFAFA;"></i>
+                        <span>Nhóm học tập</span>
                     </a>
-                }
-                else
-                {
+                </div>
+                <div class="menuitemPH cinco" style="overflow:hidden;">
+                    <a href="@Url.Action("showBaiTap", "BAITAPs", new { iduser = Session["IDUSER"] })">
+                        <i class="fa-solid fa-book-open" style="color: #FFFAFA;"></i>
+                        <span>Bài tập</span>
+                    </a>
+                </div>
+            }
+            else
+            {
+                <div class="menuitem uno" style="overflow:hidden;">
+                    <a href="@Url.Action("showTKB","THOIKHOABIEUx", new { iduser = Session["IDUSER"]})">
+                        <i class="fa-solid fa-calendar" style="margin-left: 5px; color: #FFFAFA;"></i>
+                        <span>Thời khóa biểu</span>
+                    </a>
+                </div>
+                <div class="menuitem dos" style="overflow:hidden;">
+                    <a href="@Url.Action("ShowToDo","TODOes", new { iduser = Session["IDUSER"]})">
+                        <i class="fa-sharp fa-solid fa-clipboard-check" style="margin-left: 5px; color: #FFFAFA;"></i>
+                        <span>To-do list</span>
+                    </a>
+                </div>
+                <div class="menuitem tres" style="overflow:hidden;">
+                    <a href="@Url.Action("ShowMucTieu","MUCTIEUx", new { idus = Session["IDUSER"]})">
+                        <i class="fa-solid fa-flag" style="margin-left: 5px; color: #FFFAFA;"></i>
+                        <span>Mục tiêu</span>
+                    </a>
+                </div>
+
+                <div class="menuitem cuatro" style="overflow:hidden;">
                     <a href="@Url.Action("showTTUser", "NGUOIDUNGs", new { iduser = Session["IDUSER"] })">
-                        <i class="fa-solid fa-user-group"></i>
+                        <i class="fa-solid fa-user-group" style="color: #FFFAFA;"></i>
                         <span>Tài liệu học tập</span>
                     </a>
-                }
-            </div>
-            <div class="menuitem cinco" style="overflow:hidden;">
-                <a href="@Url.Action("showBaiTap", "BAITAPs", new { iduser = Session["IDUSER"] })">
-                    <i class="fa-solid fa-book-open"></i>
-                    <span>Bài tập</span>
-                </a>
-            </div>
+                </div>
+                <div class="menuitem cinco" style="overflow:hidden;">
+                    <a href="@Url.Action("showBaiTap", "BAITAPs", new { iduser = Session["IDUSER"] })">
+                        <i class="fa-solid fa-book-open" style="color: #FFFAFA;"></i>
+                        <span>Bài tập</span>
+                    </a>
+                </div>
+            }
         </div>
     }
     @{Html.RenderAction("LoginUser", "NGUOIDUNGs");}

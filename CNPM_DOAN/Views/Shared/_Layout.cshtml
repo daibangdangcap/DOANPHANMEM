@@ -21,25 +21,29 @@
     <div class="top-nav">
         <a href=""><img src="~/MyImage/logo-removebg-preview.png" class="logo"></a>
         <ul id="mainmenu">
-            <a href="@Url.Action("gioithieu","Home")" class="left-nav" id="gioithieu">Giới thiệu</a>
-            <a href="@Url.Action("lienhe","Home")" class="left-nav" id="lienhe">Liên hệ</a>
+            <li><a href="@Url.Action("gioithieu","Home")">@CNPM_DOAN.Resources.Language.GIỚI_THIỆU</a></li>
+            <li><a href="@Url.Action("lienhe","Home")">@CNPM_DOAN.Resources.Language.LIÊN_HỆ</a></li>
+            <li><a href="@Url.Action("changeLanguage", "Home", new {language="en"})">English</a></li>
+            <li><a href="@Url.Action("changeLanguage", "Home", new {language="vn"})">Vietnamese</a></li>
             @if (Session["TENTAIKHOAN"] == null)
             {
-                <a class="right-nav" id="dangnhap" onclick="showDangNhap()">Đăng nhập</a>
-                <a class="right-nav" id="dangky" onclick="showDangKy()">Đăng ký</a>
+                <li style="margin-left:300px" onclick="showDangNhap()">@CNPM_DOAN.Resources.Language.ĐĂNG_NHẬP</li>
+                <li onclick="showDangKy()">@CNPM_DOAN.Resources.Language.ĐĂNG_KÝ</li>
             }
             else
             {
-                <li><a href="@Url.Action("Informs", "NGUOIDUNGs", new { iduser = Session["IDUSER"] })" class="right-nav nothover">
-    @if (Session["AVATAR"] != null)
-    {
-        <img src="@Url.Action("GetImage", "NGUOIDUNGs", new { id = Session["IDUSER"] })" style="width:50px;height:50px; position:absolute;right:10px; bottom:10px;border-radius:50%" />
-    }
-    else
-    {
-        <img src="~/MyImage/logo-removebg-preview.png" style="width:50px;height:50px; position:absolute;right:10px; bottom:10px;border-radius:50%" />
-    }
-</a></li>
+                <li style="position:absolute; right:0px; top:40px;">
+                <a href="@Url.Action("Informs", "NGUOIDUNGs", new { iduser = Session["IDUSER"] })" class="nothover">
+                    @if (Session["AVATAR"] != null)
+                    {
+                        <img src="@Url.Action("GetImage", "NGUOIDUNGs", new { id = Session["IDUSER"] })" style="width:50px;height:50px; position:absolute;right:10px; bottom:10px;border-radius:50%" />
+                    }
+                    else
+                    {
+                        <img src="~/MyImage/logo-removebg-preview.png" style="width:50px;height:50px; position:absolute;right:10px; bottom:10px;border-radius:50%" />
+                    }
+                </a>
+                </li>
             }
         </ul>
     </div>
@@ -51,37 +55,37 @@
                 <div class="menuitemPH uno" style="overflow:hidden;">
                     <a href="@Url.Action("showTKB","THOIKHOABIEUx", new { iduser = Session["IDUSER"]})">
                         <i class="fa-solid fa-calendar" style="margin-left: 5px; color: #FFFAFA;"></i>
-                        <span>Thời khóa biểu</span>
+                        <span>@CNPM_DOAN.Resources.Language.Thời_khóa_biểu</span>
                     </a>
                 </div>
                 <div class="menuitemPH dos" style="overflow:hidden;">
                     <a href="@Url.Action("ShowToDo","TODOes", new { iduser = Session["IDUSER"]})">
                         <i class="fa-sharp fa-solid fa-clipboard-check" style="margin-left: 5px; color: #FFFAFA;"></i>
-                        <span>To-do list</span>
+                        <span>@CNPM_DOAN.Resources.Language.Danh_sách_nhiệm_vụ</span>
                     </a>
                 </div>
                 <div class="menuitemPH tres" style="overflow:hidden;">
                     <a href="@Url.Action("ShowMucTieu","MUCTIEUx", new { idus = Session["IDUSER"]})">
                         <i class="fa-solid fa-flag" style="margin-left: 5px; color: #FFFAFA;"></i>
-                        <span>Mục tiêu</span>
+                        <span>@CNPM_DOAN.Resources.Language.Mục_tiêu</span>
                     </a>
                 </div>
                 <div class="menuitemPH cuatro" style="overflow:hidden;">
                     <a href="@Url.Action("showUserTaiLieuHocTap_PH", "TAILIEUx", new { iduser = Session["IDUSER"] })">
                         <i class="fa-solid fa-book" style="margin-left: 5px; color: #FFFAFA;"></i>
-                        <span>Tài liệu học tập</span>
+                        <span>@CNPM_DOAN.Resources.Language.Tài_liệu_học_tập</span>
                     </a>
                 </div>
                 <div class="menuitemPH cuatro" style="overflow:hidden;">
                     <a href="@Url.Action("showNguoiDung", "NGUOIDUNGs", new { iduser = Session["IDUSER"] })">
                         <i class="fa-solid fa-user-group" style="color: #FFFAFA;"></i>
-                        <span>Nhóm học tập</span>
+                        <span>@CNPM_DOAN.Resources.Language.Nhóm_học_tập</span>
                     </a>
                 </div>
                 <div class="menuitemPH cinco" style="overflow:hidden;">
                     <a href="@Url.Action("showBaiTap", "BAITAPs", new { iduser = Session["IDUSER"] })">
                         <i class="fa-solid fa-book-open" style="color: #FFFAFA;"></i>
-                        <span>Bài tập</span>
+                        <span>@CNPM_DOAN.Resources.Language.Bài_tập</span>
                     </a>
                 </div>
             }
@@ -121,6 +125,8 @@
             }
         </div>
     }
+
+
     @{Html.RenderAction("LoginUser", "NGUOIDUNGs");}
     @{Html.RenderAction("RegisterUser", "NGUOIDUNGs");}
     @RenderBody()

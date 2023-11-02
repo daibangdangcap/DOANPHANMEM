@@ -20,35 +20,54 @@
     height: 75px;
     background-color: #FFFBF5;
     overflow: hidden;
-    text-align: center;
     font-family: 'Segoe UI';
     box-shadow: 0 0 5pt 0pt black;
     text-transform: uppercase;
     letter-spacing: 1pt;
     font-weight: lighter;
     width: 100%;
-
+}
+.top-nav ul{
+    display:inline;
+    position:fixed;
+    top:30px;
+    left:300px;
+    width:80%;
 }
 
-    .top-nav ul a {
-        top: 0px;
-        padding: 20px 30px 45px 30px;
-        color: #000080;
+    .top-nav ul li {
         text-decoration: none;
+        color: #000080;
         list-style: none;
         font-size: 18px;
         font-weight: bold;
         cursor: pointer;
-        margin-top: 5px;
-        height: 55px;
         transition-duration: 1s;
-        position: fixed;
+        z-index: 2;
+        display: inline;
+        margin-left:30px;
+        position:relative;
+    }
+    .top-nav ul a {
+        text-decoration:none;
+        color: #000080;
+        list-style: none;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition-duration: 1s;
+        z-index: 2;
     }
 
-        .top-nav ul a::after {
+
+        .top-nav ul a:hover {
+            color: #008080;
+        }
+        .top-nav ul li::after {
             content: "";
-            position: absolute;
-            background-color: whitesmoke;
+            position:absolute;
+            top:43px;
+            background-color: red;
             height: 1.5px;
             width: 100%;
             left: 0px;
@@ -57,18 +76,14 @@
             transition: 0.3s ease-out;
         }
 
-        .top-nav ul a:hover::after {
+        .top-nav ul li:hover::after {
             transform: scale(1,2);
         }
 
-        .top-nav ul a:hover {
+        .top-nav ul li:hover {
             color: #008080;
         }
 
-.right-nav {
-    position: relative;
-    right: 0px;
-}
 
 .nothover:hover::after {
     width: 0%;

@@ -241,6 +241,7 @@
     <Content Include="MyCss\lienhe.css" />
     <Content Include="MyCss\login.css" />
     <Content Include="MyCss\mainpage.css" />
+    <Content Include="MyCss\muctieu.css" />
     <Content Include="MyCss\nhomhoctap.css" />
     <Content Include="MyCss\register.css" />
     <Content Include="MyCss\tailieuhoctap.css" />
@@ -402,6 +403,8 @@
     <Content Include="Views\TAILIEUx\showTaiLieuHocTap_PH.cshtml" />
     <Content Include="Views\TAILIEUx\createNewTaiLieu.cshtml" />
     <Content Include="Views\TAILIEUx\editTaiLieu.cshtml" />
+    <Content Include="Views\TAILIEUx\showTaiLieuHocTap.cshtml" />
+    <Content Include="Views\TODOes\editTODO.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Language.en.resx">

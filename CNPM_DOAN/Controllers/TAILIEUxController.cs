@@ -159,7 +159,7 @@ namespace CNPM_DOAN.Controllers
             tailieu.LoaiTep = fileTaiLieu.ContentType;
             tailieu.IDNguoiTao = idnguoinhan;
             db.TAILIEUx.Add(tailieu);
-            TempData["message"] = "Tạo tài liệu mới thành công";
+            TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_tài_liệu_thành_công;
             db.SaveChanges();
             return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan });
             //return RedirectToAction("Index", "Home");
@@ -186,7 +186,7 @@ namespace CNPM_DOAN.Controllers
                 data.LoaiTep = fileTaiLieu.ContentType;
                 db.Entry(data).State = EntityState.Modified;
                 db.SaveChanges();
-                TempData["message"] = "Cập nhật tài liệu thành công";
+                TempData["message"] = CNPM_DOAN.Resources.Language.Chỉnh_sửa_tài_liệu_thành_công;
                 return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan });
             }
             return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan });
@@ -197,8 +197,24 @@ namespace CNPM_DOAN.Controllers
             var data = db.TAILIEUx.Find(idtailieu);
             db.TAILIEUx.Remove(data);
             db.SaveChanges();
-            TempData["message"] = "Xóa tài liệu thành công";
+            TempData["message"] = CNPM_DOAN.Resources.Language.Xóa_tài_liệu_thành_công;
             return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan });
+        }
+
+        public ActionResult showTaiLieuHocTap(string idhocsinh)
+        {
+            var data = db.TAILIEUx.Where(s => s.IDNguoiTao == idhocsinh);
+            return View(data.ToList());
+        }
+
+        public ActionResult taiTaiLieu(string idtailieu)
+        {
+            var tailieu = db.TAILIEUx.Find(idtailieu);
+            if (tailieu != null)
+            {
+                return File(tailieu.TenDuongDan, tailieu.LoaiTep, tailieu.TenTaiLieu);
+            }
+            return HttpNotFound();
         }
     }
 }

@@ -13,7 +13,9 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="~/MyJs/login.js"></script>
     <script src="~/MyJs/register.js"></script>
-    <link rel="stylesheet" href="~/MyCss/todo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="overlay" id="overlayLo" onclick="showDangNhap()"></div>
@@ -94,32 +96,32 @@
                 <div class="menuitem uno" style="overflow:hidden;">
                     <a href="@Url.Action("showTKB","THOIKHOABIEUx", new { iduser = Session["IDUSER"]})">
                         <i class="fa-solid fa-calendar" style="margin-left: 5px; color: #FFFAFA;"></i>
-                        <span>Thời khóa biểu</span>
+                        <span>@CNPM_DOAN.Resources.Language.Thời_khóa_biểu</span>
                     </a>
                 </div>
                 <div class="menuitem dos" style="overflow:hidden;">
                     <a href="@Url.Action("ShowToDo","TODOes", new { iduser = Session["IDUSER"]})">
                         <i class="fa-sharp fa-solid fa-clipboard-check" style="margin-left: 5px; color: #FFFAFA;"></i>
-                        <span>To-do list</span>
+                        <span>@CNPM_DOAN.Resources.Language.Danh_sách_nhiệm_vụ</span>
                     </a>
                 </div>
                 <div class="menuitem tres" style="overflow:hidden;">
                     <a href="@Url.Action("ShowMucTieu","MUCTIEUx", new { idus = Session["IDUSER"]})">
                         <i class="fa-solid fa-flag" style="margin-left: 5px; color: #FFFAFA;"></i>
-                        <span>Mục tiêu</span>
+                        <span>@CNPM_DOAN.Resources.Language.Mục_tiêu</span>
                     </a>
                 </div>
 
                 <div class="menuitem cuatro" style="overflow:hidden;">
-                    <a href="@Url.Action("showTTUser", "NGUOIDUNGs", new { iduser = Session["IDUSER"] })">
+                    <a href="@Url.Action("showTaiLieuHocTap", "TAILIEUx", new { idhocsinh = Session["IDUSER"] })">
                         <i class="fa-solid fa-user-group" style="color: #FFFAFA;"></i>
-                        <span>Tài liệu học tập</span>
+                        <span>@CNPM_DOAN.Resources.Language.Tài_liệu_học_tập</span>
                     </a>
                 </div>
                 <div class="menuitem cinco" style="overflow:hidden;">
                     <a href="@Url.Action("showBaiTap", "BAITAPs", new { iduser = Session["IDUSER"] })">
                         <i class="fa-solid fa-book-open" style="color: #FFFAFA;"></i>
-                        <span>Bài tập</span>
+                        <span>@CNPM_DOAN.Resources.Language.Bài_tập</span>
                     </a>
                 </div>
             }

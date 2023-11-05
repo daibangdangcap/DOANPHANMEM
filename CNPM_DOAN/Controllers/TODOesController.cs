@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.ModelBinding;
 using System.Web.Mvc;
 using CNPM_DOAN.Models;
 
@@ -150,15 +151,16 @@ namespace CNPM_DOAN.Controllers
         {
             if (ndtodo == null)
             {
+                TempData["message"] = "Không được để trống";
                 return RedirectToAction("showToDo", "TODOes", new { iduser = id });
             }
             if (ModelState.IsValid)
             {
                 TODO todo = themMoiTODO(ndtodo, id);
-                
                 todo.IDToDo = id + "TD" + new RANDOMID().GenerateRandomString(2);
                 db.TODOes.Add(todo);
                 db.SaveChanges();
+                TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_nhiệm_vụ_mới_thành_công;
                 return RedirectToAction("showToDo", "TODOes", new { iduser = id });
             }
             return View();
@@ -173,6 +175,7 @@ namespace CNPM_DOAN.Controllers
             var data = db.TODOes.Find(IDToDo);
             db.TODOes.Remove(data);
             db.SaveChanges();
+            TempData["message"] = "Xóa nhiệm vụ thành công";
             return RedirectToAction("showToDo", "TODOes", new { iduser = id });
         }
         [HttpPost]
@@ -239,6 +242,29 @@ namespace CNPM_DOAN.Controllers
             if (todo.HanChot < DateTime.Now) return false;
             else return true;
         }
+        public ActionResult editTODO(string id)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                Session["IDTODO"] = id;
+                return PartialView();
+            }
+            return PartialView("Error");
+        }
 
+        [HttpPost]
+        public ActionResult editTODO(string ndtodo, string idhocsinh, string idtodo)
+        {
+            var data=db.TODOes.Find(idtodo);
+            if(data!=null)
+            {
+                data.NDToDo = ndtodo;
+                db.Entry(data).State = EntityState.Modified;
+                db.SaveChanges();
+                TempData["message"] = CNPM_DOAN.Resources.Language.Chỉnh_sửa_thành_công;
+                return RedirectToAction("showToDo", "TODOes", new { iduser = idhocsinh });
+            }
+            return RedirectToAction("showToDo", "TODOes", new { iduser=idhocsinh });
+        }
     }
 }

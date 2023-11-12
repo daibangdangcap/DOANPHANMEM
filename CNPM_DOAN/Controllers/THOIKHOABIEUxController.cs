@@ -148,7 +148,7 @@ namespace CNPM_DOAN.Controllers
         }
         public ActionResult taoTKBMoi()
         {
-            return View();
+            return PartialView("taoTKBMoi");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -162,9 +162,10 @@ namespace CNPM_DOAN.Controllers
                 tHOIKHOABIEU.IDNguoiDung = idhocsinh;
                 db.THOIKHOABIEUx.Add(tHOIKHOABIEU);
                 db.SaveChanges();
+                TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_thành_công_;
                 return RedirectToAction("showTKB_PH", "THOIKHOABIEUx", new { iduser = idhocsinh });
             }
-            else return RedirectToAction("showTKB_PH","THOIKHOABIEUx",new {iduser=idhocsinh});
+            else return PartialView("taoTKBMoi", thoikb);
         }
         public ActionResult deleteTKB(string idnguoitao,string idtkb)
         {
@@ -176,7 +177,8 @@ namespace CNPM_DOAN.Controllers
             var tkb = db.THOIKHOABIEUx.Find(idtkb);
             db.THOIKHOABIEUx.Remove(tkb);
             db.SaveChanges();
-            return RedirectToAction("showTKB", "THOIKHOABIEUx", new { iduser = idnguoitao });
+            TempData["message"] = CNPM_DOAN.Resources.Language.Xóa_thành_công_;
+            return RedirectToAction("showTKB_PH", "THOIKHOABIEUx", new { iduser = idnguoitao });
         }
         public ActionResult showTKB_PH(string iduser)
         {

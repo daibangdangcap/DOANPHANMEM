@@ -126,6 +126,9 @@
   <data name="Chưa nộp" xml:space="preserve">
     <value>Chưa nộp</value>
   </data>
+  <data name="Chỉnh sửa" xml:space="preserve">
+    <value>Chỉnh sửa</value>
+  </data>
   <data name="Chỉnh sửa nội dung nhiệm vụ" xml:space="preserve">
     <value>Chỉnh sửa nội dung nhiệm vụ</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="Chỉnh sửa thông tin cá nhân" xml:space="preserve">
     <value>Chỉnh sửa thông tin cá nhân</value>
+  </data>
+  <data name="Chỉnh sửa tiết học" xml:space="preserve">
+    <value>Chỉnh sửa tiết học</value>
   </data>
   <data name="Chỉnh sửa tài liệu" xml:space="preserve">
     <value>Chỉnh sửa tài liệu</value>
@@ -150,8 +156,14 @@
   <data name="Còn hạn" xml:space="preserve">
     <value>Còn hạn</value>
   </data>
+  <data name="Cập nhật thành công!" xml:space="preserve">
+    <value>Edit successfully!</value>
+  </data>
   <data name="Danh sách nhiệm vụ" xml:space="preserve">
     <value>Danh sách nhiệm vụ</value>
+  </data>
+  <data name="Danh sách thời khóa biểu" xml:space="preserve">
+    <value>Danh sách thời khóa biểu</value>
   </data>
   <data name="Danh sách tài liệu học tập" xml:space="preserve">
     <value>Danh sách tài liệu học tập</value>
@@ -240,11 +252,35 @@
   <data name="Thứ" xml:space="preserve">
     <value>Thứ</value>
   </data>
+  <data name="Thứ 2" xml:space="preserve">
+    <value>Thứ 2</value>
+  </data>
+  <data name="Thứ 3" xml:space="preserve">
+    <value>Thứ 3</value>
+  </data>
+  <data name="Thứ 4" xml:space="preserve">
+    <value>Thứ 4</value>
+  </data>
+  <data name="Thứ 5" xml:space="preserve">
+    <value>Thứ 5</value>
+  </data>
+  <data name="Thứ 6" xml:space="preserve">
+    <value>Thứ 6</value>
+  </data>
+  <data name="Thứ 7" xml:space="preserve">
+    <value>Thứ 7</value>
+  </data>
   <data name="Tiết bắt đầu" xml:space="preserve">
     <value>Tiết bắt đầu</value>
   </data>
+  <data name="Tiết học trùng với tiết học của một môn khác. Vui lòng kiểm tra lại thời khóa biểu của bạn!" xml:space="preserve">
+    <value>Tiết học trùng với tiết học của một môn khác. Vui lòng kiểm tra lại thời khóa biểu của bạn!</value>
+  </data>
   <data name="Tiết kết thúc" xml:space="preserve">
     <value>Tiết kết thúc</value>
+  </data>
+  <data name="Tiết kết thúc phải lớn hơn hoặc bằng tiết bắt đầu" xml:space="preserve">
+    <value>Tiết kết thúc phải lớn hơn hoặc bằng tiết bắt đầu</value>
   </data>
   <data name="Tài liệu học tập" xml:space="preserve">
     <value>Tài liệu học tập</value>
@@ -261,6 +297,9 @@
   <data name="Tôi đã hiểu và muốn tiếp tục" xml:space="preserve">
     <value>Tôi đã hiểu và muốn tiếp tục</value>
   </data>
+  <data name="Tạo" xml:space="preserve">
+    <value>Tạo</value>
+  </data>
   <data name="Tạo bài tập mới" xml:space="preserve">
     <value>Tạo bài tập mới</value>
   </data>
@@ -273,8 +312,14 @@
   <data name="Tạo nhiệm vụ mới thành công" xml:space="preserve">
     <value>Tạo nhiệm vụ mới thành công</value>
   </data>
+  <data name="Tạo thành công!" xml:space="preserve">
+    <value>Create successfully!</value>
+  </data>
   <data name="Tạo thời khóa biểu mới" xml:space="preserve">
     <value>Tạo thời khóa biểu mới</value>
+  </data>
+  <data name="Tạo tiết học mới" xml:space="preserve">
+    <value>Tạo tiết học mới</value>
   </data>
   <data name="Tạo tài liệu thành công" xml:space="preserve">
     <value>Tạo tài liệu thành công</value>
@@ -296,6 +341,9 @@
   </data>
   <data name="Xóa nhiệm vụ thành công" xml:space="preserve">
     <value>Xóa nhiệm vụ thành công</value>
+  </data>
+  <data name="Xóa thành công!" xml:space="preserve">
+    <value>Delete successfully!</value>
   </data>
   <data name="Xóa tài khoản" xml:space="preserve">
     <value>Xóa tài khoản</value>

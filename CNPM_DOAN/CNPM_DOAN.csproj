@@ -405,6 +405,7 @@
     <Content Include="Views\TAILIEUx\editTaiLieu.cshtml" />
     <Content Include="Views\TAILIEUx\showTaiLieuHocTap.cshtml" />
     <Content Include="Views\TODOes\editTODO.cshtml" />
+    <Content Include="Views\TIETHOCs\editTietHoc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Language.en.resx">

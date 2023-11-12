@@ -162,7 +162,6 @@ namespace CNPM_DOAN.Controllers
             TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_tài_liệu_thành_công;
             db.SaveChanges();
             return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan });
-            //return RedirectToAction("Index", "Home");
         }
 
         public ActionResult editTaiLieu(string id)

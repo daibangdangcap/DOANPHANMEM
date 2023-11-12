@@ -1,17 +1,17 @@
 ﻿@model CNPM_DOAN.Models.TIETHOC
 
 @{
-    ViewBag.Title = "themTietHocMoi";
+    ViewBag.Title = "editTietHoc";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Styles.Render("~/Content/css")
 <div class="content">
     <div style="margin-left:30px; margin-top:30px">
-        <h2>@CNPM_DOAN.Resources.Language.Tạo_tiết_học_mới</h2>
-        @using (Html.BeginForm("themTietHocMoi", "TIETHOCs", FormMethod.Post))
+        <h2>@CNPM_DOAN.Resources.Language.Chỉnh_sửa_tiết_học</h2>
+        @using (Html.BeginForm("editTietHoc", "TIETHOCs", FormMethod.Post))
         {
-            <input type="hidden" name="iduser" value="@Session["IDHOCSINH"]" />
-            <input type="hidden" name="idtkbb" value="@Session["IDTKB"]" />
+            <input type="hidden" name="idtkb" value="@Session["IDTKB"]" />
+            <input type="hidden" name="idtiethoc" value="@Session["IDTIETHOC"]" />
             <div class="mb-3">
                 <label for="class form-label">@CNPM_DOAN.Resources.Language.Tên_môn_học: </label>
                 <input class="form-control" type="text" id="mhoc" name="monhoc" placeholder="">
@@ -20,7 +20,7 @@
                 <label class="form-label">@CNPM_DOAN.Resources.Language.Thứ</label>
                 <select class="form-select" name="day">
                     <option value="2"> @CNPM_DOAN.Resources.Language.Thứ_2 </option>
-                    <option value="3"> T@CNPM_DOAN.Resources.Language.Thứ_3 </option>
+                    <option value="3"> @CNPM_DOAN.Resources.Language.Thứ_3 </option>
                     <option value="4"> @CNPM_DOAN.Resources.Language.Thứ_4 </option>
                     <option value="5"> @CNPM_DOAN.Resources.Language.Thứ_5 </option>
                     <option value="6"> @CNPM_DOAN.Resources.Language.Thứ_6 </option>
@@ -63,3 +63,5 @@
 
     </div>
 </div>
+
+

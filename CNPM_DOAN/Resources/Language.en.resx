@@ -126,6 +126,9 @@
   <data name="Chưa nộp" xml:space="preserve">
     <value>Not yet submitted</value>
   </data>
+  <data name="Chỉnh sửa" xml:space="preserve">
+    <value>Edit</value>
+  </data>
   <data name="Chỉnh sửa nội dung nhiệm vụ" xml:space="preserve">
     <value>Edit to-do content</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="Chỉnh sửa thông tin cá nhân" xml:space="preserve">
     <value>Edit personal information</value>
+  </data>
+  <data name="Chỉnh sửa tiết học" xml:space="preserve">
+    <value>Edit session</value>
   </data>
   <data name="Chỉnh sửa tài liệu" xml:space="preserve">
     <value>Edit document</value>
@@ -150,8 +156,14 @@
   <data name="Còn hạn" xml:space="preserve">
     <value>Still valid</value>
   </data>
+  <data name="Cập nhật thành công!" xml:space="preserve">
+    <value>Edit successfully!</value>
+  </data>
   <data name="Danh sách nhiệm vụ" xml:space="preserve">
     <value>To-do list</value>
+  </data>
+  <data name="Danh sách thời khóa biểu" xml:space="preserve">
+    <value>List of timetables</value>
   </data>
   <data name="Danh sách tài liệu học tập" xml:space="preserve">
     <value>List of study documents</value>
@@ -240,11 +252,35 @@
   <data name="Thứ" xml:space="preserve">
     <value>Day</value>
   </data>
+  <data name="Thứ 2" xml:space="preserve">
+    <value>Monday</value>
+  </data>
+  <data name="Thứ 3" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
+  <data name="Thứ 4" xml:space="preserve">
+    <value>Wednesday</value>
+  </data>
+  <data name="Thứ 5" xml:space="preserve">
+    <value>Thurday</value>
+  </data>
+  <data name="Thứ 6" xml:space="preserve">
+    <value>Friday</value>
+  </data>
+  <data name="Thứ 7" xml:space="preserve">
+    <value>Saturday</value>
+  </data>
   <data name="Tiết bắt đầu" xml:space="preserve">
     <value>Class begins</value>
   </data>
+  <data name="Tiết học trùng với tiết học của một môn khác. Vui lòng kiểm tra lại thời khóa biểu của bạn!" xml:space="preserve">
+    <value>The class period overlaps with a class period in another subject. Please check your schedule again!</value>
+  </data>
   <data name="Tiết kết thúc" xml:space="preserve">
     <value>Class ends</value>
+  </data>
+  <data name="Tiết kết thúc phải lớn hơn hoặc bằng tiết bắt đầu" xml:space="preserve">
+    <value>The ending period must be greater than or equal to the starting period</value>
   </data>
   <data name="Tài liệu học tập" xml:space="preserve">
     <value>Study document</value>
@@ -261,6 +297,9 @@
   <data name="Tôi đã hiểu và muốn tiếp tục" xml:space="preserve">
     <value>I understood and wanted to continue</value>
   </data>
+  <data name="Tạo" xml:space="preserve">
+    <value>Create</value>
+  </data>
   <data name="Tạo bài tập mới" xml:space="preserve">
     <value>Create a new homework</value>
   </data>
@@ -273,8 +312,14 @@
   <data name="Tạo nhiệm vụ mới thành công" xml:space="preserve">
     <value>Create a new to-do successfully</value>
   </data>
+  <data name="Tạo thành công!" xml:space="preserve">
+    <value>Create successfully!</value>
+  </data>
   <data name="Tạo thời khóa biểu mới" xml:space="preserve">
     <value>Create a new timetable</value>
+  </data>
+  <data name="Tạo tiết học mới" xml:space="preserve">
+    <value>Create new session</value>
   </data>
   <data name="Tạo tài liệu thành công" xml:space="preserve">
     <value>Create a study document successfully</value>
@@ -296,6 +341,9 @@
   </data>
   <data name="Xóa nhiệm vụ thành công" xml:space="preserve">
     <value>Delete a to-do successfully</value>
+  </data>
+  <data name="Xóa thành công!" xml:space="preserve">
+    <value>Delete successfully!</value>
   </data>
   <data name="Xóa tài khoản" xml:space="preserve">
     <value>Delete account</value>

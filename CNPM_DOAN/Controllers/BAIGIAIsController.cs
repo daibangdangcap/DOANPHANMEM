@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CNPM_DOAN.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace CNPM_DOAN.Controllers
 {
@@ -140,20 +141,25 @@ namespace CNPM_DOAN.Controllers
         }
         public ActionResult ChiTietBaiGiai(string idbaitap, string iduser)
         {
-            Session["IDBAITAP"] = idbaitap;
-            if (KTBaiGiai(iduser, idbaitap) == true)
+            if (idbaitap != null && iduser != null)
             {
+                Session["IDBAITAP"] = idbaitap;
                 var data = db.BAIGIAIs.Where(s => s.IDBaiTap == idbaitap && s.IDNguoiDung == iduser).FirstOrDefault();
-                return View(data);
+                if (KTBaiGiai(iduser, idbaitap) == true)
+                {
+                    data = db.BAIGIAIs.Where(s => s.IDBaiTap == idbaitap && s.IDNguoiDung == iduser).FirstOrDefault();
+                    return PartialView(data);
+                }
+                else
+                {
+                    return PartialView();
+                }
             }
-            else
-            {
-                return View();
-            }
+            else return RedirectToAction("Index","Home");
         }
         public ActionResult NopBaiTap()
         {
-            return View();
+            return PartialView();
         }
         [HttpPost]
         public ActionResult NopBaiTap(HttpPostedFileBase bg,string idnguoinop, string idbt) 
@@ -178,15 +184,19 @@ namespace CNPM_DOAN.Controllers
                 baitap.TrangThai = "Đã nộp";
                 db.Entry(baitap).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("ChiTietBaiGiai", "BAIGIAIs", new { idbaitap=idbt,iduser=idnguoinop });
+                return RedirectToAction("showBaiTap", "BAITAPs", new { iduser = baigiai.IDNguoiDung });
             }
             return View();
         }
         public ActionResult ChinhSuaBaiNop(string idbaigiai)
         {
-            var data = db.BAIGIAIs.Find(idbaigiai);
-            Session["IDBAIGIAI"] = data.IDBaiGiai;
-            return View(data);
+            if (Request.IsAjaxRequest())
+            {
+                var data = db.BAIGIAIs.Find(idbaigiai);
+                Session["IDBAIGIAI"] = data.IDBaiGiai;
+                return PartialView(data);
+            }
+            else return PartialView("Error");
         }
         [HttpPost]
         public ActionResult ChinhSuaBaiNop(HttpPostedFileBase bg,string idbaigiai)
@@ -200,9 +210,10 @@ namespace CNPM_DOAN.Controllers
                 baigiai.LoaiTep = bg.ContentType;
                 baigiai.TenBaiGiai = bg.FileName;
                 baigiai.SoDiem = null;
+                baigiai.NgayHoanThanh=DateTime.Now;
                 db.Entry(baigiai).State=EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("ChiTietBaiGiai", "BAIGIAIs", new { idbaitap = baigiai.IDBaiTap, iduser = baigiai.IDNguoiDung });
+                return RedirectToAction("showBaiTap", "BAITAPs", new { iduser = baigiai.IDNguoiDung });
             }
             return View();
         }

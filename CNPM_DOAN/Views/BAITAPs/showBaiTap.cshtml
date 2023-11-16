@@ -5,54 +5,133 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="~/MyCss/baitap.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<body>
+    <!--pop up tạo nộp bải tập-->
+    <div class="modal fade" id="myModal" role="dialog" data-url="@Url.Action("NopBaiTap","BAIGIAIs")">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
 
-<link rel="stylesheet" href="@Url.Content("~/MyCss/baitap.css")" type="text/css"/>
-<div class="content">
-    <h1>Các bài tập đã giao</h1>
-    <div class="content-group">
-        @foreach (var item in Model)
-        {
-            <div class="content-group-item">
-                @if (item.LoaiTep.Contains("word"))
-                {
-                    <img src="~/ImageIconFiles/WORD.png" class="imageFile" />
-                }
-                else if (item.LoaiTep.Contains("sheet"))
-                {
-                    <img src="~/ImageIconFiles/EXCEL.png" class="imageFile" />
-                }
-                else if (item.LoaiTep.Contains("presentation"))
-                {
-                    <img src="~/ImageIconFiles/POWERPOINT.png" class="imageFile" />
-                }
-                else
-                {
-                    <img src="~/ImageIconFiles/NOTEPAD.png" class="imageFile" />
-                }
-                <div class="content-group-item-name">
-                    <h2>@item.TenBT</h2>
-                    <div style="margin:10px">
-                        <p style="margin-bottom:10px;">Hạn nộp: @item.HanNop.ToString()</p>
-                        @if (item.TrangThai == "Chưa nộp")
+    <!--pop up edit tài liệu-->
+    <div class="modal fade" id="editModal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Các bài tập đã giao</h1>
+        <div class="content-group">
+            @foreach (var item in Model)
+            {
+                <div class="oneItem">
+                    <div class="content-group-item">
+                        @if (item.LoaiTep.Contains("word"))
                         {
-                            if (item.HanNop < DateTime.Now)
-                            {
-                                <p style="font-size: 10px; color: red; border-color: red">Quá hạn</p>
-                            }
-                            else
-                            {
-                                <p style="font-size: 10px; border-color: red; color:gold">Còn hạn</p>
-                            }
+                            <img src="~/ImageIconFiles/WORD.png" class="imageFile" />
+                        }
+                        else if (item.LoaiTep.Contains("sheet"))
+                        {
+                            <img src="~/ImageIconFiles/EXCEL.png" class="imageFile" />
+                        }
+                        else if (item.LoaiTep.Contains("presentation"))
+                        {
+                            <img src="~/ImageIconFiles/POWERPOINT.png" class="imageFile" />
                         }
                         else
                         {
-                            <p style="font-size: 10px; border-color: red; color:green">@item.TrangThai</p>
+                            <img src="~/ImageIconFiles/NOTEPAD.png" class="imageFile" />
                         }
+                        <div class="content-group-item-name">
+                            <h2>@item.TenBT</h2>
+                            <div style="margin:10px">
+                                <p style="margin-bottom:10px;">Hạn nộp: @item.HanNop.ToString()</p>
+                                @if (item.TrangThai == "Chưa nộp")
+                                {
+                                    if (item.HanNop < DateTime.Now)
+                                    {
+                                        <b style="font-size: 10px; color: red; border-color: red">Quá hạn</b>
+                                    }
+                                    else
+                                    {
+                                        <b style="font-size: 10px; border-color: red; color:gold">Còn hạn</b>
+                                    }
+                                }
+                                else
+                                {
+                                    <b style="font-size: 10px; border-color: red; color:green">@item.TrangThai</b>
+                                }
+                            </div>
+                        </div>
+                        <button class="taixuong" id="nopbai" onclick="location.href='@Url.Action("TaiBT", "BAITAPs", new { idbaitap = item.IDBaiTap })'">Tải xuống</button>
+                        <button class="nopbai" id="nopbai" data-item-id="@item.IDBaiTap">Nộp bài</button>
+                        <p data-item-user="@Session["IDUSER"]"></p>
                     </div>
+                    <div id="partialViewContainer_@item.IDBaiTap"></div>
                 </div>
-                <button class="taixuong" id="nopbai" onclick="location.href='@Url.Action("TaiBT", "BAITAPs", new { idbaitap = item.IDBaiTap })'">Tải xuống</button>
-                <button class="nopbai" id="nopbai" onclick="location.href='@Url.Action("ChiTietBaiGiai", "BAIGIAIs", new { idbaitap = item.IDBaiTap, iduser = Session["IDUSER"] })'">Nộp bài</button>
-            </div>
-        }
+            }
+        </div>
     </div>
-</div>
+
+</body>
+@section scripts{
+    <script type="text/javascript">
+    $(document).ready(function () {
+        // Attach a click event to the button
+        $(".nopbai").click(function () {
+            var itemId = $(this).data("item-id");
+            var iduser = $(this).closest(".content-group-item").find("p[data-item-user]").data("item-user");
+
+
+            // Construct the unique ID for the partial view container
+            var partialViewContainerId = "#partialViewContainer_" + itemId;
+
+            // Check if the partial view container is currently visible
+            var isContainerVisible = $(partialViewContainerId).is(":visible");
+
+            // If visible, hide it; if hidden, show it
+            if (isContainerVisible) {
+                // Hide the partial view container
+                $(partialViewContainerId).hide();
+            } else {
+                // Use Ajax to load the partial view
+                $.ajax({
+                    url: '@Url.Action("ChiTietBaiGiai", "BAIGIAIs")' + '?idbaitap=' + itemId + '&iduser=' + iduser, // Replace with your controller and action names
+                    type: 'GET',
+                    success: function (result) {
+                        // Display the partial view in the container div
+                        $(partialViewContainerId).html(result);
+                        // Show the partial view container
+                        $(partialViewContainerId).show();
+                    },
+                    error: function () {
+                        alert('Error loading partial view');
+                    }
+                });
+            }
+        })
+    })
+        function create() {
+        $.get("@Url.Action("NopBaiTap","BAIGIAIs")",
+        function (data) { $('#myModal').html(data); })
+        $('#myModal').modal('show');
+        }
+        $('#myModal').on('hidden.bs.modal', function (e) {
+            $('.modal-body').html("")
+        })
+
+        function edit(id) {
+        $.get("@Url.Action("ChinhSuaBaiNop","BAIGIAIs")?" + "idbaigiai="+id,
+        function (data) { $('#editModal').html(data); })
+        $('#editModal').modal('show');
+        }
+        $('#editModal').on('hidden.bs.modal', function (e) {
+            $('.modal-body').html("")
+        })
+    </script>
+}

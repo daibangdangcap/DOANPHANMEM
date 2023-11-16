@@ -1,7 +1,7 @@
 ﻿body {
     margin: 0 auto;
     background-color: white;
-    background-image: url("image/background_todoList.png");
+    background-image: url("../MyImage/background_todoList.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -16,7 +16,6 @@
     margin-top: 30px;
     width: auto;
     height: fit-content;
-    border:solid red;
 }
 
 .inputMission {

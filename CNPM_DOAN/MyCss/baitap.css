@@ -1,4 +1,7 @@
-﻿
+﻿.content{
+    position:fixed;
+    right:0px;
+}
 
     .content h1 {
         font-weight: normal;
@@ -86,4 +89,10 @@
     left:0px;
     float:left;
     margin-left:10px;
+}
+
+.oneItem {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;]
 }

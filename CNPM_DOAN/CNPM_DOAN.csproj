@@ -243,6 +243,7 @@
     <Content Include="MyCss\mainpage.css" />
     <Content Include="MyCss\muctieu.css" />
     <Content Include="MyCss\nhomhoctap.css" />
+    <Content Include="MyCss\nopbaigiai.css" />
     <Content Include="MyCss\register.css" />
     <Content Include="MyCss\tailieuhoctap.css" />
     <Content Include="MyCss\taobtmoi.css" />

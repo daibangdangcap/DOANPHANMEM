@@ -123,11 +123,17 @@
   <data name="Bạn có muốn xóa tài khoản không?" xml:space="preserve">
     <value>Do you want to delete your account?</value>
   </data>
+  <data name="Chưa có điểm" xml:space="preserve">
+    <value>Not graded</value>
+  </data>
   <data name="Chưa nộp" xml:space="preserve">
     <value>Not yet submitted</value>
   </data>
   <data name="Chỉnh sửa" xml:space="preserve">
     <value>Edit</value>
+  </data>
+  <data name="Chỉnh sửa bài nộp" xml:space="preserve">
+    <value>Edit file</value>
   </data>
   <data name="Chỉnh sửa nội dung nhiệm vụ" xml:space="preserve">
     <value>Edit to-do content</value>
@@ -216,6 +222,9 @@
   <data name="Mục tiêu" xml:space="preserve">
     <value>Goal</value>
   </data>
+  <data name="Ngày hoàn thành" xml:space="preserve">
+    <value>Date submitted</value>
+  </data>
   <data name="Ngày sinh" xml:space="preserve">
     <value>Day of birth</value>
   </data>
@@ -227,6 +236,12 @@
   </data>
   <data name="Nộp bài" xml:space="preserve">
     <value>Submit</value>
+  </data>
+  <data name="Nộp bài tập" xml:space="preserve">
+    <value>Submit homework</value>
+  </data>
+  <data name="Nộp bài tập thành công!" xml:space="preserve">
+    <value>Submitted homework successfully!</value>
   </data>
   <data name="Quay lại" xml:space="preserve">
     <value>Cancel</value>
@@ -284,6 +299,9 @@
   </data>
   <data name="Tài liệu học tập" xml:space="preserve">
     <value>Study document</value>
+  </data>
+  <data name="Tên file" xml:space="preserve">
+    <value>Name file</value>
   </data>
   <data name="Tên môn học" xml:space="preserve">
     <value>Subject title</value>
@@ -353,6 +371,9 @@
   </data>
   <data name="Xóa tài liệu thành công" xml:space="preserve">
     <value>Delete a document successfully</value>
+  </data>
+  <data name="Điểm" xml:space="preserve">
+    <value>Grade</value>
   </data>
   <data name="Đã hoàn thành" xml:space="preserve">
     <value>Completed</value>

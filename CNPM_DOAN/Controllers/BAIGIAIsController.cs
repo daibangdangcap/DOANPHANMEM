@@ -184,6 +184,7 @@ namespace CNPM_DOAN.Controllers
                 baitap.TrangThai = "Đã nộp";
                 db.Entry(baitap).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["message"] = CNPM_DOAN.Resources.Language.Nộp_bài_tập_thành_công_;
                 return RedirectToAction("showBaiTap", "BAITAPs", new { iduser = baigiai.IDNguoiDung });
             }
             return View();
@@ -213,6 +214,7 @@ namespace CNPM_DOAN.Controllers
                 baigiai.NgayHoanThanh=DateTime.Now;
                 db.Entry(baigiai).State=EntityState.Modified;
                 db.SaveChanges();
+                TempData["message"] = CNPM_DOAN.Resources.Language.Chỉnh_sửa_thành_công;
                 return RedirectToAction("showBaiTap", "BAITAPs", new { iduser = baigiai.IDNguoiDung });
             }
             return View();

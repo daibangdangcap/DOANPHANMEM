@@ -8,16 +8,17 @@
 <div class="modal-dialog" style="top:30%">
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title" id="myModal-label">Nộp bài</h4>
+            <h4 class="modal-title" id="myModal-label">@CNPM_DOAN.Resources.Language.Nộp_bài_tập</h4>
         </div>
         <div class="modal-body">
 
             @using (Html.BeginForm("NopBaiTap", "BAIGIAIs", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
+                <label>@CNPM_DOAN.Resources.Language.Tên_file: </label>
                 <input type="file" name="bg" required/>
                 <input type="hidden" name="idnguoinop" value="@Session["IDUSER"]" />
-                <input type="hidden" name="idbt" value="@Session["IDBAITAP"]" />
-                <input type="submit" value="Xác nhận" />
+                <input type="hidden" name="idbt" value="@Session["IDBAITAP"]" /><hr />
+                <input type="submit" value="@CNPM_DOAN.Resources.Language.Xác_nhận" />
             }
         </div>
     </div>

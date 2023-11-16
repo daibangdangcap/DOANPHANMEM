@@ -163,7 +163,7 @@ namespace CNPM_DOAN.Controllers
         }
         public ActionResult TaoBTMoi()
         {
-            return View();
+            return PartialView();
         }
         [HttpPost]
         public ActionResult TaoBTMoi(HttpPostedFileBase bt, DateTime hanchot,string idnguoitao, string idnguoinhan)

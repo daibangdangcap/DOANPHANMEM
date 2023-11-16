@@ -9,14 +9,15 @@
 <div class="modal-dialog" style="top:30%">
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title" id="myModal-label">chỉnh sửa</h4>
+            <h4 class="modal-title" id="myModal-label">@CNPM_DOAN.Resources.Language.Chỉnh_sửa_bài_nộp</h4>
         </div>
         <div class="modal-body">
             @using (Html.BeginForm("ChinhSuaBaiNop", "BAIGIAIs", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
-                <input type="file" name="bg" />
+                <label>@CNPM_DOAN.Resources.Language.Tên_file: </label>
+                <input type="file" name="bg" required/>
                 <input type="hidden" name="idbaigiai" value="@Session["IDBAIGIAI"]" />
-                <input type="submit" value="Xác nhận" />
+                <input type="submit" value="@CNPM_DOAN.Resources.Language.Xác_nhận" />
             }
         </div>
     </div>

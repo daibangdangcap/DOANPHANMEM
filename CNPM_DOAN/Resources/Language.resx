@@ -123,11 +123,17 @@
   <data name="Bạn có muốn xóa tài khoản không?" xml:space="preserve">
     <value>Bạn có muốn xóa tài khoản không?</value>
   </data>
+  <data name="Chưa có điểm" xml:space="preserve">
+    <value>Chưa có điểm</value>
+  </data>
   <data name="Chưa nộp" xml:space="preserve">
     <value>Chưa nộp</value>
   </data>
   <data name="Chỉnh sửa" xml:space="preserve">
     <value>Chỉnh sửa</value>
+  </data>
+  <data name="Chỉnh sửa bài nộp" xml:space="preserve">
+    <value>Chỉnh sửa bài nộp</value>
   </data>
   <data name="Chỉnh sửa nội dung nhiệm vụ" xml:space="preserve">
     <value>Chỉnh sửa nội dung nhiệm vụ</value>
@@ -216,6 +222,9 @@
   <data name="Mục tiêu" xml:space="preserve">
     <value>Mục tiêu</value>
   </data>
+  <data name="Ngày hoàn thành" xml:space="preserve">
+    <value>Ngày hoàn thành</value>
+  </data>
   <data name="Ngày sinh" xml:space="preserve">
     <value>Ngày sinh</value>
   </data>
@@ -227,6 +236,12 @@
   </data>
   <data name="Nộp bài" xml:space="preserve">
     <value>Nộp bài</value>
+  </data>
+  <data name="Nộp bài tập" xml:space="preserve">
+    <value>Nộp bài tập</value>
+  </data>
+  <data name="Nộp bài tập thành công!" xml:space="preserve">
+    <value>Nộp bài tập thành công!</value>
   </data>
   <data name="Quay lại" xml:space="preserve">
     <value>Quay lại</value>
@@ -284,6 +299,9 @@
   </data>
   <data name="Tài liệu học tập" xml:space="preserve">
     <value>Tài liệu học tập</value>
+  </data>
+  <data name="Tên file" xml:space="preserve">
+    <value>Tên file</value>
   </data>
   <data name="Tên môn học" xml:space="preserve">
     <value>Tên môn học</value>
@@ -353,6 +371,9 @@
   </data>
   <data name="Xóa tài liệu thành công" xml:space="preserve">
     <value>Xóa tài liệu thành công</value>
+  </data>
+  <data name="Điểm" xml:space="preserve">
+    <value>Điểm</value>
   </data>
   <data name="Đã hoàn thành" xml:space="preserve">
     <value>Đã hoàn thành</value>

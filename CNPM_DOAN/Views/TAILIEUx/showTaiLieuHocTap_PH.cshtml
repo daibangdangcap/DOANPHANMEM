@@ -36,8 +36,8 @@
 
 
     <div style="margin-left: 100px; margin-top: 30px;">
-        <h1>Danh sách tài liệu học tập</h1>
-        <button class="btnAddTaiLieu btn btn-outline-secondary">Thêm tài liệu học tập</button>
+        <h1>@CNPM_DOAN.Resources.Language.Danh_sách_tài_liệu_học_tập</h1>
+        <button class="btnAddTaiLieu btn btn-outline-secondary">@CNPM_DOAN.Resources.Language.Thêm_tài_liệu_học_tập_mới</button>
     </div>
     <div class="contentTaiLieu">
         @foreach (var item in Model)
@@ -69,8 +69,8 @@
                 }
                 <p class="nameTaiLieu">@item.TenTaiLieu</p>
                 <div>
-                    <button type="button" class="btnTaiLieu btn btn-outline-primary" id="@item.IDTaiLieu" onclick="edit(this.id)">Chỉnh sửa tài liệu</button>
-                    <button class="btnTaiLieu btn btn-outline-danger" onclick="location.href='@Url.Action("deleteTaiLieu", "TAILIEUx", new {idtailieu=item.IDTaiLieu, idnguoinhan=item.IDNguoiTao})'">Xóa tài liệu</button>
+                    <button type="button" class="btnTaiLieu btn btn-outline-primary" id="@item.IDTaiLieu" onclick="edit(this.id)">@CNPM_DOAN.Resources.Language.Chỉnh_sửa_tài_liệu</button>
+                    <button class="btnTaiLieu btn btn-outline-danger" onclick="location.href='@Url.Action("deleteTaiLieu", "TAILIEUx", new {idtailieu=item.IDTaiLieu, idnguoinhan=item.IDNguoiTao})'">@CNPM_DOAN.Resources.Language.Xóa_tài_liệu</button>
                 </div>
             </div>
         }

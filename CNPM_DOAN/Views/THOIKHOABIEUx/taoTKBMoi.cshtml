@@ -2,30 +2,27 @@
 
 @{
     ViewBag.Title = "taoTKBMoi";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-
-
 }
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<div class="content">
-    @using (Html.BeginForm("taoTKBMoi", "THOIKHOABIEUx", new { idnguoitao = Session["IDUSER"], idhocsinh = Session["IDHOCSINH"] },FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenTKB, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<div class="modal-dialog" style="top:30%">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModal-label">@CNPM_DOAN.Resources.Language.Tạo_thời_khóa_biểu_mới</h4>
+        </div>
+        <div class="modal-body">
+
+            @using (Html.BeginForm("taoTKBMoi", "THOIKHOABIEUx", new { idnguoitao = Session["IDUSER"], idhocsinh = Session["IDHOCSINH"]}, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <label>@CNPM_DOAN.Resources.Language.Tên_thời_khóa_biểu</label>
                 @Html.EditorFor(model => model.TenTKB, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TenTKB, "", new { @class = "text-danger" })
-            </div>
+                @Html.HiddenFor(model => model.IDNguoiDung, Session["IDHOCSINH"])
+                <button type="submit" class="btn btn-success" style="margin-top:20px; margin-left:40%;">@CNPM_DOAN.Resources.Language.Xác_nhận</button>
+            }
         </div>
-        @Html.HiddenFor(model => model.IDNguoiDung, "HS8o")
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    }
+    </div>
 </div>

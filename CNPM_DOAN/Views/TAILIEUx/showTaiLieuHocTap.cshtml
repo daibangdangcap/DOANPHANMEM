@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CNPM_DOAN.Models.TAILIEU>
+
+@{
+    ViewBag.Title = "showUserTaiLieuHocTap";
+}
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="~/MyCss/tailieuhoctap.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <div style="margin-left: 100px; margin-top: 30px;">
+        <h1>@CNPM_DOAN.Resources.Language.Danh_sách_tài_liệu_học_tập </h1>
+    </div>
+    <div class="contentTaiLieu">
+        @foreach (var item in Model)
+        {
+            <div class="itemTaiLieu">
+                @if (item.LoaiTep.Contains("word"))
+                {
+                    <img src="~/ImageIconFiles/WORD.png" class="itemTaiLieuImage" />
+                }
+                else if (item.LoaiTep.Contains("sheet"))
+                {
+                    <img src="~/ImageIconFiles/EXCEL.png" class="itemTaiLieuImage" />
+                }
+                else if (item.LoaiTep.Contains("image"))
+                {
+                    <img src="~/ImageIconFiles/IMAGE.png" class="itemTaiLieuImage" />
+                }
+                else if (item.LoaiTep.Contains("text"))
+                {
+                    <img src="~/ImageIconFiles/NOTEPAD.png" class="itemTaiLieuImage" />
+                }
+                else if (item.LoaiTep.Contains("presentation"))
+                {
+                    <img src="~/ImageIconFiles/POWERPOINT.png" class="itemTaiLieuImage" />
+                }
+                else
+                {
+                    <img src="~/ImageIconFiles/PDF.png" class="itemTaiLieuImage" />
+                }
+                <p class="nameTaiLieu">@item.TenTaiLieu</p>
+                <div>
+                    <button type="button" class="btnTaiXuong btn btn-outline-info" id="@item.IDTaiLieu" onclick="location.href='@Url.Action("taiTaiLieu", "TAILIEUx", new {idtailieu=item.IDTaiLieu})'">@CNPM_DOAN.Resources.Language.Tải_xuống <i class="fa-solid fa-download" style="margin-left: 10px"></i></button>
+                </div>
+            </div>
+        }
+    </div>
+</body>

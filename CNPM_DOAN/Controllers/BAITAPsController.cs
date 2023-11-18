@@ -163,7 +163,7 @@ namespace CNPM_DOAN.Controllers
         }
         public ActionResult TaoBTMoi()
         {
-            return View();
+            return PartialView();
         }
         [HttpPost]
         public ActionResult TaoBTMoi(HttpPostedFileBase bt, DateTime hanchot,string idnguoitao, string idnguoinhan)
@@ -172,6 +172,7 @@ namespace CNPM_DOAN.Controllers
             {
                 byte[]data= new byte[bt.ContentLength];
                 bt.InputStream.Read(data,0, data.Length);
+                TimeSpan currentTime = DateTime.Now.TimeOfDay;
                 var baitap = new BAITAP
                 {
                     TenBT = bt.FileName,
@@ -179,7 +180,7 @@ namespace CNPM_DOAN.Controllers
                     LoaiTep = bt.ContentType,
                     IDBaiTap = "BT" + new RANDOMID().GenerateRandomString(3),
                     NgayGiao = DateTime.Now,
-                    HanNop = hanchot,
+                    HanNop = hanchot+currentTime,
                     IDNguoiTao = idnguoitao,
                     IDNguoiNhan = idnguoinhan,
                     TrangThai = "Chưa nộp"

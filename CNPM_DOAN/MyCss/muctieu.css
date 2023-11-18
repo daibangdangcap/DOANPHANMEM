@@ -1,7 +1,7 @@
 ﻿body {
     margin: 0 auto;
     background-color: white;
-    background-image: url("../MyImage/background_todoList.png");
+    background-image: url("image/background_todoList.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -14,6 +14,7 @@
 
 .container {
     margin-top: 30px;
+    padding: 0 1em;
     width: auto;
     height: fit-content;
 }
@@ -59,11 +60,13 @@
     }
 
 .infoTodo {
-    left:30px;
     height: 480px;
-    width: 100%;
+    width: fit-content;
     overflow: hidden;
     overflow-y: scroll;
+    margin-right: 2rem;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .infoTodoItem:hover {
@@ -78,7 +81,7 @@
 
 .infoTodoItem {
     background-color: whitesmoke;
-    height: 100px;
+    height: fit-content;
     width: 1000px;
     padding: 10px 10px 10px 10px;
     margin-bottom: 20px;
@@ -87,21 +90,19 @@
     left: 30px;
     box-shadow: 0 0 5pt 0.5pt #D3D3D3;
     display: block;
-    z-index:1;
+    z-index: 1;
 }
 
     .infoTodoItem p {
         text-overflow: ellipsis;
         overflow: hidden;
         display: inline-flex;
-        width: 95%;
+        width: 80%;
         margin-left: 10px;
         font-size: 17px;
     }
 
     .infoTodoItem .deleteTrash {
-        position: relative;
-        left: 880px;
         border: none;
         font-size: 25px;
         transition-duration: 0.5s;
@@ -120,11 +121,10 @@
     width: 25px;
     height: 25px;
     color: whitesmoke;
-    padding: 0;
 }
 
     .buttonSubmitTodo i {
-        font-size: 15px;
+        font-size: 10px;
     }
 
     .buttonSubmitTodo:hover {
@@ -137,21 +137,80 @@
         transform: translateY(1pt);
     }
 
-
-
-
-.editTodo {
-    position: relative;
-    left: 800px;
-    margin-top: 10px;
-    border: none;
-    font-size: 25px;
-    transition-duration: 0.5s;
-    background-color: transparent;
+.open-infoDetail {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 400px;
+    height: 100%;
+    border: 1px solid black;
+    background-color: wheat;
+    padding: 10px;
+    display: none;
 }
 
-    .editTodo:hover {
-        color: gray;
-        background-color: transparent;
-        cursor: pointer;
+    .open-infoDetail .content-Detail {
+        height: 550px;
+        background-color: white;
+        padding: 10px 10px 10px 10px;
+        overflow-y: scroll;
+    }
+
+.content-Detail .updateMission {
+    word-break: break-word;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+    height: 540px;
+    width: 370px;
+    border-style: none;
+}
+
+    .content-Detail .updateMission:focus {
+        outline: none;
+    }
+
+.updateMission::-webkit-scrollbar {
+    display: none;
+}
+
+.content-Detail::-webkit-scrollbar {
+    display: none;
+}
+
+.open-infoDetail .button-infoDetail {
+    display: grid;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 20px;
+    margin-left: 90px;
+}
+
+#UpdateMissionbtn {
+    padding: 15px 90px;
+    border-radius: 90px;
+    outline-width: 0px;
+    box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+    border-style: none;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: gray;
+}
+
+#DeleteMissionbtn {
+    padding: 15px 90px;
+    border-radius: 90px;
+    outline-width: 0px;
+    box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+    border-style: none;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+    #DeleteMissionbtn:hover {
+        background-color: red;
     }

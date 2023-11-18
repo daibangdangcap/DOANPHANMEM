@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.ModelBinding;
 using System.Web.Mvc;
 using CNPM_DOAN.Models;
 
@@ -150,15 +151,16 @@ namespace CNPM_DOAN.Controllers
         {
             if (ndtodo == null)
             {
+                TempData["message"] = "Không được để trống";
                 return RedirectToAction("showToDo", "TODOes", new { iduser = id });
             }
             if (ModelState.IsValid)
             {
                 TODO todo = themMoiTODO(ndtodo, id);
-                
                 todo.IDToDo = id + "TD" + new RANDOMID().GenerateRandomString(2);
                 db.TODOes.Add(todo);
                 db.SaveChanges();
+                TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_nhiệm_vụ_mới_thành_công;
                 return RedirectToAction("showToDo", "TODOes", new { iduser = id });
             }
             return View();
@@ -173,7 +175,12 @@ namespace CNPM_DOAN.Controllers
             var data = db.TODOes.Find(IDToDo);
             db.TODOes.Remove(data);
             db.SaveChanges();
-            return RedirectToAction("showToDo", "TODOes", new { iduser = id });
+            TempData["message"] = "Xóa nhiệm vụ thành công";
+            if(id.Contains("HS"))
+            {
+                return RedirectToAction("showToDo", "TODOes", new { iduser = id });
+            }
+            else return RedirectToAction("showToDo_PH", "TODOes", new {iduser = id});
         }
         [HttpPost]
         public ActionResult UpdateTrangThai(string IDToDo, string id)
@@ -181,10 +188,19 @@ namespace CNPM_DOAN.Controllers
             updateTrangThai(IDToDo, id);
             return RedirectToAction("showToDo", "TODOes", new { iduser = id });
         }
-        public ActionResult UpdateToDo(string IDToDo, string id, string newNDToDo)
+        public ActionResult UpdateToDo_PH(string id)
         {
-            updateTodo(IDToDo, newNDToDo);
-            return RedirectToAction("showToDo", "TODOes", new { iduser = id });
+            var data = db.TODOes.Find(id);
+            Session["IDTODO"] = id;
+            return PartialView(data);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateToDo_PH(string idtodo, string idhocsinh, string ndTODO)
+        {
+            updateTodo(idtodo, ndTODO);
+            TempData["message"] = CNPM_DOAN.Resources.Language.Chỉnh_sửa_thành_công;
+            return RedirectToAction("showToDo_PH", "TODOes", new { iduser = idhocsinh });
         }
         public ActionResult showUserToDo_PH( string iduser) 
         {
@@ -194,11 +210,13 @@ namespace CNPM_DOAN.Controllers
         public ActionResult showToDo_PH(string iduser)
         {
             var data=db.TODOes.Where(s=>s.IDNguoiDung==iduser).ToList();
+            Session["IDHOCSINH"] = iduser;
             return View(data.ToList());
         }
 
         public TODO themMoiTODO(string NDTODO, string id)
         {
+            TimeSpan currentTime = DateTime.Now.TimeOfDay;
             TODO todo=new TODO();
             todo.NDToDo = NDTODO;
             todo.IDNguoiDung = id;
@@ -207,7 +225,7 @@ namespace CNPM_DOAN.Controllers
             todo.NgayHoanThanh = null;
             //DateTime.ParseExact($"{timenow.Month}/{timenow.Day}/{timenow.Year} {11 - timenow.Hour}:{59 - timenow.Minute}:{59 - timenow.Second} PM", "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
             //this.HanChot = timenow.AddDays(1).AddSeconds(-1);
-            todo.HanChot = timenow.AddDays(0).AddMonths(0).AddYears(0).AddHours(23 - timenow.Hour).AddMinutes(59 - timenow.Minute).AddSeconds(59 - timenow.Second);
+            todo.HanChot = timenow.AddDays(1) + currentTime;
             todo.TrangThai = "Còn hạn";
             return todo;
         }
@@ -239,6 +257,45 @@ namespace CNPM_DOAN.Controllers
             if (todo.HanChot < DateTime.Now) return false;
             else return true;
         }
+        public ActionResult editTODO(string id)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                Session["IDTODO"] = id;
+                return PartialView();
+            }
+            return PartialView("Error");
+        }
 
+        [HttpPost]
+        public ActionResult editTODO(string ndtodo, string idhocsinh, string idtodo)
+        {
+            var data=db.TODOes.Find(idtodo);
+            if(data!=null)
+            {
+                data.NDToDo = ndtodo;
+                db.Entry(data).State = EntityState.Modified;
+                db.SaveChanges();
+                TempData["message"] = CNPM_DOAN.Resources.Language.Chỉnh_sửa_thành_công;
+                return RedirectToAction("showToDo", "TODOes", new { iduser = idhocsinh });
+            }
+            return RedirectToAction("showToDo", "TODOes", new { iduser=idhocsinh });
+        }
+
+        public ActionResult giaoToDo()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult giaoTodo(FormCollection form)
+        {
+            TODO todo = themMoiTODO("Phụ huynh giao: " + form["ndTODO"], form["idhocsinh"]);
+            todo.IDToDo = form["idhocsinh"] + "TD" + new RANDOMID().GenerateRandomString(2);
+            db.TODOes.Add(todo);
+            db.SaveChanges();
+            TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_nhiệm_vụ_mới_thành_công;
+            return RedirectToAction("showToDo_PH", "TODOes", new { iduser = form["idhocsinh"] });
+        }
     }
 }

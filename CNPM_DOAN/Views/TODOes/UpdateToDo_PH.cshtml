@@ -1,0 +1,20 @@
+﻿<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<div class="modal-dialog" style="top:30%">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModal-label">@CNPM_DOAN.Resources.Language.Chỉnh_sửa_nội_dung_nhiệm_vụ</h4>
+        </div>
+        <div class="modal-body">
+
+            @using (Html.BeginForm("UpdateToDo_PH", "TODOes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <label>@CNPM_DOAN.Resources.Language.Nhập_nội_dung:</label>
+                <input type="text" name="ndTODO" required />
+                <input type="hidden" name="idhocsinh" value="@Session["IDHOCSINH"]" />
+                <input type="hidden" name="idtodo" value="@Session["IDTODO"]" />
+                <button type="submit" class="btn btn-success" style="margin-top:20px; margin-left:40%;">@CNPM_DOAN.Resources.Language.Xác_nhận</button>
+            }
+        </div>
+    </div>
+</div>

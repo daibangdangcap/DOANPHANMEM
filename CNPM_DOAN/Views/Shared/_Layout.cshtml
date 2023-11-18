@@ -30,20 +30,22 @@
     <div class="overlay" id="overlayLo" onclick="showDangNhap()"></div>
     <div class="overlayRe" id="overlayRe" onclick="showDangKy()"></div>
     <div class="top-nav">
-        <a href=""><img src="~/MyImage/logo-removebg-preview.png" class="logo"></a>
-        <ul id="mainmenu">
-            <li><a href="@Url.Action("gioithieu","Home")">@CNPM_DOAN.Resources.Language.GIỚI_THIỆU</a></li>
-            <li><a href="@Url.Action("lienhe","Home")">@CNPM_DOAN.Resources.Language.LIÊN_HỆ</a></li>
-            <li><a href="@Url.Action("changeLanguage", "Home", new {language="en"})">English</a></li>
-            <li><a href="@Url.Action("changeLanguage", "Home", new {language="vn"})">Vietnamese</a></li>
+        <div class="col-3"><a href=""><img src="~/MyImage/logo-removebg-preview.png" class="logo"></a></div>
+            <div class="col-7 text-start">
+                <a href="@Url.Action("gioithieu","Home")">@CNPM_DOAN.Resources.Language.GIỚI_THIỆU</a>
+                <a href="@Url.Action("lienhe","Home")">@CNPM_DOAN.Resources.Language.LIÊN_HỆ</a>
+                <a href="@Url.Action("changeLanguage", "Home", new {language="en"})">English</a>
+                <a href="@Url.Action("changeLanguage", "Home", new {language="vn"})">Vietnamese</a>
+            </div>
             @if (Session["TENTAIKHOAN"] == null)
             {
-                <li style="margin-left:300px" onclick="showDangNhap()">@CNPM_DOAN.Resources.Language.ĐĂNG_NHẬP</li>
-                <li onclick="showDangKy()">@CNPM_DOAN.Resources.Language.ĐĂNG_KÝ</li>
+                <div class="col-2 d-flex">
+                    <a onclick="showDangNhap()">@CNPM_DOAN.Resources.Language.ĐĂNG_NHẬP</a>
+                    <a onclick="showDangKy()">@CNPM_DOAN.Resources.Language.ĐĂNG_KÝ</a>
+                </div>
             }
             else
             {
-                <li style="position:absolute; right:0px; top:40px;">
                 <a href="@Url.Action("Informs", "NGUOIDUNGs", new { iduser = Session["IDUSER"] })" class="nothover">
                     @if (Session["AVATAR"] != null)
                     {
@@ -54,9 +56,7 @@
                         <img src="~/MyImage/logo-removebg-preview.png" style="width:50px;height:50px; position:absolute;right:10px; bottom:10px;border-radius:50%" />
                     }
                 </a>
-                </li>
             }
-        </ul>
     </div>
     @if (Session["TENTAIKHOAN"] != null)
     {

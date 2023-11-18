@@ -7,8 +7,6 @@
 }
 .logo {
     width: 300px;
-    position: fixed;
-    left: 0px;
 }
 .content {
     position:relative;
@@ -28,65 +26,23 @@
     letter-spacing: 1pt;
     font-weight: lighter;
     width: 100%;
-}
-.top-nav ul{
-    display:inline;
-    position:fixed;
-    top:30px;
-    left:300px;
-    width:80%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
-    .top-nav ul li {
+    .top-nav a {
         text-decoration: none;
         color: #000080;
         list-style: none;
         font-size: 18px;
         font-weight: bold;
         cursor: pointer;
-        transition-duration: 1s;
-        z-index: 2;
-        display: inline;
-        margin-left:30px;
-        position:relative;
+        margin-left:20px;
     }
-    .top-nav ul a {
-        text-decoration:none;
-        color: #000080;
-        list-style: none;
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
-        transition-duration: 1s;
-        z-index: 2;
-    }
-
-
-        .top-nav ul a:hover {
-            color: #008080;
+        .top-nav a:hover {
+            color: red;
         }
-        .top-nav ul li::after {
-            content: "";
-            position:absolute;
-            top:43px;
-            background-color: red;
-            height: 1.5px;
-            width: 100%;
-            left: 0px;
-            bottom: -3.5px;
-            transform: scale(0,0);
-            transition: 0.3s ease-out;
-        }
-
-        .top-nav ul li:hover::after {
-            transform: scale(1,2);
-        }
-
-        .top-nav ul li:hover {
-            color: #008080;
-        }
-
-
 .nothover:hover::after {
     width: 0%;
     transition: none;

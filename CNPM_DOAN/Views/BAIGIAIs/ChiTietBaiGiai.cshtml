@@ -1,0 +1,31 @@
+﻿@model CNPM_DOAN.Models.BAIGIAI
+
+@{
+    ViewBag.Title = "ChiTietBaiGiai";
+}
+
+<link rel="stylesheet" href="~/MyCss/nopbaigiai.css" />
+<body>
+    <div class="khungnopbai">
+        @if (Model == null)
+        {
+            <p>@CNPM_DOAN.Resources.Language.Chưa_nộp</p>
+            <button onclick="create()">@CNPM_DOAN.Resources.Language.Nộp_bài</button>
+        }
+        else
+        {
+            <p>@CNPM_DOAN.Resources.Language.Tên_file: @Model.TenBaiGiai</p>
+            <p>@CNPM_DOAN.Resources.Language.Ngày_hoàn_thành: @Model.NgayHoanThanh</p>
+            if (Model.SoDiem == null)
+            {
+                <p>@CNPM_DOAN.Resources.Language.Chưa_có_điểm</p>
+            }
+            else
+            {
+                <p>@CNPM_DOAN.Resources.Language.Điểm: </p><span>@Model.SoDiem</span>
+            }
+            <button id="@Model.IDBaiGiai" onclick="edit(this.id)">@CNPM_DOAN.Resources.Language.Chỉnh_sửa_bài_nộp</button>
+        }
+
+    </div>
+</body>

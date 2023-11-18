@@ -1,0 +1,23 @@
+﻿@model IEnumerable<CNPM_DOAN.Models.NGUOIDUNG>
+
+@{
+    ViewBag.Title = "showUserTKB_PH";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/MyCss/nhomhoctap.css" />
+<body>
+    <script src="~/MyJs/todo.js"></script>
+    <div class="content">
+        <div class="content-group">
+            @foreach (var item in Model)
+            {
+                <div class="content-group-item" onclick="location.href='@Url.Action("showTKB_PH", "THOIKHOABIEUx", new { iduser = item.IDNguoiDung })'">
+                    <div class="content-group-item-name">
+                        <p>@item.TenNguoiDung</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>

@@ -1,0 +1,20 @@
+﻿<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<div class="modal-dialog" style="top:30%">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModal-label">@CNPM_DOAN.Resources.Language.Chỉnh_sửa_tài_liệu</h4>
+        </div>
+        <div class="modal-body">
+
+            @using (Html.BeginForm("editTaiLieu", "TAILIEUx", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <label>@CNPM_DOAN.Resources.Language.Chọn_tài_liệu:</label>
+                <input type="file" id="fileTaiLieu" name="fileTaiLieu" required />
+                <input type="hidden" name="idnguoinhan" value="@Session["HOCSINH"]" />
+                <input type="hidden" name="idtailieu" value="@Session["IDTAILIEU"]" />
+                <button type="submit" class="btn btn-success" style="margin-top:20px; margin-left:40%;">@CNPM_DOAN.Resources.Language.Xác_nhận</button>
+            }
+        </div>
+    </div>
+</div>

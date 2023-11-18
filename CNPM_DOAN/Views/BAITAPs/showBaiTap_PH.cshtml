@@ -1,0 +1,102 @@
+﻿@model IEnumerable<CNPM_DOAN.Models.BAITAP>
+
+@{
+    ViewBag.Title = "showToDo";
+}
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="~/MyCss/baitap.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+@if (TempData["message"] != null)
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["message"]')
+    </script>
+}
+<body>
+    <div class="modal fade" id="myModal" role="dialog" data-url="@Url.Action("TaoBTMoi","BAITAPs")">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Các bài tập đã giao</h1>
+        <div class="content-group">
+            @foreach (var item in Model)
+            {
+                <div class="oneItem">
+                    <div class="content-group-item">
+                        @if (item.LoaiTep.Contains("word"))
+                        {
+                            <img src="~/ImageIconFiles/WORD.png" class="imageFile" />
+                        }
+                        else if (item.LoaiTep.Contains("sheet"))
+                        {
+                            <img src="~/ImageIconFiles/EXCEL.png" class="imageFile" />
+                        }
+                        else if (item.LoaiTep.Contains("presentation"))
+                        {
+                            <img src="~/ImageIconFiles/POWERPOINT.png" class="imageFile" />
+                        }
+                        else
+                        {
+                            <img src="~/ImageIconFiles/NOTEPAD.png" class="imageFile" />
+                        }
+                        <div class="content-group-item-name">
+                            <h2>@item.TenBT</h2>
+                            <div style="margin:10px">
+                                <p style="margin-bottom:10px;">@CNPM_DOAN.Resources.Language.Hạn_nộp: @item.HanNop.ToString()</p>
+                                @if (item.TrangThai == "Chưa nộp")
+                                {
+                                    if (item.HanNop < DateTime.Now)
+                                    {
+                                        <b style="font-size: 10px; color: red; border-color: red">@CNPM_DOAN.Resources.Language.Quá_hạn </b>
+                                    }
+                                    else
+                                    {
+                                        <b style="font-size: 10px; border-color: red; color:gold">@CNPM_DOAN.Resources.Language.Còn_hạn</b>
+                                    }
+                                }
+                                else
+                                {
+                                    <b style="font-size: 10px; border-color: red; color:green">@CNPM_DOAN.Resources.Language.ResourceManager.GetString(item.TrangThai)</b>
+                                }
+                            </div>
+                        </div>
+                        <button class="deleteBtn" id="btnEditDelete" onclick="location.href='@Url.Action("DeleteBaiTap", "BAITAPs", new { idbaitap = item.IDBaiTap, iduser = item.IDNguoiNhan })'"><i class="fa-solid fa-trash"></i></button>
+                        <button class="editBtn" id="btnEditDelete" onclick="location.href='@Url.Action("updateBaiTap", "BAITAPs", new {idbaitap=item.IDBaiTap})'"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <p data-item-user="@Session["IDUSER"]"></p>
+                    </div>
+                </div>
+            }
+        </div>
+        <button id="addGroup" class="btnAddBaiTap">Tạo bài tập mới</button>
+        <button onclick="location.href='@Url.Action("showBieuDoBT_PH", "BAITAPs", new { idnguoinhan = ViewBag.NguoiNhan })'">Thống kê bài tập</button>
+    </div>
+</body>
+
+@section scripts{
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('.btnAddBaiTap').click(function () {
+            var url = $('#myModal').data('url');
+            $.get(url, function (data) {
+                $("#myModal").html(data);
+                $("#myModal").modal('show');
+            })
+        })
+    })
+        function edit(id) {
+            $.get("@Url.Action("editTaiLieu","TAILIEUx")/" + id,
+            function (data) { $('#editModal').html(data); })
+        $('#editModal').modal('show');
+    }
+    $('#editModal').on('hidden.bs.modal', function (e) {
+        $('.modal-body').html("")
+    })
+    </script>
+}

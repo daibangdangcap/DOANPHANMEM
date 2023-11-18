@@ -1,0 +1,29 @@
+﻿@model CNPM_DOAN.Models.THOIKHOABIEU
+
+@{
+    ViewBag.Title = "taoTKBMoi";
+    Layout = null;
+}
+
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<div class="modal-dialog" style="top:30%">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModal-label">@CNPM_DOAN.Resources.Language.Tạo_thời_khóa_biểu_mới</h4>
+        </div>
+        <div class="modal-body">
+
+            @using (Html.BeginForm("taoTKBMoi", "THOIKHOABIEUx", new { idnguoitao = Session["IDUSER"], idhocsinh = Session["IDHOCSINH"] }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <label>@CNPM_DOAN.Resources.Language.Tên_thời_khóa_biểu</label>
+                @Html.EditorFor(model => model.TenTKB, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.IDNguoiDung, Session["IDHOCSINH"])
+                <button type="submit" class="btn btn-success" style="margin-top:20px; margin-left:40%;">@CNPM_DOAN.Resources.Language.Xác_nhận</button>
+            }
+            <p class="text-danger">@Html.ValidationMessage("error")</p>
+        </div>
+    </div>
+</div>

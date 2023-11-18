@@ -1,0 +1,65 @@
+﻿h1 {
+    font-weight: normal;
+    float: left;
+}
+
+.contentTaiLieu {
+    position:fixed;
+    right:0px;
+    bottom:0px;
+    width: 95.5%;
+    height: 80%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.contentTaiLieu::-webkit-scrollbar {
+    display: none;
+}
+
+.itemTaiLieu {
+    height: 300px;
+    width: 300px;
+    float: left;
+    margin: 30px;
+    box-shadow: 0 1pt 5pt 0;
+    border-radius:5px;
+}
+
+.itemTaiLieuImage{
+    margin-left:50px;
+    width:200px;
+    height:200px;
+}
+
+.nameTaiLieu {
+    height:60px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    word-wrap: break-word;
+    margin: auto;
+    text-align: center;
+    font-size: 20px;
+}
+
+.btnTaiLieu{
+    width:50%;
+    float:left;
+    height:40px;
+    border-radius:0px 0px 5px 5px;
+}
+
+.btnAddTaiLieu {
+    float: right;
+    font-size: 20px;
+    margin-right: 50px;
+    border-radius: 0 20px;
+}
+
+.btnTaiXuong {
+    width: 100%;
+    float: left;
+    height: 40px;
+    border-radius: 0px 0px 5px 5px;
+}

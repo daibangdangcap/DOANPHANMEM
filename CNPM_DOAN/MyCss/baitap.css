@@ -1,0 +1,140 @@
+﻿.content{
+    position:fixed;
+    right:0px;
+}
+
+    .content h1 {
+        font-weight: normal;
+        margin-left: 10px;
+        margin-top: 25px;
+    }
+
+.content-group {
+    margin-top: 20px;
+    width: 100%;
+    height: 80%;
+    overflow: hidden;
+    overflow-y: scroll;
+    position:relative;
+}
+
+    .content-group::-webkit-scrollbar {
+        display: none;
+    }
+
+
+.content-group-item {
+
+    margin-left:10%;
+    width:80%;
+    height:fit-content;
+    margin-top: 10px;
+    background-color: white;
+    box-shadow: 3px 3px 5px gainsboro;
+    padding: 5px;
+    float:left;
+}
+
+.content-group-item-name {
+    padding-left:10px;
+    margin-left:10px;
+    position:relative;
+    float:left;
+    width:fit-content;
+    left:0px;
+}
+
+.box{
+    height:fit-content;
+    width:20%;
+}
+
+#tenbt {
+    font-size: 25px;
+    margin-top: 35px;
+    margin-left: 30px;
+    width: fit-content;
+}
+#trangthai {
+    font-size: 25px;
+    margin-top: 10px;
+    margin-left: 30px;
+    width: fit-content;
+}
+
+#nopbai {
+    margin-top: 30px;
+    margin-right: 10px;
+    padding: 10px 10px 10px 10px;
+    font-size: 15px;
+    float: right;
+    border-radius: 5px;
+    border: 0px;
+    box-shadow: 0 0 0pt 0.5pt #e5e5e5;
+}
+
+.taixuong:hover{
+    background-color:aliceblue;
+    transition-duration:0.5s;
+}
+
+.nopbai:hover {
+    background-color: wheat;
+    transition-duration: 0.5s;
+}
+
+.imageFile {
+    width: 130px;
+    height: 130px;
+    left:0px;
+    float:left;
+    margin-left:10px;
+}
+
+.oneItem {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;]
+}
+
+
+#btnEditDelete {
+    margin-top: 44px;
+    margin-right: 10px;
+    padding: 10px 10px 10px 10px;
+    font-size: 15px;
+    float: right;
+    border-radius: 5px;
+    border: none;
+    outline:none;
+}
+
+.deleteBtn {
+    background-color: transparent;
+    border: none;
+    outline:none;
+}
+
+    .deleteBtn:hover {
+        color: red;
+        background-color: transparent;
+        cursor: pointer;
+        transition-duration: 0.5s;
+    }
+
+.editBtn {
+    width: fit-content;
+    height: fit-content;
+    background-color: transparent;
+    border: none;
+    outline:none;
+    z-index: 2;
+}
+
+    .editBtn:hover {
+        color: burlywood;
+        background-color: transparent;
+        cursor: pointer;
+        transition-duration: 0.5s;
+        z-index: 2;
+    }

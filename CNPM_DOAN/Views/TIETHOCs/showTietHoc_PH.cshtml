@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CNPM_DOAN.Models.TIETHOC>
+
+@{
+    ViewBag.Title = "showTietHoc_PH";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@Styles.Render("~/Content/css")*@
+<link rel="stylesheet" href="~/MyCss/nhomhoctap.css" />
+
+
+<body>
+
+    <!-- Main View - Include jQuery Validation -->
+    @if (TempData["message"] != null)
+    {
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+        toastr.success('@TempData["message"]')
+        </script>
+    }
+    <div class="content">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @CNPM_DOAN.Resources.Language.Tên_môn_học
+                    </th>
+                    <th>
+                        @CNPM_DOAN.Resources.Language.Thứ
+                    </th>
+                    <th>
+                        @CNPM_DOAN.Resources.Language.Tiết_bắt_đầu
+                    </th>
+                    <th>
+                        @CNPM_DOAN.Resources.Language.Tiết_kết_thúc
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenMH)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Thu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TietBatDau)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TietKetThuc)
+                        </td>
+                        <td>
+                            <button class="btn btn-info" onclick="location.href='@Url.Action("editTietHoc","TIETHOCs", new {idtiethoc=item.IDMonHoc, tkb=item.IDTKB})'">@CNPM_DOAN.Resources.Language.Chỉnh_sửa</button>
+                            <button class="btn btn-danger" onclick="location.href='@Url.Action("deleteTietHoc","TIETHOCs", new {idtiethoc=item.IDMonHoc, tkb=item.IDTKB})'">@CNPM_DOAN.Resources.Language.Xóa</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button id="addGroup" onclick="location.href='@Url.Action("themTietHocMoi", "TIETHOCs", new { idhocsinh = Session["IDHOCSINH"] })'">@CNPM_DOAN.Resources.Language.Tạo_lịch_học</button>
+    </div>
+</body>

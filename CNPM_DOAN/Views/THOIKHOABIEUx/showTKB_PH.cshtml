@@ -49,6 +49,25 @@
                     $("#myModal").modal('show');
                 })
             })
+            $('#myModal').on('submit', 'form', function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: $(this).attr('method'),
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        // Update modal content with the response
+                        if (response.success) {
+                            // Redirect to the new view
+                            window.location.href = response.redirectUrl;
+                        } else {
+                            // Update modal content with the response
+                            $('#myModal .modal-dialog').html(response);
+                        }
+                    }
+                });
+            });
         })
     </script>
 }

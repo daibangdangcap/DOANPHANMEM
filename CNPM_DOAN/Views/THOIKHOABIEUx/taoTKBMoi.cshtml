@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "taoTKBMoi";
+    Layout = null;
 }
 
 
@@ -14,15 +15,15 @@
         </div>
         <div class="modal-body">
 
-            @using (Html.BeginForm("taoTKBMoi", "THOIKHOABIEUx", new { idnguoitao = Session["IDUSER"], idhocsinh = Session["IDHOCSINH"]}, FormMethod.Post))
+            @using (Html.BeginForm("taoTKBMoi", "THOIKHOABIEUx", new { idnguoitao = Session["IDUSER"], idhocsinh = Session["IDHOCSINH"] }, FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
                 <label>@CNPM_DOAN.Resources.Language.Tên_thời_khóa_biểu</label>
                 @Html.EditorFor(model => model.TenTKB, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenTKB, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.IDNguoiDung, Session["IDHOCSINH"])
                 <button type="submit" class="btn btn-success" style="margin-top:20px; margin-left:40%;">@CNPM_DOAN.Resources.Language.Xác_nhận</button>
             }
+            <p class="text-danger">@Html.ValidationMessage("error")</p>
         </div>
     </div>
 </div>

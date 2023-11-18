@@ -30,7 +30,7 @@
     <div class="overlay" id="overlayLo" onclick="showDangNhap()"></div>
     <div class="overlayRe" id="overlayRe" onclick="showDangKy()"></div>
     <div class="top-nav">
-        <div class="col-3"><a href=""><img src="~/MyImage/logo-removebg-preview.png" class="logo"></a></div>
+        <div class="col-3" style="margin:0px"><a href=""><img src="~/MyImage/logo-removebg-preview.png" class="logo"></a></div>
             <div class="col-7 text-start">
                 <a href="@Url.Action("gioithieu","Home")">@CNPM_DOAN.Resources.Language.GIỚI_THIỆU</a>
                 <a href="@Url.Action("lienhe","Home")">@CNPM_DOAN.Resources.Language.LIÊN_HỆ</a>
@@ -46,21 +46,23 @@
             }
             else
             {
-                <a href="@Url.Action("Informs", "NGUOIDUNGs", new { iduser = Session["IDUSER"] })" class="nothover">
-                    @if (Session["AVATAR"] != null)
-                    {
-                        <img src="@Url.Action("GetImage", "NGUOIDUNGs", new { id = Session["IDUSER"] })" style="width:50px;height:50px; position:absolute;right:10px; bottom:10px;border-radius:50%" />
-                    }
-                    else
-                    {
-                        <img src="~/MyImage/logo-removebg-preview.png" style="width:50px;height:50px; position:absolute;right:10px; bottom:10px;border-radius:50%" />
-                    }
-                </a>
+                <div class="col-2" style="padding-left:100px">
+                    <a href="@Url.Action("Informs", "NGUOIDUNGs", new { iduser = Session["IDUSER"] })" class="nothover">
+                        @if (Session["AVATAR"] != null)
+                        {
+                            <img src="@Url.Action("GetImage", "NGUOIDUNGs", new { id = Session["IDUSER"] })" class="img-change "/>
+                        }
+                        else
+                        {
+                            <img src="~/MyImage/logo-removebg-preview.png" class="img-change" />
+                        }
+                    </a>
+                </div>
             }
     </div>
     @if (Session["TENTAIKHOAN"] != null)
     {
-        <div class="menu" style="z-index:2">
+        <div class="menu" >
             @if (Session["IDUSER"].ToString().Contains("PH"))
             {
                 <div class="menuitemPH uno" style="overflow:hidden;">

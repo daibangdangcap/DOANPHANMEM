@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CNPM_DOAN.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace CNPM_DOAN.Controllers
 {
@@ -134,7 +135,7 @@ namespace CNPM_DOAN.Controllers
         }
         public ActionResult showTietHoc(string idtkb)
         {
-            var data = db.TIETHOCs.Where(s => s.IDTKB == idtkb);
+            var data = db.TIETHOCs.Where(s => s.IDTKB == idtkb).OrderBy(s => s.Thu).ThenBy(s => s.TietBatDau); ;
             Session["IDTKB"] = idtkb;
             return View(data.ToList());
         }
@@ -145,23 +146,141 @@ namespace CNPM_DOAN.Controllers
         [HttpPost]
         public ActionResult themTietHocMoi(FormCollection form)
         {
-            TIETHOC tIETHOC = new TIETHOC();
-            tIETHOC.TenMH = form["monhoc"];
-            tIETHOC.Thu = form["day"];
-            tIETHOC.TietBatDau = short.Parse(form["start"]);
-            tIETHOC.TietKetThuc=short.Parse(form["end"]);
-            tIETHOC.IDTKB = form["idtkbb"];
-            tIETHOC.IDMonHoc = "MH" + new RANDOMID().GenerateRandomString(2);
-            tIETHOC.IDNGUOITAO = form["iduser"];
-            db.TIETHOCs.Add(tIETHOC);
-            db.SaveChanges();
+            string idtkb = form["idtkbb"];
+            string thu = form["day"];
+            var findData = db.TIETHOCs.Where(mh=> mh.IDTKB == idtkb && mh.Thu == thu).ToList();
+            short start = short.Parse(form["start"]);
+            short end= short.Parse(form["end"]);
+            if (end < start)
+            {
+                ModelState.AddModelError("day", CNPM_DOAN.Resources.Language.Tiết_kết_thúc_phải_lớn_hơn_hoặc_bằng_tiết_bắt_đầu);
+                return View();
+            }
+            if(findData.Count==0)
+            {
+                TIETHOC tIETHOC = new TIETHOC();
+                tIETHOC.TenMH = form["monhoc"];
+                tIETHOC.Thu = form["day"];
+                tIETHOC.TietBatDau = short.Parse(form["start"]);
+                tIETHOC.TietKetThuc = short.Parse(form["end"]);
+                tIETHOC.IDTKB = form["idtkbb"];
+                tIETHOC.IDMonHoc = "MH" + new RANDOMID().GenerateRandomString(2);
+                tIETHOC.IDNGUOITAO = form["iduser"];
+                db.TIETHOCs.Add(tIETHOC);
+                db.SaveChanges();
+                TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_thành_công_;
+                return RedirectToAction("showTietHoc_PH", "TIETHOCs", new { idtkb = form["idtkbb"] });
+            }
+            else
+            {
+                bool duplicate = true;
+                foreach (TIETHOC mh in findData)
+                {
+                    if ((mh.TietBatDau < start && mh.TietKetThuc < start && mh.TietBatDau<end &&mh.TietKetThuc<end) || (mh.TietBatDau > start && mh.TietKetThuc > start && mh.TietBatDau > end && mh.TietKetThuc > end))
+                    {
+                        duplicate = false;
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("day", CNPM_DOAN.Resources.Language.Tiết_học_trùng_với_tiết_học_của_một_môn_khác__Vui_lòng_kiểm_tra_lại_thời_khóa_biểu_của_bạn_);
+                        return View();
+                    }
+                }
+                if (duplicate == false)
+                {
+                    TIETHOC tIETHOC = new TIETHOC();
+                    tIETHOC.TenMH = form["monhoc"];
+                    tIETHOC.Thu = form["day"];
+                    tIETHOC.TietBatDau = short.Parse(form["start"]);
+                    tIETHOC.TietKetThuc = short.Parse(form["end"]);
+                    tIETHOC.IDTKB = form["idtkbb"];
+                    tIETHOC.IDMonHoc = "MH" + new RANDOMID().GenerateRandomString(2);
+                    tIETHOC.IDNGUOITAO = form["iduser"];
+                    db.TIETHOCs.Add(tIETHOC);
+                    db.SaveChanges();
+                    TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_thành_công_;
+                    return RedirectToAction("showTietHoc_PH", "TIETHOCs", new { idtkb = form["idtkbb"] });
+                }
+            }
             return RedirectToAction("showTietHoc_PH", "TIETHOCs", new {idtkb=form["idtkbb"] });
         }
         public ActionResult showTietHoc_PH(string idtkb)
         {
-            var data = db.TIETHOCs.Where(s => s.IDTKB == idtkb);
+            var data = db.TIETHOCs.Where(s => s.IDTKB == idtkb).OrderBy(s=> s.Thu).ThenBy(s=>s.TietBatDau);
             Session["IDTKB"] = idtkb;
             return View(data.ToList());
+        }
+
+        public ActionResult deleteTietHoc(string idtiethoc, string tkb)
+        {
+            var data = db.TIETHOCs.Find(idtiethoc);
+            db.TIETHOCs.Remove(data);
+            db.SaveChanges();
+            TempData["message"] = CNPM_DOAN.Resources.Language.Xóa_thành_công_;
+            return RedirectToAction("showTietHoc_PH", "TIETHOCs", new {idtkb=tkb});
+        }
+
+        public ActionResult editTietHoc(string idtiethoc, string tkb)
+        {
+            Session["IDTKB"] = tkb;
+            Session["IDTIETHOC"] = idtiethoc;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult editTietHoc(FormCollection form)
+        {
+            string idtkb = form["idtkb"];
+            string thu = form["day"];
+            var findData = db.TIETHOCs.Where(mh => mh.IDTKB == idtkb && mh.Thu == thu).ToList();
+            short start = short.Parse(form["start"]);
+            short end = short.Parse(form["end"]);
+            if (end < start)
+            {
+                ModelState.AddModelError("day", CNPM_DOAN.Resources.Language.Tiết_kết_thúc_phải_lớn_hơn_hoặc_bằng_tiết_bắt_đầu);
+                return View();
+            }
+            if (findData.Count == 0)
+            {
+                var tIETHOC = db.TIETHOCs.Find(form["idtiethoc"]);
+                tIETHOC.TenMH = form["monhoc"];
+                tIETHOC.Thu = form["day"];
+                tIETHOC.TietBatDau = short.Parse(form["start"]);
+                tIETHOC.TietKetThuc = short.Parse(form["end"]);
+                db.Entry(tIETHOC).State = EntityState.Modified;
+                db.SaveChanges();
+                TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_thành_công_;
+                return RedirectToAction("showTietHoc_PH", "TIETHOCs", new { idtkb = form["idtkb"] });
+            }
+            else
+            {
+                bool duplicate = true;
+                foreach (TIETHOC mh in findData)
+                {
+                    if ((mh.TietBatDau < start && mh.TietKetThuc < start && mh.TietBatDau < end && mh.TietKetThuc < end) || (mh.TietBatDau > start && mh.TietKetThuc > start && mh.TietBatDau > end && mh.TietKetThuc > end))
+                    {
+                        duplicate = false;
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("day", CNPM_DOAN.Resources.Language.Tiết_học_trùng_với_tiết_học_của_một_môn_khác__Vui_lòng_kiểm_tra_lại_thời_khóa_biểu_của_bạn_);
+                        return View();
+                    }
+                }
+                if (duplicate == false)
+                {
+                    var tIETHOC = db.TIETHOCs.Find(form["idtiethoc"]);
+                    tIETHOC.TenMH = form["monhoc"];
+                    tIETHOC.Thu = form["day"];
+                    tIETHOC.TietBatDau = short.Parse(form["start"]);
+                    tIETHOC.TietKetThuc = short.Parse(form["end"]);
+                    db.Entry(tIETHOC).State = EntityState.Modified;
+                    db.SaveChanges();
+                    TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_thành_công_;
+                    return RedirectToAction("showTietHoc_PH", "TIETHOCs", new { idtkb = form["idtkb"] });
+                }
+            }
+            return RedirectToAction("showTietHoc_PH", "TIETHOCs", new { idtkb = form["idtkb"] });
         }
     }
 }

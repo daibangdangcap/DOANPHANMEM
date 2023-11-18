@@ -160,6 +160,7 @@ namespace CNPM_DOAN.Controllers
                 mUCTIEU.TenMucTieu = ndmuctieu;
                 db.MUCTIEUx.Add(mUCTIEU);
                 db.SaveChanges();
+                TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_mục_tiêu_mới_thành_công;
                 return RedirectToAction("showMucTieu", "MUCTIEUx", new { idus = id });
             }
             return View();
@@ -170,6 +171,7 @@ namespace CNPM_DOAN.Controllers
             var data = db.MUCTIEUx.Find(idMT);
             db.MUCTIEUx.Remove(data);
             db.SaveChanges();
+            TempData["message"] = CNPM_DOAN.Resources.Language.Xóa_mục_tiêu_thành_công;
             return RedirectToAction("showMucTieu", "MUCTIEUx", new {idus=id});
         }
         public ActionResult showMucTieu_PH(string iduser) 

@@ -11,7 +11,8 @@ namespace CNPM_DOAN.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class THOIKHOABIEU
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,7 @@ namespace CNPM_DOAN.Models
         }
     
         public string IDTKB { get; set; }
+        [Required]
         public string TenTKB { get; set; }
         public string IDNguoiDung { get; set; }
     

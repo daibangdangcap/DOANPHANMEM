@@ -1,0 +1,67 @@
+﻿@model CNPM_DOAN.Models.TIETHOC
+
+@{
+    ViewBag.Title = "editTietHoc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/css")
+<div class="content">
+    <div style="margin-left:30px; margin-top:30px">
+        <h2>@CNPM_DOAN.Resources.Language.Chỉnh_sửa_tiết_học</h2>
+        @using (Html.BeginForm("editTietHoc", "TIETHOCs", FormMethod.Post))
+        {
+            <input type="hidden" name="idtkb" value="@Session["IDTKB"]" />
+            <input type="hidden" name="idtiethoc" value="@Session["IDTIETHOC"]" />
+            <div class="mb-3">
+                <label for="class form-label">@CNPM_DOAN.Resources.Language.Tên_môn_học: </label>
+                <input class="form-control" type="text" id="mhoc" name="monhoc" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">@CNPM_DOAN.Resources.Language.Thứ</label>
+                <select class="form-select" name="day">
+                    <option value="2"> @CNPM_DOAN.Resources.Language.Thứ_2 </option>
+                    <option value="3"> @CNPM_DOAN.Resources.Language.Thứ_3 </option>
+                    <option value="4"> @CNPM_DOAN.Resources.Language.Thứ_4 </option>
+                    <option value="5"> @CNPM_DOAN.Resources.Language.Thứ_5 </option>
+                    <option value="6"> @CNPM_DOAN.Resources.Language.Thứ_6 </option>
+                    <option value="7"> @CNPM_DOAN.Resources.Language.Thứ_7 </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">@CNPM_DOAN.Resources.Language.Tiết_bắt_đầu</label>
+                <select class="form-control" name="start">
+                    <option value="1"> 1 </option>
+                    <option value="2"> 2 </option>
+                    <option value="3"> 3 </option>
+                    <option value="4"> 4 </option>
+                    <option value="5"> 5 </option>
+                    <option value="6"> 6 </option>
+                    <option value="7"> 7 </option>
+                    <option value="8"> 8 </option>
+                    <option value="9"> 9 </option>
+                    <option value="10"> 10 </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">@CNPM_DOAN.Resources.Language.Tiết_kết_thúc</label>
+                <select class="form-control" name="end">
+                    <option value="1"> 1 </option>
+                    <option value="2"> 2 </option>
+                    <option value="3"> 3 </option>
+                    <option value="4"> 4 </option>
+                    <option value="5"> 5 </option>
+                    <option value="6"> 6 </option>
+                    <option value="7"> 7 </option>
+                    <option value="8"> 8 </option>
+                    <option value="9"> 9 </option>
+                    <option value="10"> 10 </option>
+                </select>
+            </div>
+            <p class="text-danger">@Html.ValidationMessage("day")</p>
+            <button type="submit" class="btn btn-primary">@CNPM_DOAN.Resources.Language.Xác_nhận</button>
+        }
+
+    </div>
+</div>
+
+

@@ -1,4 +1,7 @@
-﻿
+﻿.content{
+    position:fixed;
+    right:0px;
+}
 
     .content h1 {
         font-weight: normal;
@@ -87,3 +90,51 @@
     float:left;
     margin-left:10px;
 }
+
+.oneItem {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;]
+}
+
+
+#btnEditDelete {
+    margin-top: 44px;
+    margin-right: 10px;
+    padding: 10px 10px 10px 10px;
+    font-size: 15px;
+    float: right;
+    border-radius: 5px;
+    border: none;
+    outline:none;
+}
+
+.deleteBtn {
+    background-color: transparent;
+    border: none;
+    outline:none;
+}
+
+    .deleteBtn:hover {
+        color: red;
+        background-color: transparent;
+        cursor: pointer;
+        transition-duration: 0.5s;
+    }
+
+.editBtn {
+    width: fit-content;
+    height: fit-content;
+    background-color: transparent;
+    border: none;
+    outline:none;
+    z-index: 2;
+}
+
+    .editBtn:hover {
+        color: burlywood;
+        background-color: transparent;
+        cursor: pointer;
+        transition-duration: 0.5s;
+        z-index: 2;
+    }

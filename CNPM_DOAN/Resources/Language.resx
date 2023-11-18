@@ -285,6 +285,12 @@
   <data name="Thứ 7" xml:space="preserve">
     <value>Thứ 7</value>
   </data>
+  <data name="Tiếng Anh" xml:space="preserve">
+    <value>Tiếng Anh</value>
+  </data>
+  <data name="Tiếng Việt" xml:space="preserve">
+    <value>Tiếng Việt</value>
+  </data>
   <data name="Tiết bắt đầu" xml:space="preserve">
     <value>Tiết bắt đầu</value>
   </data>
@@ -361,7 +367,7 @@
     <value>Xóa nhiệm vụ thành công</value>
   </data>
   <data name="Xóa thành công!" xml:space="preserve">
-    <value>Delete successfully!</value>
+    <value>Xóa thành công!</value>
   </data>
   <data name="Xóa tài khoản" xml:space="preserve">
     <value>Xóa tài khoản</value>

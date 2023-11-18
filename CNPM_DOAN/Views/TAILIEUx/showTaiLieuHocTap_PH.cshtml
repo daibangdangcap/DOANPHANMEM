@@ -35,11 +35,14 @@
 
 
 
-    <div style="margin-left: 100px; margin-top: 30px;">
-        <h1>@CNPM_DOAN.Resources.Language.Danh_sách_tài_liệu_học_tập</h1>
-        <button class="btnAddTaiLieu btn btn-outline-secondary">@CNPM_DOAN.Resources.Language.Thêm_tài_liệu_học_tập_mới</button>
-    </div>
-    <div class="contentTaiLieu">
+    @if (Session["IDUSER"].ToString().Contains("PH"))
+    {
+        <div style="margin-left: 100px; margin-top: 30px;">
+            <h1>@CNPM_DOAN.Resources.Language.Danh_sách_tài_liệu_học_tập</h1>
+            <button class="btnAddTaiLieu btn btn-outline-secondary">@CNPM_DOAN.Resources.Language.Thêm_tài_liệu_học_tập_mới</button>
+        </div>
+    }
+    <div class="contentTaiLieu" style="z-index:-2">
         @foreach (var item in Model)
         {
             <div class="itemTaiLieu">
@@ -69,8 +72,15 @@
                 }
                 <p class="nameTaiLieu">@item.TenTaiLieu</p>
                 <div>
-                    <button type="button" class="btnTaiLieu btn btn-outline-primary" id="@item.IDTaiLieu" onclick="edit(this.id)">@CNPM_DOAN.Resources.Language.Chỉnh_sửa_tài_liệu</button>
-                    <button class="btnTaiLieu btn btn-outline-danger" onclick="location.href='@Url.Action("deleteTaiLieu", "TAILIEUx", new {idtailieu=item.IDTaiLieu, idnguoinhan=item.IDNguoiTao})'">@CNPM_DOAN.Resources.Language.Xóa_tài_liệu</button>
+                    @if (Session["IDUSER"].ToString().Contains("PH"))
+                    {
+                        <button class="btnTaiLieu btn btn-outline-danger" onclick="location.href='@Url.Action("deleteTaiLieu", "TAILIEUx", new { idtailieu = item.IDTaiLieu, idnguoinhan = item.IDNguoiTao })'">@CNPM_DOAN.Resources.Language.Xóa_tài_liệu</button>
+                        <button type="button" class="btnTaiLieu btn btn-outline-primary" id="@item.IDTaiLieu" onclick="edit(this.id)">@CNPM_DOAN.Resources.Language.Chỉnh_sửa_tài_liệu</button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btnTaiXuong btn btn-outline-info" id="@item.IDTaiLieu" onclick="location.href='@Url.Action("taiTaiLieu", "TAILIEUx", new {idtailieu=item.IDTaiLieu})'">@CNPM_DOAN.Resources.Language.Tải_xuống <i class="fa-solid fa-download" style="margin-left: 10px"></i></button>
+                    }
                 </div>
             </div>
         }

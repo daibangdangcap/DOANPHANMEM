@@ -10,7 +10,11 @@
 <link rel="stylesheet" href="~/MyCss/todo.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 <body>
-
+    <div>
+    <p class="" style="margin-left:120px; font-size:40px">Danh sách nhiệm vụ</p>
+    </div>
+    <div class="inputMission" style="z-index:1">
+    </div>
     @if (TempData["message"] != null)
     {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -26,8 +30,8 @@
                 <div class="modal-content"></div>
             </div>
         </div>
-        
-        
+
+
         <div class="modal fade" id="editModal" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content"></div>
@@ -47,16 +51,16 @@
                     }
                     else
                     {<p style="font-size: 12px; width: fit-content;">@CNPM_DOAN.Resources.Language.Còn_hạn</p>}
-                    <button class="deleteTrash" style="z-index:0" onclick="location.href='@Url.Action("DeleteToDo", "TODOes", new { IDToDo = item.IDToDo, id = Session["IDUSER"] })'"><i class="fa-solid fa-trash"></i></button>
-                    <button class="editTodo" style="z-index:0" id="@item.IDToDo" onclick="edit(this.id)"><i class="fa-solid fa-pen"></i></button>
+                    <button class="deleteTrash" style="z-index:0" onclick="location.href='@Url.Action("DeleteToDo", "TODOes", new { IDToDo = item.IDToDo, id = Session["IDUSER"] })'"><i class="fa-solid fa-trash" style="color:red"></i></button>
+                    <button class="editTodo" style="z-index:0" id="@item.IDToDo" onclick="edit(this.id)"><i class="fa-solid fa-pen" style="color:forestgreen"></i></button>
                 </div>
 
             }
 
         </div>
-        <div class="inputMission" style="z-index:1">
-            <button class="btn">Giao nhiệm vụ</button>
-        </div>
+    </div>
+    <div style="position:absolute;top:90%;right:15%">
+        <button class="button-style">Giao nhiệm vụ</button>
     </div>
 </body>
 @section scripts{

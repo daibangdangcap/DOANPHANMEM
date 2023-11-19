@@ -285,12 +285,6 @@
   <data name="Thứ 7" xml:space="preserve">
     <value>Saturday</value>
   </data>
-  <data name="Tiếng Anh" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="Tiếng Việt" xml:space="preserve">
-    <value>Vietnamese</value>
-  </data>
   <data name="Tiết bắt đầu" xml:space="preserve">
     <value>Class begins</value>
   </data>

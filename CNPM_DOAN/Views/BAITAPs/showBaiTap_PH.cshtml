@@ -74,8 +74,11 @@
                 </div>
             }
         </div>
-        <button id="addGroup" class="btnAddBaiTap">Tạo bài tập mới</button>
-        <button onclick="location.href='@Url.Action("showBieuDoBT_PH", "BAITAPs", new { idnguoinhan = ViewBag.NguoiNhan })'">Thống kê bài tập</button>
+        <div class=" container d-flex justify-content-end align-items-end">
+            <button id="addGroup" class="btnAddBaiTap button-style me-5" style="background:green">Tạo bài tập mới</button>
+            <button onclick="location.href='@Url.Action("showBieuDoBT_PH", "BAITAPs", new { idnguoinhan = ViewBag.NguoiNhan })'" class="button-style" style="background:blue;">Thống kê bài tập</button>
+        </div>
+
     </div>
 </body>
 

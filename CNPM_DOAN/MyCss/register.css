@@ -130,3 +130,11 @@ table {
 .tbdangki select {
     font-size: 15px;
 }
+
+
+.btdangki:disabled{
+    cursor:not-allowed;
+}
+.btdangki:hover:after:disabled {
+    width: 0%;
+}

@@ -18,7 +18,10 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-    <a href="@Url.Action("showBaiTap", "BAITAPs", new { iduser = Session["IDUSER"] })" style="color:white">Quay về trang chủ</a>
+    <div class="container d-flex" style="font-size:30px">
+        <i></i>
+        <a href="@Url.Action("showBaiTap", "BAITAPs", new { iduser = Session["IDUSER"] })">Quay về trang chủ</a>
+    </div>
     <div class="container emp-profile">
         <div class="row">
             <div class="col-md-4">

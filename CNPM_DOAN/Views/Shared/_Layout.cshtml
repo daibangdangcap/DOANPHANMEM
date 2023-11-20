@@ -34,8 +34,8 @@
             <div class="col-7 text-start">
                 <a href="@Url.Action("gioithieu","Home")">@CNPM_DOAN.Resources.Language.GIỚI_THIỆU</a>
                 <a href="@Url.Action("lienhe","Home")">@CNPM_DOAN.Resources.Language.LIÊN_HỆ</a>
-                <a href="@Url.Action("changeLanguage", "Home", new {language="en"})">English</a>
-                <a href="@Url.Action("changeLanguage", "Home", new {language="vn"})">Vietnamese</a>
+                <a href="@Url.Action("changeLanguage", "Home", new {language="en"})">@CNPM_DOAN.Resources.Language.Tiếng_Anh</a>
+                <a href="@Url.Action("changeLanguage", "Home", new {language="vn"})">@CNPM_DOAN.Resources.Language.Tiếng_Việt</a>
             </div>
             @if (Session["TENTAIKHOAN"] == null)
             {
@@ -124,7 +124,7 @@
                 </div>
 
                 <div class="menuitem cuatro" style="overflow:hidden;">
-                    <a href="@Url.Action("showTaiLieuHocTap", "TAILIEUx", new { idhocsinh = Session["IDUSER"] })">
+                    <a href="@Url.Action("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = Session["IDUSER"] })">
                         <i class="fa-solid fa-user-group" style="color: #FFFAFA;"></i>
                         <span>@CNPM_DOAN.Resources.Language.Tài_liệu_học_tập</span>
                     </a>

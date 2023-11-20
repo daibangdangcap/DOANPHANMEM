@@ -155,3 +155,11 @@
         background-color: transparent;
         cursor: pointer;
     }
+.button-style {
+    border-radius: 5px;
+    width: 160px;
+    height: 60px;
+    font-size: 18px;
+    color: black;
+    background: #66CCFF;
+}

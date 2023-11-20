@@ -764,6 +764,24 @@ namespace CNPM_DOAN.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tiếng Anh.
+        /// </summary>
+        public static string Tiếng_Anh {
+            get {
+                return ResourceManager.GetString("Tiếng Anh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tiếng Việt.
+        /// </summary>
+        public static string Tiếng_Việt {
+            get {
+                return ResourceManager.GetString("Tiếng Việt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tiết bắt đầu.
         /// </summary>
         public static string Tiết_bắt_đầu {
@@ -882,7 +900,7 @@ namespace CNPM_DOAN.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete successfully!.
+        ///   Looks up a localized string similar to Xóa thành công!.
         /// </summary>
         public static string Xóa_thành_công_ {
             get {

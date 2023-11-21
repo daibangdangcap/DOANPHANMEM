@@ -1,83 +1,259 @@
 ﻿@model CNPM_DOAN.Models.NGUOIDUNG
 
-<div class="border register" id="register" style="margin-top:50px">
-    <form action="/NGUOIDUNGs/Register" method="post">
+<style>
+    .lengthNotification {
+        display: none;
+        color: red;
+    }
+    .error {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="border" id="register">
+    <form action="/NGUOIDUNGs/Register" method="post" id="form">
         @Html.AntiForgeryToken()
-            <h1>Đăng Ký tài khoản</h1>
-            <div class="txt-field " style="margin-bottom: 50px;">
-                <input type="text" name="name" class="input-change" required oninvalid="this.setCustomValidity('Họ và tên không được rỗng')">
-                <span></span>
-                <label>Họ và tên</label>
+        <h1>Đăng Ký tài khoản</h1>
+        <div class="txt-field ">
+            <input id="name" type="text" name="name" class="input-change" required oninvalid="this.setCustomValidity('Họ và tên không được rỗng')" oninput="setCustomValidity(''); nameValidate()" maxlength="30">
+            <span></span>
+            <label>Họ và tên</label>
+        </div>
+        <div class="error">
+            <span class="lengthNotification"></span>
+        </div>
+        <div class="txt-field ">
+            <input id="email" type="text" name="email" class="input-change" required oninvalid="this.setCustomValidity('Email không được rỗng')" oninput="setCustomValidity(''); emailValidate()" maxlength="100">
+            <span></span>
+            <label>Email</label>
+        </div>
+        <div class="error">
+            <span class="lengthNotification"></span>
+        </div>
+        <div class="txt-field ">
+            <input id="taikhoan" type="text" name="username" class="input-change" required oninvalid="this.setCustomValidity('Tên tài khoản không được rỗng')" oninput="setCustomValidity(''); taikhoanValidate()" maxlength="50">
+            <span></span>
+            <label>Tài khoàn</label>
+        </div>
+        <div class="error">
+            <span class="lengthNotification"></span>
+        </div>
+        <div class="txt-field ">
+            <input id="matkhau" type="password" name="password" class="input-change" required oninvalid="this.setCustomValidity('Tên mật khẩu không được rỗng')" oninput="setCustomValidity(''); passwordValidate()" maxlength="50">
+            <span></span>
+            <label>Mật khẩu</label>
+        </div>
+        <div class="error">
+            <span class="lengthNotification"></span>
+        </div>
+        <div class="txt-field ">
+            <input id="rematkhau" type="password" name="repassword" class="input-change" required oninvalid="this.setCustomValidity('Bắt buộc nhập lại mật khẩu')" oninput="setCustomValidity(''); checkPassword()" maxlength="50">
+            <span></span>
+            <label>Xác nhận mật khẩu</label>
+        </div>
+        <div class="error">
+            <span class="lengthNotification"></span>
+        </div>
+        <div class="d-flex row">
+            <div class="col-4">
+                <p style="padding:0 0 0 5px ; margin:0px">Ngày sinh</p>
             </div>
-            <div class="txt-field " style="margin-bottom: 50px;">
-                <input type="text" name="email" class="input-change" required oninvalid="this.setCustomValidity('Email không được rỗng')">
-                <span></span>
-                <label>Email</label>
+            <div class="col-8">
+                <div class="txt-field ">
+                    <input id="ngaysinh" type="date" name="birthday" class="input-change" style="width:100%;" required oninvalid="this.setCustomValidity('Bắt buộc nhập ngày sinh')" oninput="setCustomValidity(''); ngaysinhValidate()">
+                    <span></span>
+                </div>
             </div>
-            <div>
-            </div>
+        </div>
+        <div class="error">
+            <span class="lengthNotification"></span>
+        </div>
 
-            <div class="txt-field " style="margin-bottom: 50px;">
-                <input type="text" name="username" class="input-change" required oninvalid="this.setCustomValidity('Tên tài khoản không được rỗng')">
-                <span></span>
-                <label>Tài khoàn</label>
+        <div class="d-flex row" style="margin-bottom:50px">
+            <div class="col-4">
+                <p style="padding:0 0 0 5px ; margin:0px">Giới tính</p>
             </div>
-            <div class="txt-field " style="margin-bottom: 50px;">
-                <input type="password" name="password" class="input-change" required oninvalid="this.setCustomValidity('Tên tài khoản không được rỗng')">
-                <span></span>
-                <label>Mật khẩu</label>
-            </div>
-            <div class="txt-field " style="margin-bottom: 50px;">
-                <input type="password" name="repassword" class="input-change" required id="repassword" onsubmit="validate()">
-                <span></span>
-                <label>Xác nhận mật khẩu</label>
-            </div>
-            <div class="d-flex row" style="margin-bottom:50px;">
-                <div class="col-4">
-                    <p style="padding:0 0 0 5px ; margin:0px">Ngày sinh</p>
+            <div class="col-8 d-flex">
+                <div>
+                    <input class="radio-button"
+                           type="radio"
+                           name="gender"
+                           value="Nam"
+                           required/>
+                    <span class="span-change">Nam</span>
                 </div>
-                <div class="col-8">
-                    <div class="txt-field ">
-                        <input type="date" name="birthday" class="input-change" style="width:100%;" required id="repassword" onsubmit="validate()">
-                        <span></span>
-                    </div>
-                </div>
-               
-            </div>
-
-            <div class="d-flex row" style="margin-bottom:50px">
-                <div class="col-4">
-                    <p style="padding:0 0 0 5px ; margin:0px">Giới tính</p>
-                </div>
-                <div class="col-8 d-flex">
-                    <div>
-                        <input class="radio-button"
-                               type="radio"
-                               name="gender"
-                               value="Nam"
-                               required />
-                        <span class="span-change">Nam</span>
-                    </div>
-                    <div>
-                        <input class="radio-button"
-                               type="radio"
-                               name="gender"
-                               value="Nữ"
-                               required />
-                        <span class="span-change">Nữ</span><br />
-                    </div>
+                <div>
+                    <input class="radio-button"
+                           type="radio"
+                           name="gender"
+                           value="Nữ"
+                           required />
+                    <span class="span-change">Nữ</span><br />
                 </div>
             </div>
+        </div>
         <div class="d-flex align-items-center justify-content-center">
-            <button type="submit" class="btdangki"><span>Đăng ký</span></button>
+            <button id="submit" type="submit" class="btdangki" disabled><span>Đăng ký</span></button>
         </div>
     </form>
 </div>
 
 <script>
-    function validate() {
-        var x = document.getElementById("password").value;
-        var y = document.getElementById("repassword").value;
-        x != y ? document.getElementById("repassword").setCustomValidity("Mật khẩu nhập lại không trùng khớp") : document.getElementById("repassword").setCustomValidity('');
+    function containsNumberLoop(str) {
+        // Loop through each character in the string
+        for (var i = 0; i < str.length; i++) {
+            // Check if the character is a digit
+            if (!isNaN(parseInt(str[i]))) {
+                return true; // If a digit is found, return true
+            }
+        }
+        return false; // No digit found in the string
+    }
+    function nameValidate() {
+        var name = document.getElementById('name');
+        var lengthNotification = document.querySelectorAll('.lengthNotification');
+        if (name.value.length > 0) {
+            var hasNumberLoop = containsNumberLoop(name.value);
+            lengthNotification[0].style.display = 'block';
+            if (hasNumberLoop) lengthNotification[0].innerHTML = 'Họ tên không được chứa số'
+            else if (name.value.length > 20) {
+                var numName = 30 - name.value.length;
+                if (numName > 0) {
+                    lengthNotification[0].innerHTML = 'Số lượng ký tự còn lại: ' + numName;
+                }
+                else {
+                    lengthNotification[0].innerHTML = 'Họ tên chỉ được nhập đủ 30 ký tự'
+                }
+            } else {
+                lengthNotification[0].style.display = 'none'; allValid()
+            }
+        }
+        else lengthNotification[0].style.display = 'none';
+        
+    }
+
+    function containsAtSymbol(str) {
+    return str.includes('');
+}
+
+    function emailValidate() {
+        var email = document.getElementById('email');
+        var lengthNotification = document.querySelectorAll('.lengthNotification');
+        if (email.value.length > 0) {
+            var containsAtSymbol = email.value.includes('@@gmail.com');
+            lengthNotification[1].style.display = 'block';
+            if (containsAtSymbol === false) lengthNotification[1].innerHTML = 'Email không đúng định dạng';
+            else if (email.value.length > 90) {
+                var numName = 100 - email.value.length;
+                if (numName > 0) {
+                    lengthNotification[1].innerHTML = 'Số lượng ký tự còn lại: ' + numName;
+                }
+                else {
+                    lengthNotification[1].innerHTML = 'Họ tên chỉ được nhập đủ 30 ký tự'
+                }
+            } else {
+                lengthNotification[1].style.display = 'none'; allValid()
+            }
+        }
+        else lengthNotification[1].style.display = 'none'; 
+        
+    }
+
+    function taikhoanValidate() {
+        var taikhoan = document.getElementById('taikhoan');
+        var lengthNotification = document.querySelectorAll('.lengthNotification');
+        if (taikhoan.value.length > 0) {
+            var containsNumber = /\d/.test(taikhoan.value);
+            var containsCharacter = /[a-zA-Z]/.test(taikhoan.value);
+            lengthNotification[2].style.display = 'block';
+            if (containsNumber === false || containsCharacter === false) lengthNotification[2].innerHTML = 'Tài khoản phải bao gồm cả chữ và số';
+            else if (taikhoan.value.length > 30) {
+                var numName = 50 - taikhoan.value.length;
+                if (numName > 0) {
+                    lengthNotification[2].innerHTML = 'Số lượng ký tự còn lại: ' + numName;
+                }
+                else {
+                    lengthNotification[2].innerHTML = 'Tên tài khoản chỉ được nhập đủ 50 ký tự'
+                }
+            } else {
+                lengthNotification[2].style.display = 'none'; allValid()
+            }
+        }
+        else lengthNotification[2].style.display = 'none'; 
+        
+    }
+
+    function passwordValidate() {
+        var password = document.getElementById('matkhau');
+        var lengthNotification = document.querySelectorAll('.lengthNotification');
+        if (password.value.length > 0) {
+            var containsNumber = /\d/.test(password.value);
+            var containsCharacter = /[a-zA-Z]/.test(password.value);
+            lengthNotification[3].style.display = 'block';
+            if (containsNumber === false || containsCharacter === false) lengthNotification[3].innerHTML = 'Mật khẩu phải bao gồm cả chữ và số';
+            else if (password.value.length > 30) {
+                var numName = 50 - password.value.length;
+                if (numName > 0) {
+                    lengthNotification[3].innerHTML = 'Số lượng ký tự còn lại: ' + numName;
+                }
+                else {
+                    lengthNotification[3].innerHTML = 'Mật khẩu chỉ được nhập đủ 50 ký tự'
+                }
+            } else {
+                lengthNotification[3].style.display = 'none'; allValid()
+            }
+        }
+        else lengthNotification[3].style.display = 'none';
+        
+    }
+
+    function checkPassword() {
+        var password = document.getElementById('matkhau');
+        var repassword = document.getElementById('rematkhau');
+        var lengthNotification = document.querySelectorAll('.lengthNotification');
+        if (repassword.value.length > 0) {
+            lengthNotification[4].style.display = 'block';
+            if (repassword.value !== password.value) {
+                lengthNotification[4].innerHTML = 'Xác nhận mật khẩu phải trùng với mật khẩu';
+            }
+            else lengthNotification[4].style.display = 'none'; allValid()
+        }
+        else lengthNotification[4].style.display = 'none'; 
+        
+    }
+
+    function ngaysinhValidate() {
+        var inputDate = document.getElementById('ngaysinh').value;
+        var lengthNotification = document.querySelectorAll('.lengthNotification');
+        // Get the current date in the format 'YYYY-MM-DD'
+        var currentDate = new Date().toISOString().split('T')[0];
+
+        // Compare the input date with the current date
+        if (inputDate > currentDate || new Date(inputDate).getFullYear() > 2017) {
+            lengthNotification[5].style.display = 'block';
+            lengthNotification[5].innerHTML='Năm sinh phải bé hơn năm 2017'
+        }
+        else lengthNotification[5].style.display = 'none'; allValid()
+        
+    }
+
+    function allValid() {
+        var lengthNotification = document.querySelectorAll('.lengthNotification');
+        var button = document.getElementById('submit')
+        var count = 0;
+        lengthNotification.forEach(item => {
+            if (item.style.display === 'block') {
+                count++;
+            }
+        })
+        if (count === 6) {
+            button.disabled = true;
+            button.style.backgroundColor = 'black';
+        }
+        if(count===0) {
+            button.disabled = false;
+            button.style.backgroundColor = '#3A5FCD';
+        }
     }
 </script>

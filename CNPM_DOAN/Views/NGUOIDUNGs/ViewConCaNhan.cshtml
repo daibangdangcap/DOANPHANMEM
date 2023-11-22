@@ -1,0 +1,54 @@
+﻿@model CNPM_DOAN.Models.NGUOIDUNG
+
+@{
+    ViewBag.Title = "Informs";
+    Layout = null;
+}
+
+<div class="d-flex align-items-end justify-content-end">
+    <label>Họ và tên</label>
+    <div>
+        <p>@Model.TenNguoiDung</p>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <label>Email</label>
+    </div>
+    <div class="col-md-6">
+        <p>@Model.Email</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <label>Ngày sinh</label>
+    </div>
+    <div class="col-md-6">
+        <p>@Model.NgaySinh.ToString("dd/MM/yyyy")</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <label>Giới tính</label>
+    </div>
+    <div class="col-md-6">
+        <p>@Model.GioiTinh</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <label>Tên tài khoản</label>
+    </div>
+    <div class="col-md-6">
+        <p>@Model.TenTaiKhoan</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <label>Mật khẩu</label>
+    </div>
+    <div class="col-md-6">
+        <p>************</p>
+    </div>
+</div>

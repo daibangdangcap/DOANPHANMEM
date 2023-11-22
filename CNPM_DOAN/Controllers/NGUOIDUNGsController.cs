@@ -470,6 +470,6 @@ namespace CNPM_DOAN.Controllers
             db.SaveChanges();
         }
 
-
+        public ActionResult ViewConCaNhan() { return PartialView(); }
     }
 }

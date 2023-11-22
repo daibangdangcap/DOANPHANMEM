@@ -1,71 +1,87 @@
 ﻿@model CNPM_DOAN.Models.NGUOIDUNG
-<div class="content">
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>NGUOIDUNG</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            
-            <div class="form-group">
-                @Html.LabelFor(model => model.TenNguoiDung, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.TenNguoiDung, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TenNguoiDung, "", new { @class = "text-danger" })
+<body>
+    <div class="content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div style="margin-left:30px">
+                <br />
+                <h4>@CNPM_DOAN.Resources.Language.Thêm_học_sinh_mới</h4>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label>@CNPM_DOAN.Resources.Language.Họ_và_tên:</label>
+                        @Html.EditorFor(model => model.TenNguoiDung, new { htmlAttributes = new { @class = "form-control" } })
+                        <p class="text-danger">@Html.ValidationMessage("name1")</p>
+                        <p class="text-danger">@Html.ValidationMessage("name2")</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label>@CNPM_DOAN.Resources.Language.Giới_tính: </label>
+                        @Html.RadioButton("GioiTinh", "Male") <label>Male</label>
+                        @Html.RadioButton("GioiTinh", "Female") <label>Female</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <label>@CNPM_DOAN.Resources.Language.Ngày_sinh: </label>
+                        @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                        <p class="text-danger">@Html.ValidationMessage("day")</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <label>Email: </label>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        <p class="text-danger">@Html.ValidationMessage("email")</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <label>@CNPM_DOAN.Resources.Language.Tên_tài_khoản: </label>
+                        @Html.EditorFor(model => model.TenTaiKhoan, new { htmlAttributes = new { @class = "form-control" } })
+                        <p class="text-danger">@Html.ValidationMessage("taikhoan1")</p>
+                        <p class="text-danger">@Html.ValidationMessage("taikhoan2")</p>
+                        <p class="text-danger">@Html.ValidationMessage("taikhoan3")</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <label>@CNPM_DOAN.Resources.Language.Mật_khẩu: </label>
+                        @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" ,type="password"} })
+                        <p class="text-danger">@Html.ValidationMessage("matkhau1")</p>
+                        <p class="text-danger">@Html.ValidationMessage("matkhau2")</p>
+                    </div>
+                </div>
+                @Html.HiddenFor(model => model.IDQuanLy, Session["IDUSER"])
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="@CNPM_DOAN.Resources.Language.Xác_nhận" class="btn btn-default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <p class="text-danger">@Html.ValidationMessage("null")</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model=>model.GioiTinh,(SelectList)ViewBag.GioiTinh)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.NgaySinh, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control",type="date" } })
-                    @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.TenTaiKhoan, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.TenTaiKhoan, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TenTaiKhoan, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            @Html.HiddenFor(model => model.IDQuanLy, Session["IDUSER"])
-
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
-</div>
+        }
+    </div>
+</body>
 <script>
     function validate() {
         var x = document.getElementById("password").value;

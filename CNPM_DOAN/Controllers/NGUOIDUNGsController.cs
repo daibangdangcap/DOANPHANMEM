@@ -307,27 +307,82 @@ namespace CNPM_DOAN.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register_PH([Bind(Include = "IDNguoiDung,TenNguoiDung,GioiTinh,NgaySinh,Email,Avatar,TenTaiKhoan,MatKhau,IDVaiTro,IDQuanLy")] NGUOIDUNG nguoidung)
         {
-            if (ModelState.IsValid)
+            if(nguoidung.TenNguoiDung==null||nguoidung.GioiTinh==null||nguoidung.NgaySinh==null||nguoidung.Email==null||nguoidung.TenTaiKhoan==null||nguoidung.MatKhau==null)
             {
-                NGUOIDUNG nGUOIDUNG = new NGUOIDUNG();
-                nGUOIDUNG.TenNguoiDung = nguoidung.TenNguoiDung;
-                nGUOIDUNG.Email = nguoidung.Email;
-                nGUOIDUNG.NgaySinh = nguoidung.NgaySinh;
-                nGUOIDUNG.GioiTinh = nguoidung.GioiTinh;
-                nGUOIDUNG.Avatar = null;
-                nGUOIDUNG.TenTaiKhoan = nguoidung.TenTaiKhoan;
-                nGUOIDUNG.MatKhau = nguoidung.MatKhau;
-                nGUOIDUNG.IDVaiTro = "HS";
-                nGUOIDUNG.IDNguoiDung = nGUOIDUNG.IDVaiTro + new RANDOMID().GenerateRandomString(2);
-                nGUOIDUNG.IDQuanLy = nguoidung.IDQuanLy;
-                if (checkRegister(nGUOIDUNG.TenTaiKhoan) == true)
+                ModelState.AddModelError("null","Không được để trống các trường nhập thông tin");
+                return View(nguoidung);
+            }
+            else
+            {
+                int countInvalid = 0;
+                if (nguoidung.TenNguoiDung.Length > 30)
                 {
+                    ModelState.AddModelError("name1", "Tên không được vượt quá 30 ký tự");
+                    countInvalid++;
+                }
+                if (nguoidung.TenNguoiDung.Any(char.IsDigit))
+                {
+                    ModelState.AddModelError("name2", "Tên không được chứa số");
+                    countInvalid++;
+                }
+                if(nguoidung.NgaySinh.Year>2017)
+                {
+                    ModelState.AddModelError("day", "Năm sinh phải nhỏ hơn năm 2017");
+                    countInvalid++;
+                }
+                if(nguoidung.Email.Contains("@gmail.com")==false)
+                {
+                    ModelState.AddModelError("email", "Email không đúng định dạng");
+                    countInvalid++;
+                }
+                if(nguoidung.TenTaiKhoan.Any(Char.IsDigit)==false||nguoidung.TenTaiKhoan.Any(Char.IsLetter)==false)
+                {
+                    ModelState.AddModelError("taikhoan1", "Tài khoản phải có ký tự số và ký tự chữ");
+                    countInvalid++;
+                }
+                if(checkRegister(nguoidung.TenTaiKhoan)==false)
+                {
+                    ModelState.AddModelError("taikhoan2", "Tên tài khoản đã tồn tại");
+                    countInvalid++;
+                }
+                if(nguoidung.TenTaiKhoan.Length>50)
+                {
+                    ModelState.AddModelError("taikhoan3", "Tài khoản phải có độ dài tối đa 50 ký tự");
+                    countInvalid++;
+                }
+                if (nguoidung.MatKhau.Any(Char.IsDigit) == false || nguoidung.MatKhau.Any(Char.IsLetter) == false)
+                {
+                    ModelState.AddModelError("matkhau1", "Mật khẩu phải có ký tự số và ký tự chữ");
+                    countInvalid++;
+                }
+                if (nguoidung.MatKhau.Length>50)
+                {
+                    ModelState.AddModelError("matkhau2", "Mật khẩu phải có độ dài tối đa 50 ký tự");
+                    countInvalid++;
+                }
+                if(countInvalid!=0)
+                {
+                    return View(nguoidung);
+                }
+                else
+                {
+                    NGUOIDUNG nGUOIDUNG = new NGUOIDUNG();
+                    nGUOIDUNG.TenNguoiDung = nguoidung.TenNguoiDung;
+                    nGUOIDUNG.Email = nguoidung.Email;
+                    nGUOIDUNG.NgaySinh = nguoidung.NgaySinh;
+                    nGUOIDUNG.GioiTinh = nguoidung.GioiTinh;
+                    nGUOIDUNG.Avatar = null;
+                    nGUOIDUNG.TenTaiKhoan = nguoidung.TenTaiKhoan;
+                    nGUOIDUNG.MatKhau = nguoidung.MatKhau;
+                    nGUOIDUNG.IDVaiTro = "HS";
+                    nGUOIDUNG.IDNguoiDung = nGUOIDUNG.IDVaiTro + new RANDOMID().GenerateRandomString(2);
+                    nGUOIDUNG.IDQuanLy = nguoidung.IDQuanLy;
                     db.NGUOIDUNGs.Add(nGUOIDUNG);
                     db.SaveChanges();
-                    return RedirectToAction("showNguoiDung", "NGUOIDUNGs", new { iduser=nGUOIDUNG.IDQuanLy});
+                    TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_thành_công_;
+                    return RedirectToAction("showNguoiDung", "NGUOIDUNGs", new { iduser = nGUOIDUNG.IDQuanLy });
                 }
             }
-            return View();
         }
         public ActionResult deleteTaiKhoan(string iduser)
         {
@@ -418,6 +473,7 @@ namespace CNPM_DOAN.Controllers
             foreach (var item in tkb) { db.THOIKHOABIEUx.Remove(item); }
 
             db.SaveChanges();
+            TempData["message"] = CNPM_DOAN.Resources.Language.Xóa_thành_công_;
             return RedirectToAction("showNguoiDung", "NGUOIDUNGs", new { iduser=idquanly});
         }
         public ActionResult showTTUser(string iduser)

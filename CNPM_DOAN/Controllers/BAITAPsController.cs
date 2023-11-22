@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -166,30 +167,41 @@ namespace CNPM_DOAN.Controllers
             return PartialView();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult TaoBTMoi(HttpPostedFileBase bt, DateTime hanchot,string idnguoitao, string idnguoinhan)
         {
             if(bt !=null&&bt.ContentLength>0)
             {
                 byte[]data= new byte[bt.ContentLength];
-                bt.InputStream.Read(data,0, data.Length);
-                TimeSpan currentTime = DateTime.Now.TimeOfDay;
-                var baitap = new BAITAP
-                {
-                    TenBT = bt.FileName,
-                    DuongDan = data,
-                    LoaiTep = bt.ContentType,
-                    IDBaiTap = "BT" + new RANDOMID().GenerateRandomString(3),
-                    NgayGiao = DateTime.Now,
-                    HanNop = hanchot+currentTime,
-                    IDNguoiTao = idnguoitao,
-                    IDNguoiNhan = idnguoinhan,
-                    TrangThai = "Chưa nộp"
-                };
-                db.BAITAPs.Add(baitap);
-                db.SaveChanges();
-                return RedirectToAction("showBaiTap_PH", "BAITAPs", new { iduser=baitap.IDNguoiNhan});
+                    if(hanchot<DateTime.Now)
+                    {
+                        ModelState.AddModelError("day", "Hạn chót phải lớn hơn ngày hôm nay");
+                        return PartialView();
+                    }
+                    else
+                    {
+                        bt.InputStream.Read(data, 0, data.Length);
+                        TimeSpan currentTime = DateTime.Now.TimeOfDay;
+                        var baitap = new BAITAP
+                        {
+                            TenBT = bt.FileName,
+                            DuongDan = data,
+                            LoaiTep = bt.ContentType,
+                            IDBaiTap = "BT" + new RANDOMID().GenerateRandomString(3),
+                            NgayGiao = DateTime.Now,
+                            HanNop = hanchot + currentTime,
+                            IDNguoiTao = idnguoitao,
+                            IDNguoiNhan = idnguoinhan,
+                            TrangThai = "Chưa nộp"
+                        };
+                        db.BAITAPs.Add(baitap);
+                        db.SaveChanges();
+                        TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_thành_công_;
+                        return Json(new { success = true, redirectUrl = Url.Action("showBaiTap_PH", "BAITAPs", new { iduser = baitap.IDNguoiNhan }) });
+                    }
+                
             }
-            return View();
+            return Json(new { success = true, redirectUrl = Url.Action("Index", "Home") });
         }
         public ActionResult TaiBT(string idbaitap)
         {
@@ -214,37 +226,43 @@ namespace CNPM_DOAN.Controllers
             db.BAITAPs.Remove(data);
             db.SaveChanges();
             string id = iduser;
+            TempData["message"] = CNPM_DOAN.Resources.Language.Xóa_thành_công_;
             return RedirectToAction("showBaiTap_PH", "BAITAPs", new {iduser=id});
         }
         public ActionResult updateBaiTap(string idbaitap)
         {
-            var data=db.BAITAPs.Find(idbaitap);
-            if(data!=null) return View(data);
-            return View();
+            var data = db.BAITAPs.Find(idbaitap);
+            Session["IDBAITAP"] = idbaitap;
+            Session["IDNGUOINHAN"] = data.IDNguoiNhan;
+            return PartialView();
         }
         [HttpPost]
         public ActionResult updateBaiTap(HttpPostedFileBase bt, DateTime hanchot,string idbaitap,string idnguoinhan )
         {
-            var baitap = db.BAITAPs.Find(idbaitap);
-            if (bt == null && hanchot == null)
-            {
-                return View();
-            }
-            if(bt!=null)
+            if (bt != null && bt.ContentLength > 0)
             {
                 byte[] data = new byte[bt.ContentLength];
-                bt.InputStream.Read(data, 0, data.Length);
-                baitap.TenBT = bt.FileName;
-                baitap.DuongDan = data;
-                baitap.LoaiTep = bt.ContentType;
+                if (hanchot < DateTime.Now)
+                {
+                    ModelState.AddModelError("day", "Hạn chót phải lớn hơn ngày hôm nay");
+                    return PartialView();
+                }
+                else
+                {
+                    var baitap = db.BAITAPs.Find(idbaitap);
+                    bt.InputStream.Read(data, 0, data.Length);
+                    baitap.TenBT = bt.FileName;
+                    baitap.DuongDan = data;
+                    baitap.LoaiTep = bt.ContentType;
+                    baitap.HanNop = hanchot;
+                    db.Entry(baitap).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return Json(new { success = true, redirectUrl = Url.Action("showBaiTap_PH", "BAITAPs", new { iduser = baitap.IDNguoiNhan }) });
+                }
+
             }
-            if(hanchot!=null)
-            {
-                baitap.HanNop = hanchot;
-            }
-            db.Entry(baitap).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("showBaiTap_PH", "BAITAPs", new { iduser=idnguoinhan});
+            return Json(new { success = true, redirectUrl = Url.Action("Index", "Home") });
+            
         }
         public ActionResult showBieuDoBT_PH(string idnguoinhan)
         {

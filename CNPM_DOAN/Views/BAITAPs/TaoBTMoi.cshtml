@@ -1,6 +1,4 @@
-﻿@model CNPM_DOAN.Models.BAITAP
-
-<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+﻿<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
 <script src="~/Scripts/bootstrap.min.js"></script>
 <div class="modal-dialog" style="top:30%">
     <div class="modal-content">
@@ -8,9 +6,9 @@
             <h4 class="modal-title" id="myModal-label">@CNPM_DOAN.Resources.Language.Thêm_tài_liệu_học_tập_mới</h4>
         </div>
         <div class="modal-body">
-
             @using (Html.BeginForm("TaoBTMoi", "BAITAPs", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
+                @Html.AntiForgeryToken()
                 <label>@CNPM_DOAN.Resources.Language.Tên_file: </label>
                 <input type="file" name="bt" required>
                 <br /><br />
@@ -19,8 +17,9 @@
                 <input type="hidden" name="idnguoitao" value="@Session["IDUSER"]" />
                 <input type="hidden" name="idnguoinhan" value="@Session["IDNGUOINHAN"]" />
                 <hr />
-                <input type="submit" value="@CNPM_DOAN.Resources.Language.Xác_nhận">
+                <button type="submit" class="btn btn-success" style="margin-top:20px; margin-left:40%;">@CNPM_DOAN.Resources.Language.Xác_nhận</button>
             }
+            <p class="text-danger" style="text-align:center">@Html.ValidationMessage("day")</p>
         </div>
     </div>
 </div>

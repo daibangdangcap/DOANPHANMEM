@@ -176,11 +176,16 @@ namespace CNPM_DOAN.Controllers
             db.TODOes.Remove(data);
             db.SaveChanges();
             TempData["message"] = "Xóa nhiệm vụ thành công";
-            if(id.Contains("HS"))
-            {
-                return RedirectToAction("showToDo", "TODOes", new { iduser = id });
-            }
-            else return RedirectToAction("showToDo_PH", "TODOes", new {iduser = id});
+            return RedirectToAction("showToDo", "TODOes", new { iduser = id });
+        }
+
+        public ActionResult DeleteToDo_PH(string IDToDo, string id)
+        {
+            var data = db.TODOes.Find(IDToDo);
+            db.TODOes.Remove(data);
+            db.SaveChanges();
+            TempData["message"] = "Xóa nhiệm vụ thành công";
+            return RedirectToAction("showToDo_PH", "TODOes", new { iduser = id });
         }
         [HttpPost]
         public ActionResult UpdateTrangThai(string IDToDo, string id)
@@ -198,9 +203,22 @@ namespace CNPM_DOAN.Controllers
         [HttpPost]
         public ActionResult UpdateToDo_PH(string idtodo, string idhocsinh, string ndTODO)
         {
-            updateTodo(idtodo, ndTODO);
-            TempData["message"] = CNPM_DOAN.Resources.Language.Chỉnh_sửa_thành_công;
-            return RedirectToAction("showToDo_PH", "TODOes", new { iduser = idhocsinh });
+            if (ndTODO == "")
+            {
+                ModelState.AddModelError("null", "Vui lòng nhập nội dung");
+                return PartialView();
+            }
+            else if (ndTODO.Length > 200)
+            {
+                ModelState.AddModelError("length", "Nội dung nhiệm vụ không quá 200 ký tự");
+                return PartialView();
+            }
+            else
+            {
+                updateTodo(idtodo, ndTODO);
+                TempData["message"] = CNPM_DOAN.Resources.Language.Chỉnh_sửa_thành_công;
+                return Json(new { success = true, redirectUrl = Url.Action("showToDo_PH", "TODOes", new { iduser = idhocsinh }) });
+            }
         }
         public ActionResult showUserToDo_PH( string iduser) 
         {
@@ -235,6 +253,7 @@ namespace CNPM_DOAN.Controllers
             data.TrangThai = "Đã hoàn thành";
             data.NgayHoanThanh = DateTime.Now;
             db.Entry(data).State = EntityState.Modified;
+            TempData["message"] = "Đã hoàn thành nhiệm vụ";
             db.SaveChanges();
         }
         public void updateTrangThai(string IDToDo, string id)
@@ -268,18 +287,32 @@ namespace CNPM_DOAN.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult editTODO(string ndtodo, string idhocsinh, string idtodo)
         {
-            var data=db.TODOes.Find(idtodo);
-            if(data!=null)
+            if(ndtodo=="")
             {
-                data.NDToDo = ndtodo;
-                db.Entry(data).State = EntityState.Modified;
-                db.SaveChanges();
-                TempData["message"] = CNPM_DOAN.Resources.Language.Chỉnh_sửa_thành_công;
+                ModelState.AddModelError("null","Yêu cầu nhập nội dung");
+                return PartialView();
+            }
+            else if(ndtodo.Length>200)
+            {
+                ModelState.AddModelError("length", "Nội dung todo quá 200 ký tự");
+                return PartialView();
+            }
+            else
+            {
+                var data = db.TODOes.Find(idtodo);
+                if (data != null)
+                {
+                    data.NDToDo = ndtodo;
+                    db.Entry(data).State = EntityState.Modified;
+                    db.SaveChanges();
+                    TempData["message"] = CNPM_DOAN.Resources.Language.Chỉnh_sửa_thành_công;
+                    return Json(new { success = true, redirectUrl = Url.Action("showToDo", "TODOes", new { iduser = idhocsinh }) });
+                }
                 return RedirectToAction("showToDo", "TODOes", new { iduser = idhocsinh });
             }
-            return RedirectToAction("showToDo", "TODOes", new { iduser=idhocsinh });
         }
 
         public ActionResult giaoToDo()

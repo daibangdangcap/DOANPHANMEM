@@ -10,21 +10,28 @@
 <link rel="stylesheet" href="~/MyCss/baitap.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
-@if (TempData["message"] != null)
-{
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script type="text/javascript">
-        toastr.success('@TempData["message"]')
-    </script>
-}
 <body>
+    @if (TempData["message"] != null)
+    {
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+        toastr.success('@TempData["message"]')
+        </script>
+    }
     <div class="modal fade" id="myModal" role="dialog" data-url="@Url.Action("TaoBTMoi","BAITAPs")">
         <div class="modal-dialog" role="document">
             <div class="modal-content"></div>
         </div>
     </div>
+
+    <!--pop up edit tài liệu-->
+    <div class="modal fade" id="editModal" role="dialog" data-url="@Url.Action("createNewTaiLieu","TAILIEUx")">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
     <div class="content">
-        <h1>Các bài tập đã giao</h1>
+        <h1>@CNPM_DOAN.Resources.Language.Các_bài_tập_đã_giao</h1>
         <div class="content-group">
             @foreach (var item in Model)
             {
@@ -68,21 +75,23 @@
                             </div>
                         </div>
                         <button class="deleteBtn" id="btnEditDelete" onclick="location.href='@Url.Action("DeleteBaiTap", "BAITAPs", new { idbaitap = item.IDBaiTap, iduser = item.IDNguoiNhan })'"><i class="fa-solid fa-trash"></i></button>
-                        <button class="editBtn" id="btnEditDelete" onclick="location.href='@Url.Action("updateBaiTap", "BAITAPs", new {idbaitap=item.IDBaiTap})'"><i class="fa-solid fa-pen-to-square"></i></button>
-                        <p data-item-user="@Session["IDUSER"]"></p>
+                        <button class="editBtn btnEdit" id="@item.IDBaiTap" onclick="edit(this.id)"><i class="fa-solid fa-pen-to-square"></i></button>
+                        
                     </div>
                 </div>
             }
         </div>
         <div class=" container d-flex justify-content-end align-items-end">
-            <button id="addGroup" class="btnAddBaiTap button-style me-5" style="background:green">Tạo bài tập mới</button>
-            <button onclick="location.href='@Url.Action("showBieuDoBT_PH", "BAITAPs", new { idnguoinhan = ViewBag.NguoiNhan })'" class="button-style" style="background:blue;">Thống kê bài tập</button>
+            <button id="addGroup" class="btnAddBaiTap button-style me-5" style="background:green">@CNPM_DOAN.Resources.Language.Tạo_bài_tập_mới</button>
+            <button onclick="location.href='@Url.Action("showBieuDoBT_PH", "BAITAPs", new { idnguoinhan = ViewBag.NguoiNhan })'" class="button-style" style="background:blue;">@CNPM_DOAN.Resources.Language.Thống_kê_bài_tập</button>
         </div>
 
     </div>
 </body>
 
 @section scripts{
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function () {
         $('.btnAddBaiTap').click(function () {
@@ -92,14 +101,56 @@
                 $("#myModal").modal('show');
             })
         })
+        $('#myModal').on('submit', 'form', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: new FormData($(this)[0]),
+                processData: false,
+                contentType:false,
+                success: function (response) {
+                    // Update modal content with the response
+                    if (response.success) {
+                        // Redirect to the new view
+                        window.location.href = response.redirectUrl;
+                    } else {
+                        // Update modal content with the response
+                        $('#myModal .modal-dialog').html(response);
+                    }
+                }
+            });
+        });
+        $('#editModal').on('submit', 'form', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: new FormData($(this)[0]),
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    // Update modal content with the response
+                    if (response.success) {
+                        // Redirect to the new view
+                        window.location.href = response.redirectUrl;
+                    } else {
+                        // Update modal content with the response
+                        $('#editModal .modal-dialog').html(response);
+                    }
+                }
+            });
+        });
     })
-        function edit(id) {
-            $.get("@Url.Action("editTaiLieu","TAILIEUx")/" + id,
-            function (data) { $('#editModal').html(data); })
-        $('#editModal').modal('show');
-    }
-    $('#editModal').on('hidden.bs.modal', function (e) {
-        $('.modal-body').html("")
-    })
+        function edit(IDBaiTap) {
+            $.get("@Url.Action("updateBaiTap", "BAITAPs")?idbaitap=" + IDBaiTap,
+        function (data) { $('#editModal').html(data); })
+    $('#editModal').modal('show');
+}
+$('#editModal').on('hidden.bs.modal', function (e) {
+    $('.modal-body').html("")
+})
     </script>
 }

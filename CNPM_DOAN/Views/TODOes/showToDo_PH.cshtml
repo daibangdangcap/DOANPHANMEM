@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 <body>
     <div>
-    <p class="" style="margin-left:120px; font-size:40px">Danh sách nhiệm vụ</p>
+    <p class="" style="margin-left:120px; font-size:40px">@CNPM_DOAN.Resources.Language.Danh_sách_nhiệm_vụ</p>
     </div>
     <div class="inputMission" style="z-index:1">
     </div>
@@ -51,7 +51,7 @@
                     }
                     else
                     {<p style="font-size: 12px; width: fit-content;">@CNPM_DOAN.Resources.Language.Còn_hạn</p>}
-                    <button class="deleteTrash" style="z-index:0" onclick="location.href='@Url.Action("DeleteToDo", "TODOes", new { IDToDo = item.IDToDo, id = Session["IDUSER"] })'"><i class="fa-solid fa-trash" style="color:red"></i></button>
+                    <button class="deleteTrash" style="z-index:0" onclick="location.href='@Url.Action("DeleteToDo_PH", "TODOes", new { IDToDo = item.IDToDo, id = Session["IDUSER"] })'"><i class="fa-solid fa-trash" style="color:red"></i></button>
                     <button class="editTodo" style="z-index:0" id="@item.IDToDo" onclick="edit(this.id)"><i class="fa-solid fa-pen" style="color:forestgreen"></i></button>
                 </div>
 
@@ -60,7 +60,7 @@
         </div>
     </div>
     <div style="position:absolute;top:90%;right:15%">
-        <button class="button-style">Giao nhiệm vụ</button>
+        <button class="button-style btn">@CNPM_DOAN.Resources.Language.Giao_nhiệm_vụ</button>
     </div>
 </body>
 @section scripts{

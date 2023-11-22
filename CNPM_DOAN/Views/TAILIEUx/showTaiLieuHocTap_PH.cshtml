@@ -88,6 +88,27 @@
                 $("#myModal").modal('show');
             })
         })
+        $('#myModal').on('submit', 'form', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: new FormData($(this)[0]),
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    // Update modal content with the response
+                    if (response.success) {
+                        // Redirect to the new view
+                        window.location.href = response.redirectUrl;
+                    } else {
+                        // Update modal content with the response
+                        $('#myModal .modal-dialog').html(response);
+                    }
+                }
+            });
+        });
     })
         function edit(id) {
             $.get("@Url.Action("editTaiLieu","TAILIEUx")/" + id,

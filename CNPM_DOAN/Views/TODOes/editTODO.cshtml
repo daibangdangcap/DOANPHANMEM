@@ -6,15 +6,41 @@
             <h4 class="modal-title" id="myModal-label">@CNPM_DOAN.Resources.Language.Chỉnh_sửa_nội_dung_nhiệm_vụ</h4>
         </div>
         <div class="modal-body">
-
             @using (Html.BeginForm("editTODO", "TODOes", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
+                @Html.AntiForgeryToken()
                 <label>@CNPM_DOAN.Resources.Language.Nhập_nội_dung:</label>
-                <input type="text" name="ndTODO" required />
+                <input type="text" name="ndTODO"/>
                 <input type="hidden" name="idhocsinh" value="@Session["IDUSER"]" />
                 <input type="hidden" name="idtodo" value="@Session["IDTODO"]" />
                 <button type="submit" class="btn btn-success" style="margin-top:20px; margin-left:40%;">@CNPM_DOAN.Resources.Language.Xác_nhận</button>
             }
+            <p class="text-danger" style="text-align:center">@Html.ValidationMessage("null")</p>
+            <p class="text-danger" style="text-align:center">@Html.ValidationMessage("length")</p>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.modal-dialog').on('submit', 'form', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: $(this).serialize(),
+                success: function (response) {
+                    // Update modal content with the response
+                    if (response.success) {
+                        // Redirect to the new view
+                        window.location.href = response.redirectUrl;
+                    } else {
+                        // Update modal content with the response
+                        $('.modal-dialog').html(response);
+                    }
+                }
+            });
+        });
+    })
+</script>

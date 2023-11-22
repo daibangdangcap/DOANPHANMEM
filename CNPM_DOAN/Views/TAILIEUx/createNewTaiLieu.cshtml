@@ -6,14 +6,15 @@
             <h4 class="modal-title" id="myModal-label">@CNPM_DOAN.Resources.Language.Thêm_tài_liệu_học_tập_mới</h4>
         </div>
             <div class="modal-body">
-
+                @Html.AntiForgeryToken()
                 @using (Html.BeginForm("createNewTaiLieu", "TAILIEUx", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <label>@CNPM_DOAN.Resources.Language.Chọn_tài_liệu:</label>
-                    <input type="file" id="fileTaiLieu" name="fileTaiLieu" required />
+                    <input type="file" id="fileTaiLieu" name="fileTaiLieu" />
                     <input type="hidden" name="idnguoinhan" value="@Session["HOCSINH"]" />
                     <button type="submit" class="btn btn-success" style="margin-top:20px; margin-left:40%;">@CNPM_DOAN.Resources.Language.Xác_nhận</button>
                 }
+                <p class="text-danger" style="text-align:center">@Html.ValidationMessage("null")</p>
             </div>
     </div>
 </div>

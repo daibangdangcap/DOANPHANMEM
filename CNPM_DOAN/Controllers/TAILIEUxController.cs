@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -151,17 +152,25 @@ namespace CNPM_DOAN.Controllers
         [HttpPost]
         public ActionResult createNewTaiLieu(HttpPostedFileBase fileTaiLieu, string idnguoinhan)
         {
-            byte[] data = new byte[fileTaiLieu.ContentLength];
-            var tailieu = new TAILIEU();
-            tailieu.IDTaiLieu = "TL"+new RANDOMID().GenerateRandomString(5);
-            tailieu.TenTaiLieu = fileTaiLieu.FileName;
-            tailieu.TenDuongDan = data;
-            tailieu.LoaiTep = fileTaiLieu.ContentType;
-            tailieu.IDNguoiTao = idnguoinhan;
-            db.TAILIEUx.Add(tailieu);
-            TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_tài_liệu_thành_công;
-            db.SaveChanges();
-            return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan });
+            if (fileTaiLieu == null)
+            {
+                ModelState.AddModelError("null", "Yêu cầu nhập file tài liệu");
+                return PartialView();
+            }
+            else
+            {
+                byte[] data = new byte[fileTaiLieu.ContentLength];
+                var tailieu = new TAILIEU();
+                tailieu.IDTaiLieu = "TL" + new RANDOMID().GenerateRandomString(5);
+                tailieu.TenTaiLieu = fileTaiLieu.FileName;
+                tailieu.TenDuongDan = data;
+                tailieu.LoaiTep = fileTaiLieu.ContentType;
+                tailieu.IDNguoiTao = idnguoinhan;
+                db.TAILIEUx.Add(tailieu);
+                TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_tài_liệu_thành_công;
+                db.SaveChanges();
+                return Json(new { success = true, redirectUrl = Url.Action("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan }) });
+            }
         }
 
         public ActionResult editTaiLieu(string id)
@@ -171,24 +180,28 @@ namespace CNPM_DOAN.Controllers
                 Session["IDTAILIEU"] = id;
                 return PartialView();
             }
-            return PartialView("Error");
+            return PartialView();
         }
 
         [HttpPost]
         public ActionResult editTaiLieu(HttpPostedFileBase fileTaiLieu, string idnguoinhan, string idtailieu)
         {
-            var data = db.TAILIEUx.Find(idtailieu);
-            if (data != null)
+            if (fileTaiLieu == null)
             {
+                ModelState.AddModelError("null", "Yêu cầu nhập file tài liệu");
+                return PartialView();
+            }
+            else
+            {
+                var data = db.TAILIEUx.Find(idtailieu);
                 data.TenTaiLieu = fileTaiLieu.FileName;
                 data.TenDuongDan = new byte[fileTaiLieu.ContentLength];
                 data.LoaiTep = fileTaiLieu.ContentType;
                 db.Entry(data).State = EntityState.Modified;
                 db.SaveChanges();
                 TempData["message"] = CNPM_DOAN.Resources.Language.Chỉnh_sửa_tài_liệu_thành_công;
-                return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan });
+                return Json(new { success = true, redirectUrl = Url.Action("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan }) });
             }
-            return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan });
         }
 
         public ActionResult deleteTaiLieu(string idtailieu, string idnguoinhan)

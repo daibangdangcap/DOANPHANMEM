@@ -61,6 +61,15 @@ namespace CNPM_DOAN.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 10 Quốc Lộ 22, Xã Tân Xuân, Huyện Hóc Môn, thành phố Hồ Chí Mình, Việt Nam.
+        /// </summary>
+        public static string _10_Quốc_Lộ_22__Xã_Tân_Xuân__Huyện_Hóc_Môn__thành_phố_Hồ_Chí_Mình__Việt_Nam {
+            get {
+                return ResourceManager.GetString("10 Quốc Lộ 22, Xã Tân Xuân, Huyện Hóc Môn, thành phố Hồ Chí Mình, Việt Nam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bài tập.
         /// </summary>
         public static string Bài_tập {
@@ -277,11 +286,29 @@ namespace CNPM_DOAN.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Địa chỉ.
+        /// </summary>
+        public static string Địa_chỉ {
+            get {
+                return ResourceManager.GetString("Địa chỉ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Điểm.
         /// </summary>
         public static string Điểm {
             get {
                 return ResourceManager.GetString("Điểm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Điện thoại.
+        /// </summary>
+        public static string Điện_thoại {
+            get {
+                return ResourceManager.GetString("Điện thoại", resourceCulture);
             }
         }
         
@@ -300,6 +327,24 @@ namespace CNPM_DOAN.Resources {
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GIA ĐÌNH.
+        /// </summary>
+        public static string GIA_ĐÌNH {
+            get {
+                return ResourceManager.GetString("GIA ĐÌNH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Giao nhiệm vụ.
+        /// </summary>
+        public static string Giao_nhiệm_vụ {
+            get {
+                return ResourceManager.GetString("Giao nhiệm vụ", resourceCulture);
             }
         }
         
@@ -395,6 +440,15 @@ namespace CNPM_DOAN.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Liên hệ với chúng tôi.
+        /// </summary>
+        public static string Liên_hệ_với_chúng_tôi {
+            get {
+                return ResourceManager.GetString("Liên hệ với chúng tôi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lưu.
         /// </summary>
         public static string Lưu {
@@ -436,6 +490,16 @@ namespace CNPM_DOAN.Resources {
         public static string Mục_tiêu {
             get {
                 return ResourceManager.GetString("Mục tiêu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nếu bạn có thắc mắc hoặc cần hỗ trợ hãy liên lạc cho chúng tôi thông qua các cách sau.
+        /// </summary>
+        public static string Nếu_bạn_có_thắc_mắc_hoặc_cần_hỗ_trợ_hãy_liên_lạc_cho_chúng_tôi_thông_qua_các_cách_sau {
+            get {
+                return ResourceManager.GetString("Nếu bạn có thắc mắc hoặc cần hỗ trợ hãy liên lạc cho chúng tôi thông qua các cách" +
+                        " sau", resourceCulture);
             }
         }
         
@@ -508,6 +572,33 @@ namespace CNPM_DOAN.Resources {
         public static string Quá_hạn {
             get {
                 return ResourceManager.GetString("Quá hạn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quản lí điểm, bài tập về nhà, giao bài nhanh chóng.
+        /// </summary>
+        public static string Quản_lí_điểm__bài_tập_về_nhà__giao_bài_nhanh_chóng {
+            get {
+                return ResourceManager.GetString("Quản lí điểm, bài tập về nhà, giao bài nhanh chóng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quản lí dữ liệu bài tập cho học sinh, an toàn, nhanh chóng.
+        /// </summary>
+        public static string Quản_lí_dữ_liệu_bài_tập_cho_học_sinh__an_toàn__nhanh_chóng {
+            get {
+                return ResourceManager.GetString("Quản lí dữ liệu bài tập cho học sinh, an toàn, nhanh chóng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to QUẢN LÍ HỌC TẬP TRONG.
+        /// </summary>
+        public static string QUẢN_LÍ_HỌC_TẬP_TRONG {
+            get {
+                return ResourceManager.GetString("QUẢN LÍ HỌC TẬP TRONG", resourceCulture);
             }
         }
         
@@ -665,6 +756,15 @@ namespace CNPM_DOAN.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tham gia ngay.
+        /// </summary>
+        public static string Tham_gia_ngay {
+            get {
+                return ResourceManager.GetString("Tham gia ngay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thêm học sinh mới.
         /// </summary>
         public static string Thêm_học_sinh_mới {
@@ -764,6 +864,15 @@ namespace CNPM_DOAN.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tiện lợi, giao diện đơn giản, dễ dàng sử dụng cho học sinh và phụ huynh.
+        /// </summary>
+        public static string Tiện_lợi__giao_diện_đơn_giản__dễ_dàng_sử_dụng_cho_học_sinh_và_phụ_huynh {
+            get {
+                return ResourceManager.GetString("Tiện lợi, giao diện đơn giản, dễ dàng sử dụng cho học sinh và phụ huynh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tiết bắt đầu.
         /// </summary>
         public static string Tiết_bắt_đầu {
@@ -828,6 +937,24 @@ namespace CNPM_DOAN.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Xem Điểm.
+        /// </summary>
+        public static string Xem_Điểm {
+            get {
+                return ResourceManager.GetString("Xem Điểm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xem Thời khóa biểu.
+        /// </summary>
+        public static string Xem_Thời_khóa_biểu {
+            get {
+                return ResourceManager.GetString("Xem Thời khóa biểu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Xóa.
         /// </summary>
         public static string Xóa {
@@ -882,7 +1009,7 @@ namespace CNPM_DOAN.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete successfully!.
+        ///   Looks up a localized string similar to Xóa thành công!.
         /// </summary>
         public static string Xóa_thành_công_ {
             get {

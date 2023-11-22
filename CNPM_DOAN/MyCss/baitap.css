@@ -145,3 +145,14 @@
     font-size: 18px;
     color : white;
 }
+
+.btnEdit {
+    margin-top: 44px;
+    margin-right: 10px;
+    padding: 10px 10px 10px 10px;
+    font-size: 15px;
+    float: right;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}

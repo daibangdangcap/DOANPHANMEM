@@ -156,20 +156,28 @@ namespace CNPM_DOAN.Controllers
                 ModelState.AddModelError("day", CNPM_DOAN.Resources.Language.Tiết_kết_thúc_phải_lớn_hơn_hoặc_bằng_tiết_bắt_đầu);
                 return View();
             }
-            if(findData.Count==0)
+            if (findData.Count==0)
             {
-                TIETHOC tIETHOC = new TIETHOC();
-                tIETHOC.TenMH = form["monhoc"];
-                tIETHOC.Thu = form["day"];
-                tIETHOC.TietBatDau = short.Parse(form["start"]);
-                tIETHOC.TietKetThuc = short.Parse(form["end"]);
-                tIETHOC.IDTKB = form["idtkbb"];
-                tIETHOC.IDMonHoc = "MH" + new RANDOMID().GenerateRandomString(2);
-                tIETHOC.IDNGUOITAO = form["iduser"];
-                db.TIETHOCs.Add(tIETHOC);
-                db.SaveChanges();
-                TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_thành_công_;
-                return RedirectToAction("showTietHoc_PH", "TIETHOCs", new { idtkb = form["idtkbb"] });
+                if (form["monhoc"].ToString() == null || form["monhoc"].ToString() == "")
+                {
+                    ModelState.AddModelError("day", "Không được để trống tên tiết học");
+                    return View();
+                }
+                else
+                {
+                    TIETHOC tIETHOC = new TIETHOC();
+                    tIETHOC.TenMH = form["monhoc"];
+                    tIETHOC.Thu = form["day"];
+                    tIETHOC.TietBatDau = short.Parse(form["start"]);
+                    tIETHOC.TietKetThuc = short.Parse(form["end"]);
+                    tIETHOC.IDTKB = form["idtkbb"];
+                    tIETHOC.IDMonHoc = "MH" + new RANDOMID().GenerateRandomString(2);
+                    tIETHOC.IDNGUOITAO = form["iduser"];
+                    db.TIETHOCs.Add(tIETHOC);
+                    db.SaveChanges();
+                    TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_thành_công_;
+                    return RedirectToAction("showTietHoc_PH", "TIETHOCs", new { idtkb = form["idtkbb"] });
+                }
             }
             else
             {
@@ -188,18 +196,26 @@ namespace CNPM_DOAN.Controllers
                 }
                 if (duplicate == false)
                 {
-                    TIETHOC tIETHOC = new TIETHOC();
-                    tIETHOC.TenMH = form["monhoc"];
-                    tIETHOC.Thu = form["day"];
-                    tIETHOC.TietBatDau = short.Parse(form["start"]);
-                    tIETHOC.TietKetThuc = short.Parse(form["end"]);
-                    tIETHOC.IDTKB = form["idtkbb"];
-                    tIETHOC.IDMonHoc = "MH" + new RANDOMID().GenerateRandomString(2);
-                    tIETHOC.IDNGUOITAO = form["iduser"];
-                    db.TIETHOCs.Add(tIETHOC);
-                    db.SaveChanges();
-                    TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_thành_công_;
-                    return RedirectToAction("showTietHoc_PH", "TIETHOCs", new { idtkb = form["idtkbb"] });
+                    if (form["monhoc"].ToString() == null || form["monhoc"].ToString()=="")
+                    {
+                        ModelState.AddModelError("day", "Không được để trống tên tiết học");
+                        return View();
+                    }
+                    else
+                    {
+                        TIETHOC tIETHOC = new TIETHOC();
+                        tIETHOC.TenMH = form["monhoc"];
+                        tIETHOC.Thu = form["day"];
+                        tIETHOC.TietBatDau = short.Parse(form["start"]);
+                        tIETHOC.TietKetThuc = short.Parse(form["end"]);
+                        tIETHOC.IDTKB = form["idtkbb"];
+                        tIETHOC.IDMonHoc = "MH" + new RANDOMID().GenerateRandomString(2);
+                        tIETHOC.IDNGUOITAO = form["iduser"];
+                        db.TIETHOCs.Add(tIETHOC);
+                        db.SaveChanges();
+                        TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_thành_công_;
+                        return RedirectToAction("showTietHoc_PH", "TIETHOCs", new { idtkb = form["idtkbb"] });
+                    }
                 }
             }
             return RedirectToAction("showTietHoc_PH", "TIETHOCs", new {idtkb=form["idtkbb"] });

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="10 Quốc Lộ 22, Xã Tân Xuân, Huyện Hóc Môn, thành phố Hồ Chí Mình, Việt Nam" xml:space="preserve">
+    <value>10 Quốc Lộ 22, Xã Tân Xuân, Huyện Hóc Môn, thành phố Hồ Chí Mình, Việt Nam</value>
+  </data>
   <data name="Bài tập" xml:space="preserve">
     <value>Bài tập</value>
   </data>
@@ -177,6 +180,12 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="GIA ĐÌNH" xml:space="preserve">
+    <value>GIA ĐÌNH</value>
+  </data>
+  <data name="Giao nhiệm vụ" xml:space="preserve">
+    <value>Giao nhiệm vụ</value>
+  </data>
   <data name="GIỚI THIỆU" xml:space="preserve">
     <value>GIỚI THIỆU</value>
   </data>
@@ -207,6 +216,9 @@
   <data name="LIÊN HỆ" xml:space="preserve">
     <value>LIÊN HỆ</value>
   </data>
+  <data name="Liên hệ với chúng tôi" xml:space="preserve">
+    <value>Liên hệ với chúng tôi</value>
+  </data>
   <data name="Lưu" xml:space="preserve">
     <value>Lưu</value>
   </data>
@@ -234,6 +246,9 @@
   <data name="Nhập nội dung" xml:space="preserve">
     <value>Nhập nội dung</value>
   </data>
+  <data name="Nếu bạn có thắc mắc hoặc cần hỗ trợ hãy liên lạc cho chúng tôi thông qua các cách sau" xml:space="preserve">
+    <value>Nếu bạn có thắc mắc hoặc cần hỗ trợ hãy liên lạc cho chúng tôi thông qua các cách sau</value>
+  </data>
   <data name="Nộp bài" xml:space="preserve">
     <value>Nộp bài</value>
   </data>
@@ -251,6 +266,18 @@
   </data>
   <data name="Quá hạn" xml:space="preserve">
     <value>Quá hạn</value>
+  </data>
+  <data name="Quản lí dữ liệu bài tập cho học sinh, an toàn, nhanh chóng" xml:space="preserve">
+    <value>Quản lí dữ liệu bài tập cho học sinh, an toàn, nhanh chóng</value>
+  </data>
+  <data name="QUẢN LÍ HỌC TẬP TRONG" xml:space="preserve">
+    <value>QUẢN LÍ HỌC TẬP TRONG</value>
+  </data>
+  <data name="Quản lí điểm, bài tập về nhà, giao bài nhanh chóng" xml:space="preserve">
+    <value>Quản lí điểm, bài tập về nhà, giao bài nhanh chóng</value>
+  </data>
+  <data name="Tham gia ngay" xml:space="preserve">
+    <value>Tham gia ngay</value>
   </data>
   <data name="Thêm học sinh mới" xml:space="preserve">
     <value>Thêm học sinh mới</value>
@@ -296,6 +323,9 @@
   </data>
   <data name="Tiết kết thúc phải lớn hơn hoặc bằng tiết bắt đầu" xml:space="preserve">
     <value>Tiết kết thúc phải lớn hơn hoặc bằng tiết bắt đầu</value>
+  </data>
+  <data name="Tiện lợi, giao diện đơn giản, dễ dàng sử dụng cho học sinh và phụ huynh" xml:space="preserve">
+    <value>Tiện lợi, giao diện đơn giản, dễ dàng sử dụng cho học sinh và phụ huynh</value>
   </data>
   <data name="Tài liệu học tập" xml:space="preserve">
     <value>Tài liệu học tập</value>
@@ -345,6 +375,12 @@
   <data name="Tải xuống" xml:space="preserve">
     <value>Tải xuống</value>
   </data>
+  <data name="Xem Thời khóa biểu" xml:space="preserve">
+    <value>Xem Thời khóa biểu</value>
+  </data>
+  <data name="Xem Điểm" xml:space="preserve">
+    <value>Xem Điểm</value>
+  </data>
   <data name="Xác nhận" xml:space="preserve">
     <value>Xác nhận</value>
   </data>
@@ -361,7 +397,7 @@
     <value>Xóa nhiệm vụ thành công</value>
   </data>
   <data name="Xóa thành công!" xml:space="preserve">
-    <value>Delete successfully!</value>
+    <value>Xóa thành công!</value>
   </data>
   <data name="Xóa tài khoản" xml:space="preserve">
     <value>Xóa tài khoản</value>
@@ -374,6 +410,9 @@
   </data>
   <data name="Điểm" xml:space="preserve">
     <value>Điểm</value>
+  </data>
+  <data name="Điện thoại" xml:space="preserve">
+    <value>Điện thoại</value>
   </data>
   <data name="Đã hoàn thành" xml:space="preserve">
     <value>Đã hoàn thành</value>
@@ -389,6 +428,9 @@
   </data>
   <data name="Đăng xuất" xml:space="preserve">
     <value>Đăng xuất</value>
+  </data>
+  <data name="Địa chỉ" xml:space="preserve">
+    <value>Địa chỉ</value>
   </data>
   <data name="Đổi mật khẩu" xml:space="preserve">
     <value>Đổi mật khẩu</value>

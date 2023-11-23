@@ -127,7 +127,7 @@
     <value>Bạn có muốn xóa tài khoản không?</value>
   </data>
   <data name="Chào mừng quay trở lại !" xml:space="preserve">
-    <value>Xin chào Chào mừng quay trở lại !</value>
+    <value>Chào mừng quay trở lại !</value>
   </data>
   <data name="Chưa có điểm" xml:space="preserve">
     <value>Chưa có điểm</value>
@@ -251,6 +251,9 @@
   </data>
   <data name="Nhóm học tập" xml:space="preserve">
     <value>Nhóm học tập</value>
+  </data>
+  <data name="Nhập lại mật khẩu mới" xml:space="preserve">
+    <value>Nhập lại mật khẩu mới</value>
   </data>
   <data name="Nhập nội dung" xml:space="preserve">
     <value>Nhập nội dung</value>

@@ -252,6 +252,9 @@
   <data name="Nhóm học tập" xml:space="preserve">
     <value>Study group</value>
   </data>
+  <data name="Nhập lại mật khẩu mới" xml:space="preserve">
+    <value>Confirm new password</value>
+  </data>
   <data name="Nhập nội dung" xml:space="preserve">
     <value>Write the content</value>
   </data>

@@ -106,7 +106,7 @@ namespace CNPM_DOAN.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Xin chào Chào mừng quay trở lại !.
+        ///   Looks up a localized string similar to Chào mừng quay trở lại !.
         /// </summary>
         public static string Chào_mừng_quay_trở_lại__ {
             get {
@@ -554,6 +554,15 @@ namespace CNPM_DOAN.Resources {
         public static string Ngày_sinh {
             get {
                 return ResourceManager.GetString("Ngày sinh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhập lại mật khẩu mới.
+        /// </summary>
+        public static string Nhập_lại_mật_khẩu_mới {
+            get {
+                return ResourceManager.GetString("Nhập lại mật khẩu mới", resourceCulture);
             }
         }
         

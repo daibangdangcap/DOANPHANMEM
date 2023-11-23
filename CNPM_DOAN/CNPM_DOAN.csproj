@@ -369,7 +369,6 @@
     <Content Include="Views\NGUOIDUNGs\Login.cshtml" />
     <Content Include="Views\NGUOIDUNGs\Register.cshtml" />
     <Content Include="Views\NGUOIDUNGs\updateUserInfo.cshtml" />
-    <Content Include="Views\NGUOIDUNGs\updateMatKhau.cshtml" />
     <Content Include="Views\TODOes\showToDo.cshtml" />
     <Content Include="Views\TODOes\showUserToDo_PH.cshtml" />
     <Content Include="Views\NGUOIDUNGs\showNguoiDung.cshtml" />

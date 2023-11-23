@@ -5,33 +5,22 @@
     Layout = null;
 }
 <body>
-    <form action="/NGUOIDUNGs/updateMatKhau?id=@Session["IDUSER"]" method="post">
-        <h1 class="tieude">Chỉnh sửa mật khẩu</h1>
-        <table class="chsuamk">
-            <tr class="MKC">
-                <td>Mật khẩu cũ </td>
-            </tr>
-            <tr>
-                <td><input type="password" name="matkhaucu" required></td>
-            </tr>
-            <tr class="MKM">
-                <td>Mật khẩu mới </td>
-            </tr>
-            <tr>
-                <td><input type="password" name="matkhaumoi" required></td>
-            </tr>
-            <tr class="XNMK">
-                <td>Xác nhận mật khẩu</td>
-            </tr>
-            <tr>
-                <td><input type="password" name="xacnhanmatkhaumoi" required></td>
-            </tr>
-
-            <tr class="button">
-                <td>&nbsp;</td>
-                <td class="btchsuamk"><input type="submit" value="Lưu"></td>
-            </tr>
-
-        </table>
+    <form class="p-viewsuamk"action="/NGUOIDUNGs/updateMatKhau?id=@Session["IDUSER"]" method="post">
+        <h1 class="mb-4">@CNPM_DOAN.Resources.Language.Chỉnh_sửa_mật_khẩu</h1>
+            <div class="mb-2">
+                <p>@CNPM_DOAN.Resources.Language.Mật_khẩu_cũ</p>
+                <input class="input-change-mk" type="password" name="matkhaucu" required>
+            </div>
+            <div class="mb-2">
+                <p>@CNPM_DOAN.Resources.Language.Mật_khẩu_mới</p>
+                <input class="input-change-mk" type="password" name="matkhaumoi" required>
+            </div>
+            <div class="mb-2">
+                <p>@CNPM_DOAN.Resources.Language.Nhập_lại_mật_khẩu_mới</p> 
+                <input class="input-change-mk" type="password" name="xacnhanmatkhaumoi" required>
+            </div>
+            <div class="button align-items-end justify-content-end d-flex" style="margin-top:40px;">
+                <input class="btn btn-primary" type="submit" value="@CNPM_DOAN.Resources.Language.Lưu" style="width: 30%; height: 50px; ">
+            </div>
     </form>
 </body>

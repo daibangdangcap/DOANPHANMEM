@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
 using CNPM_DOAN.Models;
+using Newtonsoft.Json;
 
 namespace CNPM_DOAN.Controllers
 {
@@ -264,17 +266,7 @@ namespace CNPM_DOAN.Controllers
                 return HttpNotFound();
             }
         }
-        public ActionResult updateUserInfo(string iduser)
-        {
-            var data = db.NGUOIDUNGs.Find(iduser);
-            return View(data);
-        }
-        [HttpPost]
-        public ActionResult updateUserInfo(string id, [Bind(Include = "TenNguoiDung,Email,NgaySinh,GioiTinh")] NGUOIDUNG nGUOIDUNG)
-        {
-            if (ModelState.IsValid) { ChinhSuaThongTinCaNhan(id, nGUOIDUNG); return RedirectToAction("Informs", "NGUOIDUNGs", new { iduser = id }); }
-            return View(nGUOIDUNG);
-        }
+        
         public ActionResult updateMatKhau(string iduser)
         {
             var data = db.NGUOIDUNGs.Find(iduser);
@@ -534,5 +526,23 @@ namespace CNPM_DOAN.Controllers
         {
             return PartialView();
         }
-    }
+        public ActionResult ViewConUpdateInfo(string iduser)
+        {
+            NGUOIDUNG nguoidung = db.NGUOIDUNGs.Find(iduser);
+            return PartialView(nguoidung);
+        }
+
+        [HttpPost]
+        public ActionResult ViewConUpdateInfo(string TenNguoiDung, string Email, DateTime NgaySinh, string GioiTinh, string id)
+        {
+            NGUOIDUNG nguoidung = new NGUOIDUNG();
+            nguoidung.TenNguoiDung = TenNguoiDung;
+            nguoidung.Email = Email;
+            nguoidung.NgaySinh = NgaySinh;
+            nguoidung.GioiTinh = GioiTinh;
+            ChinhSuaThongTinCaNhan(id, nguoidung);
+            return RedirectToAction("Informs", "NGUOIDUNGs", new { iduser = id });
+        }    
+
+	}
 }

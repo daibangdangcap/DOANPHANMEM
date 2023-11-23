@@ -16,25 +16,25 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body class="body-color">
-    <div class="container d-flex" style="font-size:30px">
-        <i></i>
-        <a href="@Url.Action("showBaiTap", "BAITAPs", new { iduser = Session["IDUSER"] })">Quay về trang chủ</a>
+<body class="body-color" style="margin-top:50px;">
+    <div class="container d-flex" style="font-size: 30px ;margin-bottom:30px;">
+        <i class="fa-solid fa-arrow-left d-flex align-items-center justify-content-center" style="color: #1a61db"></i>
+        <a style="margin-left:20px;text-decoration:none" href="@Url.Action("showBaiTap", "BAITAPs", new { iduser = Session["IDUSER"] })">Quay về trang chủ</a>
     </div>
     <div class="con d-flex">
         @*khung trai*@
         <div class="khung-trai">
             <div class="d-flex align-items-center justify-content-center">
                 @if (Model.Avatar != null)
-                 {
+                {
                     <img src="@Url.Action("GetImage", "NGUOIDUNGs", new { id = Model.IDNguoiDung })" class="img-change" />
-                 }
+                }
                 else
-                 {<img src="" alt="" class="img-change" />}
+                {<img src="" alt="" class="img-change" />}
             </div>
             <div class="Item">
                 <div><button class="mb-4 button-change" id="viewConCaNhanLink">@CNPM_DOAN.Resources.Language.Thông_tin_cá_nhân</button></div>
-                <div><button class="mb-4 button-change" >@CNPM_DOAN.Resources.Language.Chỉnh_sửa_thông_tin_cá_nhân</button></div>
+                <div><button class="mb-4 button-change" id="viewUpdateUF">@CNPM_DOAN.Resources.Language.Chỉnh_sửa_thông_tin_cá_nhân</button></div>
                 <div><button class="mb-4 button-change" id="viewUpdateMatKhau">@CNPM_DOAN.Resources.Language.Đổi_mật_khẩu</button></div>
                 <div><button class="mb-4 button-change" onclick="location.href='@Url.Action("Logout", "NGUOIDUNGs")'">@CNPM_DOAN.Resources.Language.Đăng_xuất</button></div>
             </div>
@@ -42,9 +42,9 @@
         @*Khung phai*@
         <div class="khung-phai">
             <div id="partialViewContainer">
-            <div class="hello">
-                <p>@CNPM_DOAN.Resources.Language.Chào_mừng_quay_trở_lại__</p>
-            </div>
+                <div class="hello">
+                    <p>@CNPM_DOAN.Resources.Language.Chào_mừng_quay_trở_lại__</p>
+                </div>
             </div>
         </div>
     </div>
@@ -84,6 +84,28 @@
             // Use jQuery's ajax method to load the partial view
             $.ajax({
                 url: '@Url.Action("ViewConUpdateMatKhau","NGUOIDUNGs")',
+                type: 'GET',
+                success: function (result) {
+                    // Load the result into the container
+                    $("#partialViewContainer").html(result);
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
+</script>
+@*Script user info*@
+<script>
+    $(document).ready(function () {
+        // Intercept click event on the "Thông tin cá nhân" link
+        $("#viewUpdateUF").click(function (e) {
+            e.preventDefault(); // Prevent default link behavior
+
+            // Use jQuery's ajax method to load the partial view
+            $.ajax({
+                url: '@Url.Action("ViewConUpdateInfo","NGUOIDUNGs", new { iduser = Session["IDUSER"] })',
                 type: 'GET',
                 success: function (result) {
                     // Load the result into the container

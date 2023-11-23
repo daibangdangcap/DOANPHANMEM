@@ -5,7 +5,7 @@
     Layout = null;
 }
 <body>
-    <form class="p-viewsuamk"action="/NGUOIDUNGs/updateMatKhau?id=@Session["IDUSER"]" method="post">
+    <form class="p-viewsuamk" action="/NGUOIDUNGs/updateMatKhau?id=@Session["IDUSER"]" method="post">
         <h1 class="mb-4">@CNPM_DOAN.Resources.Language.Chỉnh_sửa_mật_khẩu</h1>
             <div class="mb-2">
                 <p>@CNPM_DOAN.Resources.Language.Mật_khẩu_cũ</p>
@@ -20,7 +20,7 @@
                 <input class="input-change-mk" type="password" name="xacnhanmatkhaumoi" required>
             </div>
             <div class="button align-items-end justify-content-end d-flex" style="margin-top:40px;">
-                <input class="btn btn-primary" type="submit" value="@CNPM_DOAN.Resources.Language.Lưu" style="width: 30%; height: 50px; ">
+                <input class="btn btn-success" type="submit" value="@CNPM_DOAN.Resources.Language.Lưu" style="width: 30%; height: 50px; font-size:25px; ">
             </div>
     </form>
 </body>

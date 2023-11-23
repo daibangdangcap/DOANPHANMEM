@@ -135,6 +135,12 @@
   <data name="Chưa nộp" xml:space="preserve">
     <value>Not yet submitted</value>
   </data>
+  <data name="Chấm điểm" xml:space="preserve">
+    <value>Chấm điểm</value>
+  </data>
+  <data name="Chấm điểm thành công" xml:space="preserve">
+    <value>Chấm điểm thành công</value>
+  </data>
   <data name="Chỉnh sửa" xml:space="preserve">
     <value>Edit</value>
   </data>
@@ -392,6 +398,9 @@
   </data>
   <data name="Tải xuống" xml:space="preserve">
     <value>Download</value>
+  </data>
+  <data name="Xem bài giải" xml:space="preserve">
+    <value>View submission</value>
   </data>
   <data name="Xem Thời khóa biểu" xml:space="preserve">
     <value>View Timetables</value>

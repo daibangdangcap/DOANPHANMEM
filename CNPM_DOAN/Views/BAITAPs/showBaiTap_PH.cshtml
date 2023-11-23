@@ -24,12 +24,18 @@
         </div>
     </div>
 
-    <!--pop up edit tài liệu-->
-    <div class="modal fade" id="editModal" role="dialog" data-url="@Url.Action("createNewTaiLieu","TAILIEUx")">
+    <div class="modal fade" id="editModal" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content"></div>
         </div>
     </div>
+
+    <div class="modal fade" id="seeModal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+
     <div class="content">
         <h1>@CNPM_DOAN.Resources.Language.Các_bài_tập_đã_giao</h1>
         <div class="content-group">
@@ -76,7 +82,7 @@
                         </div>
                         <button class="deleteBtn" id="btnEditDelete" onclick="location.href='@Url.Action("DeleteBaiTap", "BAITAPs", new { idbaitap = item.IDBaiTap, iduser = item.IDNguoiNhan })'"><i class="fa-solid fa-trash"></i></button>
                         <button class="editBtn btnEdit" id="@item.IDBaiTap" onclick="edit(this.id)"><i class="fa-solid fa-pen-to-square"></i></button>
-                        
+                        <button class="seeBtn" id="@item.IDBaiTap" onclick="see(this.id)"><i class="fa-solid fa-eye"></i></button>
                     </div>
                 </div>
             }
@@ -143,6 +149,24 @@
                 }
             });
         });
+        $('#seeModal').on('submit', 'form', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: new FormData($(this)[0]),
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.success) {
+                        window.location.href = response.redirectUrl;
+                    } else {
+                        $('#seeModal .modal-dialog').html(response);
+                    }
+                }
+            });
+        });
     })
         function edit(IDBaiTap) {
             $.get("@Url.Action("updateBaiTap", "BAITAPs")?idbaitap=" + IDBaiTap,
@@ -150,6 +174,15 @@
     $('#editModal').modal('show');
 }
 $('#editModal').on('hidden.bs.modal', function (e) {
+    $('.modal-body').html("")
+})
+
+            function see(IDBaiTap) {
+            $.get("@Url.Action("showBaiGiai_PH", "BAIGIAIs", new { idnguoinhan = Session["IDNGUOINHAN"] })&idbaitap=" + IDBaiTap,
+        function (data) { $('#seeModal').html(data); })
+    $('#seeModal').modal('show');
+}
+$('#seeModal').on('hidden.bs.modal', function (e) {
     $('.modal-body').html("")
 })
     </script>

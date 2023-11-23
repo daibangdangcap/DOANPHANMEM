@@ -1,7 +1,7 @@
-﻿.body-color{
-    background:#96D0E9;
-    height:100%;
-    width:100%;
+﻿.body-color {
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    height: 100%;
+    width: 100%;
 }
 .con {
     width: 1200px;
@@ -23,10 +23,13 @@
     .con .khung-trai{
         height:100%;
         width:40%;
+        
     }
     .con .khung-phai {
         height: 100%;
         width: 60%;
+        padding: 20px;
+        border-radius: 20px;
     }
 /*CSS-trai*/
 .khung-trai .Item {
@@ -40,15 +43,25 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 1px solid #DDDDDD;
+    border-bottom: 2px solid #DDDDDD;
     background: white;
     outline: none;
 }
-.button-change:hover {
-    color: #3333FF;
-}
+.button-change:hover,
 .button-change:focus {
     color: #3333FF;
     border-bottom: 1px solid #3333FF;
 }
 /*CSS-phai*/
+.hello {
+    font-size: 40px;
+    align-items:center;
+    justify-content:center;
+    display:flex;
+    height:100%;
+    width:100%;
+}
+/*CSS-ViewConCaNhan*/
+.p-viewcon {
+    font-size: 25px;
+}

@@ -106,6 +106,15 @@ namespace CNPM_DOAN.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Xin chào Chào mừng quay trở lại !.
+        /// </summary>
+        public static string Chào_mừng_quay_trở_lại__ {
+            get {
+                return ResourceManager.GetString("Chào mừng quay trở lại !", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chỉnh sửa.
         /// </summary>
         public static string Chỉnh_sửa {
@@ -322,6 +331,15 @@ namespace CNPM_DOAN.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Đổi ảnh đại diện.
+        /// </summary>
+        public static string Đổi_ảnh_đại_diện {
+            get {
+                return ResourceManager.GetString("Đổi ảnh đại diện", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đổi mật khẩu.
         /// </summary>
         public static string Đổi_mật_khẩu {
@@ -503,6 +521,15 @@ namespace CNPM_DOAN.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nam.
+        /// </summary>
+        public static string Nam {
+            get {
+                return ResourceManager.GetString("Nam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nếu bạn có thắc mắc hoặc cần hỗ trợ hãy liên lạc cho chúng tôi thông qua các cách sau.
         /// </summary>
         public static string Nếu_bạn_có_thắc_mắc_hoặc_cần_hỗ_trợ_hãy_liên_lạc_cho_chúng_tôi_thông_qua_các_cách_sau {
@@ -572,6 +599,15 @@ namespace CNPM_DOAN.Resources {
         public static string Nộp_bài_tập_thành_công_ {
             get {
                 return ResourceManager.GetString("Nộp bài tập thành công!", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nữ.
+        /// </summary>
+        public static string Nữ {
+            get {
+                return ResourceManager.GetString("Nữ", resourceCulture);
             }
         }
         

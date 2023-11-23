@@ -126,6 +126,9 @@
   <data name="Bạn có muốn xóa tài khoản không?" xml:space="preserve">
     <value>Bạn có muốn xóa tài khoản không?</value>
   </data>
+  <data name="Chào mừng quay trở lại !" xml:space="preserve">
+    <value>Xin chào Chào mừng quay trở lại !</value>
+  </data>
   <data name="Chưa có điểm" xml:space="preserve">
     <value>Chưa có điểm</value>
   </data>
@@ -237,6 +240,9 @@
   <data name="Mục tiêu" xml:space="preserve">
     <value>Mục tiêu</value>
   </data>
+  <data name="Nam" xml:space="preserve">
+    <value>Nam</value>
+  </data>
   <data name="Ngày hoàn thành" xml:space="preserve">
     <value>Ngày hoàn thành</value>
   </data>
@@ -260,6 +266,9 @@
   </data>
   <data name="Nộp bài tập thành công!" xml:space="preserve">
     <value>Nộp bài tập thành công!</value>
+  </data>
+  <data name="Nữ" xml:space="preserve">
+    <value>Nữ</value>
   </data>
   <data name="Quay lại" xml:space="preserve">
     <value>Quay lại</value>
@@ -440,5 +449,8 @@
   </data>
   <data name="Đổi mật khẩu" xml:space="preserve">
     <value>Đổi mật khẩu</value>
+  </data>
+  <data name="Đổi ảnh đại diện" xml:space="preserve">
+    <value>Đổi ảnh đại diện</value>
   </data>
 </root>

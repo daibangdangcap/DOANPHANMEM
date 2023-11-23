@@ -6,50 +6,33 @@
 }
 
 <div class="row">
-    <div class="col-md-6">
-        <label>Tên người dùng</label>
+    <div class="col-md-6 p-viewcon">
+        <p>@CNPM_DOAN.Resources.Language.Họ_và_tên</p>
+        <p>@CNPM_DOAN.Resources.Language.Email</p>
+        <p>@CNPM_DOAN.Resources.Language.Ngày_sinh</p>
+        <p>@CNPM_DOAN.Resources.Language.Giới_tính</p>
+        <p>@CNPM_DOAN.Resources.Language.Tên_tài_khoản</p>
+        <p>@CNPM_DOAN.Resources.Language.Mật_khẩu</p>
+        <p>@CNPM_DOAN.Resources.Language.Đổi_ảnh_đại_diện</p>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 p-viewcon">
         <p>@Model.TenNguoiDung</p>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <label>Email</label>
-    </div>
-    <div class="col-md-6">
         <p>@Model.Email</p>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <label>Ngày sinh</label>
-    </div>
-    <div class="col-md-6">
         <p>@Model.NgaySinh.ToString("dd/MM/yyyy")</p>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <label>Giới tính</label>
-    </div>
-    <div class="col-md-6">
-        <p>@Model.GioiTinh</p>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <label>Tên tài khoản</label>
-    </div>
-    <div class="col-md-6">
+        @if (Model.GioiTinh == "Nam")
+        {
+            <p>@CNPM_DOAN.Resources.Language.Nam</p>
+        }
+        else
+        {
+            <p>@CNPM_DOAN.Resources.Language.Nữ</p>
+        }
         <p>@Model.TenTaiKhoan</p>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <label>Mật khẩu</label>
-    </div>
-    <div class="col-md-6">
         <p>************</p>
+        @using (Html.BeginForm("UpLoad", "NGUOIDUNGs", new { iduserr = Model.IDNguoiDung }, FormMethod.Post, new { id = "submitForm", enctype = "multipart/form-data" }))
+        {
+            <input type="file" name="file" id="myFile">
+        }
+
     </div>
 </div>

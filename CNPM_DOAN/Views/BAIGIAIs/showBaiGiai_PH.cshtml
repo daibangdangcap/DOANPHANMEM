@@ -2,26 +2,41 @@
 
 @{
     ViewBag.Title = "showBaiGiai_PH";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
-<div class="content">
-    @if (Model == null)
-    {
-        <p>Chưa nộp bài</p>
-    }
-    else
-    {
-        <p>@Model.TenBaiGiai</p>
-        <p>@Model.NgayHoanThanh</p>
-        
-            using (Html.BeginForm("ChamDiem", "BAIGIAIs", FormMethod.Post,new { encytype= "multipart/form-data" }))
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<div class="modal-dialog" style="top:30%">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModal-label">@CNPM_DOAN.Resources.Language.Xem_bài_giải</h4>
+        </div>
+        <div class="modal-body">
+            @if (Model == null)
             {
-                <input type="number" value="@Model.SoDiem" name="diem"/>
-                <input type="hidden" value="@Model.IDBaiTap" name="idbt"/>
-                <input type="hidden" value="@Model.IDNguoiDung" name="idnguoilam"/>
-                <input type="submit" value="Chấm điểm"/>
+                <p>Chưa nộp bài</p>
             }
-        
-    }
+            else
+            {
+                <label>Tên file bài giải: </label>
+                <span>@Model.TenBaiGiai</span>
+                <button style="margin-left:20px; border:none; background-color:white" onclick="location.href='@Url.Action("TaiBG", "BAIGIAIs", new {idbaigiai=Model.IDBaiGiai})'"><i class="fa-solid fa-circle-down"></i> Tải xuống</button>
+                <br />
+                <label>Ngày hoàn thành: </label>
+                <span>@Model.NgayHoanThanh</span>
+                @Html.AntiForgeryToken()
+                using (Html.BeginForm("ChamDiem", "BAIGIAIs", FormMethod.Post, new { encytype = "multipart/form-data" }))
+                {
+                    <label>Số điểm: </label>
+                    <input type="number" step="any" value="@Model.SoDiem" name="diem" />
+                    <input type="hidden" value="@Model.IDBaiTap" name="idbt" />
+                    <input type="hidden" value="@Model.IDNguoiDung" name="idnguoilam" />
+                    <input class="btn-info" type="submit" value="Chấm điểm" />
+                }
+                <p class="text-danger" style="text-align:center">@Html.ValidationMessage("invalidGrade")</p>
+            }
+        </div>
+    </div>
 </div>

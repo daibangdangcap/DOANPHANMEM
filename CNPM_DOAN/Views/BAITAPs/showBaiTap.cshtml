@@ -90,31 +90,22 @@
 @section scripts{
     <script type="text/javascript">
     $(document).ready(function () {
-        // Attach a click event to the button
         $(".nopbai").click(function () {
             var itemId = $(this).data("item-id");
             var iduser = $(this).closest(".content-group-item").find("p[data-item-user]").data("item-user");
 
-
-            // Construct the unique ID for the partial view container
             var partialViewContainerId = "#partialViewContainer_" + itemId;
 
-            // Check if the partial view container is currently visible
             var isContainerVisible = $(partialViewContainerId).is(":visible");
 
-            // If visible, hide it; if hidden, show it
             if (isContainerVisible) {
-                // Hide the partial view container
                 $(partialViewContainerId).hide();
             } else {
-                // Use Ajax to load the partial view
                 $.ajax({
                     url: '@Url.Action("ChiTietBaiGiai", "BAIGIAIs")' + '?idbaitap=' + itemId + '&iduser=' + iduser, // Replace with your controller and action names
                     type: 'GET',
                     success: function (result) {
-                        // Display the partial view in the container div
                         $(partialViewContainerId).html(result);
-                        // Show the partial view container
                         $(partialViewContainerId).show();
                     },
                     error: function () {

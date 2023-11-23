@@ -156,3 +156,20 @@
     border: none;
     outline: none;
 }
+
+.seeBtn {
+    width: fit-content;
+    height: fit-content;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    z-index: 2;
+    margin-top: 44px;
+    margin-right: 10px;
+    padding: 10px 10px 10px 10px;
+    font-size: 15px;
+    float: right;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}

@@ -126,6 +126,9 @@
   <data name="Bạn có muốn xóa tài khoản không?" xml:space="preserve">
     <value>Do you want to delete your account?</value>
   </data>
+  <data name="Chào mừng quay trở lại !" xml:space="preserve">
+    <value>Welcome back !</value>
+  </data>
   <data name="Chưa có điểm" xml:space="preserve">
     <value>Not graded</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Chỉnh sửa bài nộp" xml:space="preserve">
     <value>Edit file</value>
+  </data>
+  <data name="Chỉnh sửa mật khẩu" xml:space="preserve">
+    <value>Change password</value>
   </data>
   <data name="Chỉnh sửa nội dung nhiệm vụ" xml:space="preserve">
     <value>Edit to-do content</value>
@@ -240,6 +246,9 @@
   <data name="Mục tiêu" xml:space="preserve">
     <value>Goal</value>
   </data>
+  <data name="Nam" xml:space="preserve">
+    <value>Male</value>
+  </data>
   <data name="Ngày hoàn thành" xml:space="preserve">
     <value>Date submitted</value>
   </data>
@@ -248,6 +257,9 @@
   </data>
   <data name="Nhóm học tập" xml:space="preserve">
     <value>Study group</value>
+  </data>
+  <data name="Nhập lại mật khẩu mới" xml:space="preserve">
+    <value>Confirm new password</value>
   </data>
   <data name="Nhập nội dung" xml:space="preserve">
     <value>Write the content</value>
@@ -263,6 +275,9 @@
   </data>
   <data name="Nộp bài tập thành công!" xml:space="preserve">
     <value>Submitted homework successfully!</value>
+  </data>
+  <data name="Nữ" xml:space="preserve">
+    <value>Female</value>
   </data>
   <data name="Quay lại" xml:space="preserve">
     <value>Cancel</value>
@@ -290,6 +305,9 @@
   </data>
   <data name="Thêm tài liệu học tập mới" xml:space="preserve">
     <value>Create new document</value>
+  </data>
+  <data name="Thông tin cá nhân" xml:space="preserve">
+    <value>General Info</value>
   </data>
   <data name="Thống kê bài tập" xml:space="preserve">
     <value>Exercise statistics</value>
@@ -443,5 +461,8 @@
   </data>
   <data name="Đổi mật khẩu" xml:space="preserve">
     <value>Change password</value>
+  </data>
+  <data name="Đổi ảnh đại diện" xml:space="preserve">
+    <value>Change Avatar</value>
   </data>
 </root>

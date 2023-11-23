@@ -5,8 +5,9 @@
         display: none;
         color: red;
     }
+
     .error {
-        margin-top: 30px;
+        margin-top:5px;
         margin-bottom: 20px;
     }
 </style>
@@ -70,7 +71,7 @@
             <span class="lengthNotification"></span>
         </div>
 
-        <div class="d-flex row" style="margin-bottom:50px">
+        <div class="d-flex row" style="margin-bottom:60px">
             <div class="col-4">
                 <p style="padding:0 0 0 5px ; margin:0px">Giới tính</p>
             </div>
@@ -80,7 +81,7 @@
                            type="radio"
                            name="gender"
                            value="Nam"
-                           required/>
+                           required />
                     <span class="span-change">Nam</span>
                 </div>
                 <div>
@@ -98,7 +99,6 @@
         </div>
     </form>
 </div>
-
 <script>
     function containsNumberLoop(str) {
         for (var i = 0; i < str.length; i++) {
@@ -128,12 +128,12 @@
             }
         }
         else lengthNotification[0].style.display = 'none';
-        
+
     }
 
     function containsAtSymbol(str) {
-    return str.includes('');
-}
+        return str.includes('');
+    }
 
     function emailValidate() {
         var email = document.getElementById('email');
@@ -154,8 +154,8 @@
                 lengthNotification[1].style.display = 'none'; allValid()
             }
         }
-        else lengthNotification[1].style.display = 'none'; 
-        
+        else lengthNotification[1].style.display = 'none';
+
     }
 
     function taikhoanValidate() {
@@ -178,8 +178,8 @@
                 lengthNotification[2].style.display = 'none'; allValid()
             }
         }
-        else lengthNotification[2].style.display = 'none'; 
-        
+        else lengthNotification[2].style.display = 'none';
+
     }
 
     function passwordValidate() {
@@ -203,7 +203,7 @@
             }
         }
         else lengthNotification[3].style.display = 'none';
-        
+
     }
 
     function checkPassword() {
@@ -217,8 +217,8 @@
             }
             else lengthNotification[4].style.display = 'none'; allValid()
         }
-        else lengthNotification[4].style.display = 'none'; 
-        
+        else lengthNotification[4].style.display = 'none';
+
     }
 
     function ngaysinhValidate() {
@@ -230,10 +230,10 @@
         // Compare the input date with the current date
         if (inputDate > currentDate || new Date(inputDate).getFullYear() > 2017) {
             lengthNotification[5].style.display = 'block';
-            lengthNotification[5].innerHTML='Năm sinh phải bé hơn năm 2017'
+            lengthNotification[5].innerHTML = 'Năm sinh phải bé hơn năm 2017'
         }
         else lengthNotification[5].style.display = 'none'; allValid()
-        
+
     }
 
     function allValid() {
@@ -249,7 +249,7 @@
             button.disabled = true;
             button.style.backgroundColor = 'black';
         }
-        if(count===0) {
+        if (count === 0) {
             button.disabled = false;
             button.style.backgroundColor = '#3A5FCD';
         }

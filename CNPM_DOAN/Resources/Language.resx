@@ -126,6 +126,9 @@
   <data name="Bạn có muốn xóa tài khoản không?" xml:space="preserve">
     <value>Bạn có muốn xóa tài khoản không?</value>
   </data>
+  <data name="Chào mừng quay trở lại !" xml:space="preserve">
+    <value>Chào mừng quay trở lại !</value>
+  </data>
   <data name="Chưa có điểm" xml:space="preserve">
     <value>Chưa có điểm</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Chỉnh sửa bài nộp" xml:space="preserve">
     <value>Chỉnh sửa bài nộp</value>
+  </data>
+  <data name="Chỉnh sửa mật khẩu" xml:space="preserve">
+    <value>Chỉnh sửa mật khẩu</value>
   </data>
   <data name="Chỉnh sửa nội dung nhiệm vụ" xml:space="preserve">
     <value>Chỉnh sửa nội dung nhiệm vụ</value>
@@ -240,6 +246,9 @@
   <data name="Mục tiêu" xml:space="preserve">
     <value>Mục tiêu</value>
   </data>
+  <data name="Nam" xml:space="preserve">
+    <value>Nam</value>
+  </data>
   <data name="Ngày hoàn thành" xml:space="preserve">
     <value>Ngày hoàn thành</value>
   </data>
@@ -248,6 +257,9 @@
   </data>
   <data name="Nhóm học tập" xml:space="preserve">
     <value>Nhóm học tập</value>
+  </data>
+  <data name="Nhập lại mật khẩu mới" xml:space="preserve">
+    <value>Nhập lại mật khẩu mới</value>
   </data>
   <data name="Nhập nội dung" xml:space="preserve">
     <value>Nhập nội dung</value>
@@ -263,6 +275,9 @@
   </data>
   <data name="Nộp bài tập thành công!" xml:space="preserve">
     <value>Nộp bài tập thành công!</value>
+  </data>
+  <data name="Nữ" xml:space="preserve">
+    <value>Nữ</value>
   </data>
   <data name="Quay lại" xml:space="preserve">
     <value>Quay lại</value>
@@ -290,6 +305,9 @@
   </data>
   <data name="Thêm tài liệu học tập mới" xml:space="preserve">
     <value>Thêm tài liệu học tập mới</value>
+  </data>
+  <data name="Thông tin cá nhân" xml:space="preserve">
+    <value>Thông tin cá nhân</value>
   </data>
   <data name="Thống kê bài tập" xml:space="preserve">
     <value>Thống kê bài tập</value>
@@ -443,5 +461,8 @@
   </data>
   <data name="Đổi mật khẩu" xml:space="preserve">
     <value>Đổi mật khẩu</value>
+  </data>
+  <data name="Đổi ảnh đại diện" xml:space="preserve">
+    <value>Đổi ảnh đại diện</value>
   </data>
 </root>

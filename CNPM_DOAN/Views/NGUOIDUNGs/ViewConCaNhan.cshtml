@@ -1,0 +1,39 @@
+﻿@model CNPM_DOAN.Models.NGUOIDUNG
+
+@{
+    ViewBag.Title = "Informs";
+    Layout = null;
+}
+<h1 class="mb-4">@CNPM_DOAN.Resources.Language.Thông_tin_cá_nhân</h1>
+<div class="row">
+    
+    <div class="col-md-6 p-viewcon">
+        <p>@CNPM_DOAN.Resources.Language.Họ_và_tên</p>
+        <p>@CNPM_DOAN.Resources.Language.Email</p>
+        <p>@CNPM_DOAN.Resources.Language.Ngày_sinh</p>
+        <p>@CNPM_DOAN.Resources.Language.Giới_tính</p>
+        <p>@CNPM_DOAN.Resources.Language.Tên_tài_khoản</p>
+        <p>@CNPM_DOAN.Resources.Language.Mật_khẩu</p>
+        <p>@CNPM_DOAN.Resources.Language.Đổi_ảnh_đại_diện</p>
+    </div>
+    <div class="col-md-6 p-viewcon">
+        <p>@Model.TenNguoiDung</p>
+        <p>@Model.Email</p>
+        <p>@Model.NgaySinh.ToString("dd/MM/yyyy")</p>
+        @if (Model.GioiTinh == "Nam")
+        {
+            <p>@CNPM_DOAN.Resources.Language.Nam</p>
+        }
+        else
+        {
+            <p>@CNPM_DOAN.Resources.Language.Nữ</p>
+        }
+        <p>@Model.TenTaiKhoan</p>
+        <p>************</p>
+        @using (Html.BeginForm("UpLoad", "NGUOIDUNGs", new { iduserr = Model.IDNguoiDung }, FormMethod.Post, new { id = "submitForm", enctype = "multipart/form-data" }))
+        {
+            <input type="file" name="file" id="myFile">
+        }
+
+    </div>
+</div>

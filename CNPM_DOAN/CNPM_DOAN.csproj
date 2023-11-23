@@ -233,8 +233,6 @@
       <LastGenOutput>DOAN_CNPM.cs</LastGenOutput>
     </Content>
     <Content Include="MyCss\baitap.css" />
-    <Content Include="MyCss\Chinhsuamatkhau.css" />
-    <Content Include="MyCss\Chinhsuatttaikhoan.css" />
     <Content Include="MyCss\gioithieu.css" />
     <Content Include="MyCss\global.css" />
     <Content Include="MyCss\informs.css" />
@@ -249,7 +247,6 @@
     <Content Include="MyCss\taobtmoi.css" />
     <Content Include="MyCss\themlichhoc.css" />
     <Content Include="MyCss\todo.css" />
-    <Content Include="MyCss\xoataikhoan.css" />
     <Content Include="MyImage\background_todoList.png" />
     <Content Include="MyImage\calendar.png" />
     <Content Include="MyImage\checked.png" />
@@ -370,8 +367,6 @@
     <Content Include="Views\NGUOIDUNGs\Informs.cshtml" />
     <Content Include="Views\NGUOIDUNGs\Login.cshtml" />
     <Content Include="Views\NGUOIDUNGs\Register.cshtml" />
-    <Content Include="Views\NGUOIDUNGs\updateUserInfo.cshtml" />
-    <Content Include="Views\NGUOIDUNGs\updateMatKhau.cshtml" />
     <Content Include="Views\TODOes\showToDo.cshtml" />
     <Content Include="Views\TODOes\showUserToDo_PH.cshtml" />
     <Content Include="Views\NGUOIDUNGs\showNguoiDung.cshtml" />
@@ -409,6 +404,9 @@
     <Content Include="Views\TIETHOCs\editTietHoc.cshtml" />
     <Content Include="Views\TODOes\UpdateToDo_PH.cshtml" />
     <Content Include="Views\TODOes\giaoToDo.cshtml" />
+    <Content Include="Views\NGUOIDUNGs\ViewConCaNhan.cshtml" />
+    <Content Include="Views\NGUOIDUNGs\ViewConUpdateMatKhau.cshtml" />
+    <Content Include="Views\NGUOIDUNGs\ViewConUpdateInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Language.en.resx">

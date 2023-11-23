@@ -16,30 +16,82 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body>
+<body class="body-color">
     <div class="container d-flex" style="font-size:30px">
         <i></i>
         <a href="@Url.Action("showBaiTap", "BAITAPs", new { iduser = Session["IDUSER"] })">Quay về trang chủ</a>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-img">
-                    @if (Model.Avatar != null)
-                    {
-                        <img src="@Url.Action("GetImage", "NGUOIDUNGs", new { id = Model.IDNguoiDung })" alt="" style="width:100%;height:100%;" />
-                    }
-                    else
-                    {<img src="" alt="" />}
-                </div>
+    <div class="con d-flex">
+        @*khung trai*@
+        <div class="khung-trai">
+            <div class="d-flex align-items-center justify-content-center">
+                @if (Model.Avatar != null)
+                 {
+                    <img src="@Url.Action("GetImage", "NGUOIDUNGs", new { id = Model.IDNguoiDung })" class="img-change" />
+                 }
+                else
+                 {<img src="" alt="" class="img-change" />}
             </div>
-            <div class="col-md-8">
-                @Html.Partial("ViewConCaNhan")
+            <div class="Item">
+                <div><button class="mb-4 button-change" id="viewConCaNhanLink">@CNPM_DOAN.Resources.Language.Thông_tin_cá_nhân</button></div>
+                <div><button class="mb-4 button-change" >@CNPM_DOAN.Resources.Language.Chỉnh_sửa_thông_tin_cá_nhân</button></div>
+                <div><button class="mb-4 button-change" id="viewUpdateMatKhau">@CNPM_DOAN.Resources.Language.Đổi_mật_khẩu</button></div>
+                <div><button class="mb-4 button-change" onclick="location.href='@Url.Action("Logout", "NGUOIDUNGs")'">@CNPM_DOAN.Resources.Language.Đăng_xuất</button></div>
             </div>
+        </div>
+        @*Khung phai*@
+        <div class="khung-phai">
+            <div id="partialViewContainer">@Html.Partial("ViewConCaNhan")</div>
         </div>
     </div>
 </body>
-<script src="~/MyJs/xoataikhoan.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+@*Script Thong tin ca nhan*@
+<script>
+    $(document).ready(function () {
+        // Intercept click event on the "Thông tin cá nhân" link
+        $("#viewConCaNhanLink").click(function (e) {
+            e.preventDefault(); // Prevent default link behavior
+
+            // Use jQuery's ajax method to load the partial view
+            $.ajax({
+                url: '@Url.Action("ViewConCaNhan","NGUOIDUNGs", new { iduser = Session["IDUSER"]})',
+                type: 'GET',
+                success: function (result) {
+                    // Load the result into the container
+                    $("#partialViewContainer").html(result);
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
+</script>
+
+@*Script doi mat khau*@
+<script>
+    $(document).ready(function () {
+        // Intercept click event on the "Thông tin cá nhân" link
+        $("#viewUpdateMatKhau").click(function (e) {
+            e.preventDefault(); // Prevent default link behavior
+
+            // Use jQuery's ajax method to load the partial view
+            $.ajax({
+                url: '@Url.Action("ViewConUpdateMatKhau","NGUOIDUNGs")',
+                type: 'GET',
+                success: function (result) {
+                    // Load the result into the container
+                    $("#partialViewContainer").html(result);
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
+</script>
 <script>
     $(document).ready(function () {
         $('#myFile').on('change', function () {

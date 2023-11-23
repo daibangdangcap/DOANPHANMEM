@@ -233,7 +233,6 @@
       <LastGenOutput>DOAN_CNPM.cs</LastGenOutput>
     </Content>
     <Content Include="MyCss\baitap.css" />
-    <Content Include="MyCss\Chinhsuamatkhau.css" />
     <Content Include="MyCss\Chinhsuatttaikhoan.css" />
     <Content Include="MyCss\gioithieu.css" />
     <Content Include="MyCss\global.css" />
@@ -409,6 +408,7 @@
     <Content Include="Views\TODOes\UpdateToDo_PH.cshtml" />
     <Content Include="Views\TODOes\giaoToDo.cshtml" />
     <Content Include="Views\NGUOIDUNGs\ViewConCaNhan.cshtml" />
+    <Content Include="Views\NGUOIDUNGs\ViewConUpdateMatKhau.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Language.en.resx">

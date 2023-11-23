@@ -124,6 +124,15 @@ namespace CNPM_DOAN.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chỉnh sửa mật khẩu.
+        /// </summary>
+        public static string Chỉnh_sửa_mật_khẩu {
+            get {
+                return ResourceManager.GetString("Chỉnh sửa mật khẩu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chỉnh sửa nội dung nhiệm vụ.
         /// </summary>
         public static string Chỉnh_sửa_nội_dung_nhiệm_vụ {
@@ -797,6 +806,15 @@ namespace CNPM_DOAN.Resources {
         public static string Thống_kê_bài_tập {
             get {
                 return ResourceManager.GetString("Thống kê bài tập", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thông tin cá nhân.
+        /// </summary>
+        public static string Thông_tin_cá_nhân {
+            get {
+                return ResourceManager.GetString("Thông tin cá nhân", resourceCulture);
             }
         }
         

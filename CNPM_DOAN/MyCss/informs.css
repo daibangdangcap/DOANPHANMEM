@@ -1,2 +1,54 @@
-﻿
-
+﻿.body-color{
+    background:#96D0E9;
+    height:100%;
+    width:100%;
+}
+.con {
+    width: 1200px;
+    height: 800px;
+    border-radius: 20px;
+    background: white;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding:30px;
+}
+    .con .img-change {
+        width: 250px;
+        height: 230px;
+        border-radius: 50%;
+        border: 2px solid #777777;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-top: 10px;
+    }
+    .con .khung-trai{
+        height:100%;
+        width:40%;
+    }
+    .con .khung-phai {
+        height: 100%;
+        width: 60%;
+    }
+/*CSS-trai*/
+.khung-trai .Item {
+    margin-top:30px;
+    text-align:center;
+    font-size:25px;
+}
+.Item .button-change {
+    width: 350px;
+    height: 65px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #DDDDDD;
+    background: white;
+    outline: none;
+}
+.button-change:hover {
+    color: #3333FF;
+}
+.button-change:focus {
+    color: #3333FF;
+    border-bottom: 1px solid #3333FF;
+}
+/*CSS-phai*/

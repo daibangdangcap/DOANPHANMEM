@@ -138,6 +138,9 @@
   <data name="Chỉnh sửa bài nộp" xml:space="preserve">
     <value>Chỉnh sửa bài nộp</value>
   </data>
+  <data name="Chỉnh sửa mật khẩu" xml:space="preserve">
+    <value>Chỉnh sửa mật khẩu</value>
+  </data>
   <data name="Chỉnh sửa nội dung nhiệm vụ" xml:space="preserve">
     <value>Chỉnh sửa nội dung nhiệm vụ</value>
   </data>
@@ -284,6 +287,9 @@
   </data>
   <data name="Thêm tài liệu học tập mới" xml:space="preserve">
     <value>Thêm tài liệu học tập mới</value>
+  </data>
+  <data name="Thông tin cá nhân" xml:space="preserve">
+    <value>Thông tin cá nhân</value>
   </data>
   <data name="Thống kê bài tập" xml:space="preserve">
     <value>Thống kê bài tập</value>

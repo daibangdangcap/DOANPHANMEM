@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -221,11 +222,19 @@ namespace CNPM_DOAN.Controllers
         }
         public ActionResult showBaiGiai_PH(string idbaitap, string idnguoinhan)
         {
-            var data = db.BAIGIAIs.Where(s => s.IDBaiTap == idbaitap && s.IDNguoiDung == idnguoinhan).FirstOrDefault();
-            if (data!=null) { return View(data); }
+            BAIGIAI data = db.BAIGIAIs.Where(s => s.IDBaiTap == idbaitap && s.IDNguoiDung == idnguoinhan).FirstOrDefault();
+            if (TempData["ModelStateErrors"] != null)
+            {
+                ModelState.Merge((ModelStateDictionary)TempData["ModelStateErrors"]);
+                TempData.Remove("ModelStateErrors");
+            }
+            if (data!=null) 
+            {
+                return PartialView(data);
+            }
             else
             {
-                return View();
+                return PartialView();
             }
         }
         public ActionResult TaiBG(string idbaigiai)
@@ -241,10 +250,20 @@ namespace CNPM_DOAN.Controllers
         public ActionResult ChamDiem(double diem, string idbt, string idnguoilam)
         {
             var data = db.BAIGIAIs.Where(s => s.IDBaiTap == idbt && s.IDNguoiDung == idnguoilam).FirstOrDefault();
-            data.SoDiem = diem;
-            db.Entry(data).State=EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("showBaiGiai_PH", "BAIGIAIs", new { idbaitap=idbt,idnguoinhan=idnguoilam});
+            if (diem < 0||diem>10)
+            {
+                ModelState.AddModelError("invalidGrade", "Điểm không được phép lớn bé hơn không hoặc lớn hơn 10");
+                TempData["ModelStateErrors"] = ModelState;
+                return RedirectToAction("showBaiGiai_PH", "BAIGIAIs", new {idbaitap=idbt, idnguoinhan=idnguoilam});
+            }
+            else
+            {
+                data.SoDiem = diem;
+                db.Entry(data).State = EntityState.Modified;
+                db.SaveChanges();
+                TempData["message"] = CNPM_DOAN.Resources.Language.Chấm_điểm_thành_công;
+                return Json(new { success = true, redirectUrl = Url.Action("showBaiTap_PH", "BAITAPs", new { iduser = idnguoilam }) });
+            }
         }
     }
 }

@@ -30,7 +30,7 @@
             
         </div>
         <div class="inputMission" style="z-index:1">
-            <form action="/MUCTIEUx/ThemMucTieu?id=@Session["IDUSER"]" method="post">
+            <form action="/MUCTIEUx/ThemMucTieu?id=@Session["IDUSER"]" method="post" style="margin-left:10vw">
 
                 <input type="text" placeholder="@CNPM_DOAN.Resources.Language.Hãy_viết_mục_tiêu_của_bạn_vào_đây" class="input" name="ndmuctieu" required oninvalid="this.setCustomValidity('Vui lòng nhập mục tiêu')" oninput="setCustomValidity('')" maxlength="100">
                 <button type="submit" class="btnSend"><i class="fa-regular fa-paper-plane"></i>@CNPM_DOAN.Resources.Language.Gửi</button>

@@ -7,16 +7,17 @@
 <link href="~/MyCss/nhomhoctap.css" rel="stylesheet" />
 <body>
     <div class="content">
+        <h1>@CNPM_DOAN.Resources.Language.Danh_sách_học_sinh</h1>
         <div class="content-group">
-                @foreach (var item in Model)
-                {
-                    <div class="content-group-item">
-                        <div class="content-group-item-name" onclick="location.href='@Url.Action("showToDo_PH", "TODOes", new { iduser = item.IDNguoiDung })'">
-                            <p>@item.TenNguoiDung</p>
-                        </div>
+            @foreach (var item in Model)
+            {
+                <div class="content-group-item">
+                    <div class="content-group-item-name" onclick="location.href='@Url.Action("showToDo_PH", "TODOes", new { iduser = item.IDNguoiDung })'">
+                        <p>@item.TenNguoiDung</p>
                     </div>
+                </div>
 
-                }
+            }
         </div>
     </div>
 </body>

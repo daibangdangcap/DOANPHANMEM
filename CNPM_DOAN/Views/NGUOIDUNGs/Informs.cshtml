@@ -30,7 +30,7 @@
                     <img src="@Url.Action("GetImage", "NGUOIDUNGs", new { id = Model.IDNguoiDung })" class="img-change" />
                 }
                 else
-                {<img src="" alt="" class="img-change" />}
+                {<img src="~/MyImage/hs.jpg" alt="" class="img-change" />}
             </div>
             <div class="Item">
                 <div><button class="mb-4 button-change" id="viewConCaNhanLink">@CNPM_DOAN.Resources.Language.Thông_tin_cá_nhân</button></div>
@@ -115,13 +115,6 @@
                     console.error(error);
                 }
             });
-        });
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        $('#myFile').on('change', function () {
-            $('#submitForm').submit();
         });
     });
 </script>

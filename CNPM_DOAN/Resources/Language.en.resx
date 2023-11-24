@@ -180,6 +180,9 @@
   <data name="Cập nhật thành công!" xml:space="preserve">
     <value>Edit successfully!</value>
   </data>
+  <data name="Danh sách học sinh" xml:space="preserve">
+    <value>List of students</value>
+  </data>
   <data name="Danh sách nhiệm vụ" xml:space="preserve">
     <value>To-do list</value>
   </data>

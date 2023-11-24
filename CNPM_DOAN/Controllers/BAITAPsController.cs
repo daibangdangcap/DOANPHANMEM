@@ -284,6 +284,12 @@ namespace CNPM_DOAN.Controllers
             var DataColors = new[] { "#36A2EB","#FF6384" };
             ViewBag.DataColors = DataColors;
             ViewBag.DataValues= DataValues;
+            var valueBar = new[] {ht,cht,tongBT };
+            var colorBar = new[] { "#36A2EB", "#FF6384", "#E0FFFF" };
+            var barLabels = new[] { "Hoàn thành", "Chưa hoàn thành", "Tổng bài tập" };
+            ViewBag.ChartDataLabels = barLabels;
+            ViewBag.ColorBar = colorBar;
+            ViewBag.ChartDataValues = valueBar;
             return View();
         }
     }

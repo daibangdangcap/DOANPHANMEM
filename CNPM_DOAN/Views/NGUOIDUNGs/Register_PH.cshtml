@@ -1,4 +1,12 @@
 ﻿@model CNPM_DOAN.Models.NGUOIDUNG
+    <style>
+        label{
+            font-size:25px; 
+        }
+        input{
+            height:40px;
+        }
+    </style>
 <body>
     <div class="content">
         @using (Html.BeginForm())
@@ -13,7 +21,7 @@
                 <div class="form-group">
                     <div class="col-md-10">
                         <label>@CNPM_DOAN.Resources.Language.Họ_và_tên:</label>
-                        @Html.EditorFor(model => model.TenNguoiDung, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.TenNguoiDung, new { htmlAttributes = new { @class = "form-control input" } })
                         <p class="text-danger">@Html.ValidationMessage("name1")</p>
                         <p class="text-danger">@Html.ValidationMessage("name2")</p>
                     </div>

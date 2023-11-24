@@ -5,19 +5,23 @@
 }
 <script src="~/Scripts/chart.js"></script>
 <script src="~/Scripts/chart.min.js"></script>
-<div class="content">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div class="content d-flex justify-content-center align-items-center" style="margin-top:8vh">
     <div>
-        <canvas id="myChart">
+        <canvas id="myChart" width="500" height="500">
         </canvas>
         <div style="text-align:center; margin-top:2vh; ">
             <p>Màu xanh: Đã hoàn thành</p>
             <p>Màu đỏ: Chưa hoàn thành</p>
         </div>
     </div>
+    <div>
+        <!-- Your chart will be rendered here -->
+        <canvas id="myBarChart" width="900" height="500"></canvas>
+    </div>
 </div>
-<div class="content">
-    <canvas id="myChart2" width="400" height="200"></canvas>
-</div>
+
+
 <script>
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -31,14 +35,28 @@
     });
 </script>
 <script>
-    var ctx = document.getElementById('myChart2').getContext('2d');
-    var myChart = new Chart(ctx, {
+    var ctx = document.getElementById('myBarChart').getContext('2d');
+
+    var data = {
+        labels: @Html.Raw(Json.Encode(ViewBag.ChartDataLabels)),
+        datasets: [{
+            label: 'Thống kê bài tập biểu đồ cột',
+            backgroundColor: @Html.Raw(Json.Encode(ViewBag.colorBar)),
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1,
+            data: @Html.Raw(Json.Encode(ViewBag.ChartDataValues)),
+        }],
+    };
+
+    var myBarChart = new Chart(ctx, {
         type: 'bar',
-        data: {
-            datasets: [{
-                data: @Html.Raw(Json.Encode(ViewBag.DataValues)),
-                backgroundColor: @Html.Raw(Json.Encode(ViewBag.DataColors))
-            }]
-        }
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                },
+            },
+        },
     });
 </script>

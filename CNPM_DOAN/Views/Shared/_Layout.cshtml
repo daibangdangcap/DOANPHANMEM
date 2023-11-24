@@ -107,32 +107,32 @@
                 <div class="menuitem uno" style="overflow:hidden;">
                     <a href="@Url.Action("showTKB","THOIKHOABIEUx", new { iduser = Session["IDUSER"]})">
                         <i class="fa-solid fa-calendar" style="margin-left: 5px; color: #FFFAFA;"></i>
-                        <span>@CNPM_DOAN.Resources.Language.Thời_khóa_biểu</span>
+                        <span style="margin-left:15px;">@CNPM_DOAN.Resources.Language.Thời_khóa_biểu</span>
                     </a>
                 </div>
                 <div class="menuitem dos" style="overflow:hidden;">
                     <a href="@Url.Action("ShowToDo","TODOes", new { iduser = Session["IDUSER"]})">
                         <i class="fa-sharp fa-solid fa-clipboard-check" style="margin-left: 5px; color: #FFFAFA;"></i>
-                        <span>@CNPM_DOAN.Resources.Language.Danh_sách_nhiệm_vụ</span>
+                        <span style="margin-left:15px;">@CNPM_DOAN.Resources.Language.Danh_sách_nhiệm_vụ</span>
                     </a>
                 </div>
                 <div class="menuitem tres" style="overflow:hidden;">
                     <a href="@Url.Action("ShowMucTieu","MUCTIEUx", new { idus = Session["IDUSER"]})">
                         <i class="fa-solid fa-flag" style="margin-left: 5px; color: #FFFAFA;"></i>
-                        <span>@CNPM_DOAN.Resources.Language.Mục_tiêu</span>
+                        <span style="margin-left:15px;">@CNPM_DOAN.Resources.Language.Mục_tiêu</span>
                     </a>
                 </div>
 
                 <div class="menuitem cuatro" style="overflow:hidden;">
                     <a href="@Url.Action("showTaiLieuHocTap", "TAILIEUx", new { idhocsinh = Session["IDUSER"] })">
                         <i class="fa-solid fa-user-group" style="color: #FFFAFA;"></i>
-                        <span>@CNPM_DOAN.Resources.Language.Tài_liệu_học_tập</span>
+                        <span style="margin-left:15px;">@CNPM_DOAN.Resources.Language.Tài_liệu_học_tập</span>
                     </a>
                 </div>
                 <div class="menuitem cinco" style="overflow:hidden;">
                     <a href="@Url.Action("showBaiTap", "BAITAPs", new { iduser = Session["IDUSER"] })">
                         <i class="fa-solid fa-book-open" style="color: #FFFAFA;"></i>
-                        <span>@CNPM_DOAN.Resources.Language.Bài_tập</span>
+                        <span style="margin-left:15px;">@CNPM_DOAN.Resources.Language.Bài_tập</span>
                     </a>
                 </div>
             }

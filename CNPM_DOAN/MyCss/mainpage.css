@@ -2,20 +2,24 @@
     box-sizing: border-box;
     margin: 0 auto;
 }
-*::-webkit-scrollbar {
-    display: none;
-}
+
+    *::-webkit-scrollbar {
+        display: none;
+    }
+
 .logo {
     width: 300px;
 }
+
 .content {
-    position:relative;
-    float:right;
+    position: relative;
+    float: right;
     width: 95.5%;
     height: 89%;
     font-family: sans-serif;
     z-index: -1;
 }
+
 .top-nav {
     height: 75px;
     background-color: #B0E0E6;
@@ -29,7 +33,7 @@
     align-items: center;
     justify-content: center;
     display: flex;
-    margin:0px;
+    margin: 0px;
 }
 
     .top-nav a {
@@ -38,23 +42,27 @@
         font-size: 18px;
         font-weight: bold;
         cursor: pointer;
-        margin-left:20px;
+        margin-left: 20px;
     }
+
         .top-nav a:hover {
             color: red;
-            text-decoration : none;
+            text-decoration: none;
         }
-        .img-change{
-            width:50px;
-            height:50px;
-            border-radius:50%;
-        }
+
+.img-change {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
 .nothover:hover::after {
     width: 0%;
     transition: none;
 }
-.nothover::after{
-    width:0%;
+
+.nothover::after {
+    width: 0%;
 }
 
 
@@ -76,37 +84,44 @@
         width: 250px;
     }
 
-.menuitem a span {
-    position: absolute;
-    left: 80px;
-    top: 20px;
-    transition: color 1s;
-    color: whitesmoke;
-    font-family: 'Segoe UI';
-    font-size: 17px;
-}
+
 
 .menuitem {
-    height: 19%;
+    height: 20%;
     line-height: 100px;
     position: relative;
     padding: 20px;
     transition-duration: 0.5s;
     font-weight: lighter;
 }
-    .menuitem:hover {
-        background: ;
+
+    .menuitem span {
+        transition: color 1s;
+        color: whitesmoke;
+        font-family: 'Segoe UI';
+        font-size: 20px;
+    }
+    .menuitem a{
+        text-decoration:none;
+    }
+    .menuitem a:hover {
+        text-decoration: none;
+    }
+
+    .menuitem span:hover {
+        color: red;
         cursor: pointer;
         transition-duration: 0.5s;
     }
+
 .menuitemPH span {
     transition: color 1s;
     color: #555555;
     font-family: 'Segoe UI';
-    font-size: 17px;
-    text-decoration: none;
-    padding-left:20px;
+    font-size: 20px;
+    padding-left: 20px;
 }
+
 .menuitemPH {
     height: 16%;
     line-height: 100px;
@@ -115,17 +130,23 @@
     transition-duration: 0.5s;
     font-weight: bold;
 }
+
+    .menuitemPH a {
+        text-decoration: none;
+    }
     .menuitemPH a:hover {
         text-decoration: none;
     }
+
     .menuitemPH span:hover {
         color: red;
         cursor: pointer;
         transition-duration: 0.5s;
     }
+
 a {
     color: whitesmoke;
-    text-decoration-line : none;
+    text-decoration-line: none;
 }
 
 

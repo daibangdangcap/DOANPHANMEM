@@ -254,7 +254,7 @@ namespace CNPM_DOAN.Controllers
                     baitap.TenBT = bt.FileName;
                     baitap.DuongDan = data;
                     baitap.LoaiTep = bt.ContentType;
-                    baitap.HanNop = hanchot;
+                    baitap.HanNop = hanchot +DateTime.Now.TimeOfDay;
                     db.Entry(baitap).State = EntityState.Modified;
                     db.SaveChanges();
                     return Json(new { success = true, redirectUrl = Url.Action("showBaiTap_PH", "BAITAPs", new { iduser = baitap.IDNguoiNhan }) });

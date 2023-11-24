@@ -17,6 +17,7 @@
         <script type="text/javascript">
         toastr.success('@TempData["message"]')
         </script>
+        TempData["message"] = null;
     }
     <div class="modal fade" id="myModal" role="dialog" data-url="@Url.Action("TaoBTMoi","BAITAPs")">
         <div class="modal-dialog" role="document">

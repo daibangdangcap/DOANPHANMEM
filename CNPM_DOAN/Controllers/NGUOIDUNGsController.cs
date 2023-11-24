@@ -243,6 +243,7 @@ namespace CNPM_DOAN.Controllers
                 NGUOIDUNG nGUOIDUNG = nguoidung;
                 db.Entry(nGUOIDUNG).State = EntityState.Modified;
                 db.SaveChanges();
+                Session["AVATAR"] = data;
                 return RedirectToAction("Informs", "NGUOIDUNGs", new { iduser = iduserr });
             }
             else

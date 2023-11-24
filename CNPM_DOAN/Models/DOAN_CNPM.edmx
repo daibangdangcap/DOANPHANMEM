@@ -70,7 +70,7 @@
             <PropertyRef Name="IDTKB" />
           </Key>
           <Property Name="IDTKB" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="TenTKB" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TenTKB" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="IDNguoiDung" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="TIETHOC">
@@ -383,7 +383,7 @@
             <PropertyRef Name="IDTKB" />
           </Key>
           <Property Name="IDTKB" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TenTKB" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenTKB" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IDNguoiDung" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK__THOIKHOAB__IDNgu__4CA06362" FromRole="THOIKHOABIEU" ToRole="NGUOIDUNG" />
           <NavigationProperty Name="TIETHOCs" Relationship="Self.FK__TIETHOC__IDTKB__5CD6CB2B" FromRole="THOIKHOABIEU" ToRole="TIETHOC" />

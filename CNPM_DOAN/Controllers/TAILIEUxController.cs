@@ -137,10 +137,9 @@ namespace CNPM_DOAN.Controllers
             return View(data.ToList());
         }
 
-        public ActionResult showTaiLieuHocTap_PH(string idhocsinh)
+        public ActionResult showTaiLieuHocTap_PH(string iduser)
         {
-            Session["HOCSINH"] = idhocsinh;
-            var data=db.TAILIEUx.Where(s=>s.IDNguoiTao==idhocsinh);
+            var data=db.TAILIEUx.Where(s=>s.IDNguoiTao==iduser);
             return View(data.ToList());
         }
 
@@ -169,7 +168,7 @@ namespace CNPM_DOAN.Controllers
                 db.TAILIEUx.Add(tailieu);
                 TempData["message"] = CNPM_DOAN.Resources.Language.Tạo_tài_liệu_thành_công;
                 db.SaveChanges();
-                return Json(new { success = true, redirectUrl = Url.Action("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan }) });
+                return Json(new { success = true, redirectUrl = Url.Action("showTaiLieuHocTap_PH", "TAILIEUx", new { iduser = idnguoinhan }) });
             }
         }
 
@@ -184,7 +183,7 @@ namespace CNPM_DOAN.Controllers
         }
 
         [HttpPost]
-        public ActionResult editTaiLieu(HttpPostedFileBase fileTaiLieu, string idnguoinhan, string idtailieu)
+        public ActionResult editTaiLieu(HttpPostedFileBase fileTaiLieu, string idnguoitao, string idtailieu)
         {
             if (fileTaiLieu == null)
             {
@@ -200,7 +199,7 @@ namespace CNPM_DOAN.Controllers
                 db.Entry(data).State = EntityState.Modified;
                 db.SaveChanges();
                 TempData["message"] = CNPM_DOAN.Resources.Language.Chỉnh_sửa_tài_liệu_thành_công;
-                return Json(new { success = true, redirectUrl = Url.Action("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan }) });
+                return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new {iduser=idnguoitao});
             }
         }
 
@@ -210,12 +209,14 @@ namespace CNPM_DOAN.Controllers
             db.TAILIEUx.Remove(data);
             db.SaveChanges();
             TempData["message"] = CNPM_DOAN.Resources.Language.Xóa_tài_liệu_thành_công;
-            return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new { idhocsinh = idnguoinhan });
+            return RedirectToAction("showTaiLieuHocTap_PH", "TAILIEUx", new { iduser = idnguoinhan });
         }
 
         public ActionResult showTaiLieuHocTap(string idhocsinh)
         {
-            var data = db.TAILIEUx.Where(s => s.IDNguoiTao == idhocsinh);
+            var hocsinh=db.NGUOIDUNGs.Find(idhocsinh);
+            string idPH = hocsinh.IDQuanLy;
+            var data = db.TAILIEUx.Where(s => s.IDNguoiTao == idPH);
             return View(data.ToList());
         }
 

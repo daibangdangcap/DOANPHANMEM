@@ -11,7 +11,7 @@
                 {
                     <label>@CNPM_DOAN.Resources.Language.Chọn_tài_liệu:</label>
                     <input type="file" id="fileTaiLieu" name="fileTaiLieu" />
-                    <input type="hidden" name="idnguoinhan" value="@Session["HOCSINH"]" />
+                    <input type="hidden" name="idnguoinhan" value="@Session["IDUSER"]" />
                     <button type="submit" class="btn btn-success" style="margin-top:20px; margin-left:40%;">@CNPM_DOAN.Resources.Language.Xác_nhận</button>
                 }
                 <p class="text-danger" style="text-align:center">@Html.ValidationMessage("null")</p>
